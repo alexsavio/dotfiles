@@ -34,5 +34,10 @@ export PATH
 #virtualenvwrapper
 export WORKON_HOME=~/envs
 source /usr/local/bin/virtualenvwrapper.sh
-
 export PIP_REQUIRE_VIRTUALENV=true
+
+#autoenv
+#Python
+#git clone git://github.com/kennethreitz/autoenv.git ~/.autoenv
+source ~/.autoenv/activate.sh
+

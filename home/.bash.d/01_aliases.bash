@@ -54,10 +54,6 @@ alias lock='gnome-screensaver-command --lock'
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-#Python
-#git clone git://github.com/kennethreitz/autoenv.git ~/.autoenv
-source ~/.autoenv/activate.sh
-
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 function ipyqt(){
     python -c 'import IPython; IPython.start_ipython(['"'"'qtconsole'"'"']);'
