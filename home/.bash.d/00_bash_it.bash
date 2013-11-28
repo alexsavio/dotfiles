@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 
+#HOMESCHICK
+#git clone git://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
+
+#bash-it
+#git clone https://github.com/revans/bash-it.git ~/.bash_it
+#~/.bash_it/install.sh
 
 # Load RVM, if you are using it
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm

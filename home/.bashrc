@@ -65,36 +65,6 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -102,45 +72,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-. /etc/fsl/5.0/fsl.sh
 
-#export FREESURFER_HOME=/opt/freesurfer
-#source $FREESURFER_HOME/SetUpFreeSurfer.sh
+for i in `ls ~/.bash.d/*.bash`; do source $i; done
 
-export FSLPARALLEL=condor
-
-#export PATH=/usr/local/cuda/bin:$PATH
-
-export PATH=~/abin:$PATH
-#CVIPHOME=/home/alexandre/Software/cvip 
-#CVIP_IMGPATH=./
-#CVIP_DISPLAY=picture
-#TCL_LIBRARY=/home/alexandre/Software/cvip/CVIPTCL/lib/tcl8.0
-#TK_LIBRARY=/home/alexandre/Software/cvip/CVIPTCL/lib/tk8.0
-#XF_LOAD_PATH=/home/alexandre/Software/cvip/CVIPTCL/GUI_SCRIPTS
-#LD_LIBRARY_PATH=/usr/lib/fsl/5.0:/usr/lib/fsl/5.0:/home/alexandre/Software/cvip/lib:/home/alexandre/Software/cvip/CVIPTCL/lib
-#PATH=${PATH}:/home/alexandre/Software/cvip/CVIPTCL:/home/alexandre/Software/cvip/bin
-#export CVIPHOME
-#export CVIP_IMGPATH
-#export CVIP_DISPLAY
-#export TCL_LIBRARY
-#export TK_LIBRARY
-#export XF_LOAD_PATH
-#export LD_LIBRARY_PATH
-#export PATH
-
-#virtualenvwrapper
-export WORKON_HOME=~/envs
-source /usr/local/bin/virtualenvwrapper.sh
-
-export PIP_REQUIRE_VIRTUALENV=true
-
-alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
-source ~/.autoenv/activate.sh
-
-function ipyqt(){
-    python -c 'import IPython; IPython.start_ipython(['"'"'qtconsole'"'"']);'
-}
-
-source "$HOME/.homesick/repos/homeshick/homeshick.sh"
-source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
