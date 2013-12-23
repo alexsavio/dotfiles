@@ -50,6 +50,6 @@ if [ -d /opt/intel ];
 then
 	export INTEL_HOME=/opt/intel
 	export PATH=${PATH}:${INTEL_HOME}/bin
-	export LD_LIBRARY_PATH=/opt/intel/composer_xe_2013/mkl/lib/intel64:/opt/intel/composer_xe_2013/lib/intel64:${LD_LIBRARY_PATH}
+	export LD_LIBRARY_PATH=/opt/intel/mkl/lib/intel64:/opt/intel/lib/intel64:${LD_LIBRARY_PATH}
 fi
 

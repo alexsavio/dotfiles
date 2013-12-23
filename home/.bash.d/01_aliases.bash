@@ -59,5 +59,7 @@ function ipyqt(){
     python -c 'import IPython; IPython.start_ipython(['"'"'qtconsole'"'"']);'
 }
 
-
+function ipynote(){
+    python -c 'import IPython; IPython.start_ipython(['"'"'notebook'"'"']);'
+}
 
