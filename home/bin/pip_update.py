@@ -1,4 +1,4 @@
-#!python
+#!/usr/bin/env python
 
 import os
 import sys
@@ -30,15 +30,17 @@ class Piper(object):
             comm = [comm]
 
         if isinstance(args, list):
-            comm.extend(modules)
+            comm.extend(args)
         elif isinstance(args, str):
-            comm.append(modules)
+            comm.append(args)
 
         return comm
 
     def _pip_exec(self, args, modules=[]):
-        pip_comm = self._append_to_comm(self._pip_path, args)
-        pip_comm = self._append_to_comm(self._pip_path, modules)
+        pip_comm = self._pip_path
+        pip_comm = self._append_to_comm(pip_comm, args)
+        pip_comm = self._append_to_comm(pip_comm, modules)
+        print('Executing: ' + ' '.join(pip_comm))
         self._exec_comm(pip_comm)
 
     def install(self, modules=[]):
