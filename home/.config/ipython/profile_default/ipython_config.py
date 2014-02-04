@@ -25,11 +25,11 @@ c = get_config()
 
 # lines of code to run at IPython startup.
 c.InteractiveShellApp.exec_lines = [
-#	'import numpy as np',
+	'import numpy as np',
 #	'import scipy as sci',
 #	'import nibabel as nib',
 #	'import sys',
-#	'import os',
+	'import os',
 #	'import pickle',
 ]
 
@@ -201,7 +201,7 @@ c.InteractiveShellApp.gui = 'qt'
 # c.TerminalInteractiveShell.screen_length = 0
 
 # Set the editor used by IPython (default to $EDITOR/vi/notepad).
-# c.TerminalInteractiveShell.editor = 'vi'
+c.TerminalInteractiveShell.editor = 'vim'
 
 # Deprecated, use PromptManager.justify
 # c.TerminalInteractiveShell.prompts_pad_left = True

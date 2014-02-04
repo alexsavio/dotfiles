@@ -2,6 +2,10 @@
 . /etc/fsl/5.0/fsl.sh
 export FSLPARALLEL=condor
 
+if [ -d ~/bin ];
+then
+    PATH=${PATH}:~/bin
+fi
 
 #FREESURFER
 if [ -d /opt/freesurfer ]; 
