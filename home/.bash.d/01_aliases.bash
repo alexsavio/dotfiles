@@ -63,4 +63,4 @@ function ipynote(){
     python -c 'import IPython; IPython.start_ipython(['"'"'notebook'"'"']);'
 }
 
-alias pip_Uall="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
+#alias pip_Uall="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
