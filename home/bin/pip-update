@@ -57,6 +57,9 @@ if __name__ == '__main__':
     env_packages = mypip.freeze()
 
     for pck in env_packages:
+        if sys.version > '3':
+            pck = pck.decode()
+
         pck_name = pck.split('==')[0]
         mypip.upgrade(pck_name)
 
