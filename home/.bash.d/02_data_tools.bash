@@ -7,6 +7,12 @@ then
     PATH=${PATH}:~/bin
 fi
 
+#RUBY
+if [ -d ~/.rvm ];
+then
+    source ~/.rvm/scripts/rvm
+fi
+
 #FREESURFER
 if [ -d /opt/freesurfer ]; 
 then
@@ -27,16 +33,16 @@ then
 fi
 
 #CVIP
-if [ -d /home/alexandre/Software/cvip ]; 
+if [ -d ~/Software/cvip ]; 
 then
-	export CVIPHOME=/home/alexandre/Software/cvip 
+	export CVIPHOME=~/Software/cvip 
 	export CVIP_IMGPATH=./
 	export CVIP_DISPLAY=picture
-	export TCL_LIBRARY=/home/alexandre/Software/cvip/CVIPTCL/lib/tcl8.0
-	export TK_LIBRARY=/home/alexandre/Software/cvip/CVIPTCL/lib/tk8.0
-	export XF_LOAD_PATH=/home/alexandre/Software/cvip/CVIPTCL/GUI_SCRIPTS
-	export LD_LIBRARY_PATH=/usr/lib/fsl/5.0:/home/alexandre/Software/cvip/lib:/home/alexandre/Software/cvip/CVIPTCL/lib:${LD_LIBRARY_PATH}
-	export PATH=${PATH}:/home/alexandre/Software/cvip/CVIPTCL:/home/alexandre/Software/cvip/bin
+	export TCL_LIBRARY=~/Software/cvip/CVIPTCL/lib/tcl8.0
+	export TK_LIBRARY=~/Software/cvip/CVIPTCL/lib/tk8.0
+	export XF_LOAD_PATH=~/cvip/CVIPTCL/GUI_SCRIPTS
+	export LD_LIBRARY_PATH=/usr/lib/fsl/5.0:~/Software/cvip/lib:~/cvip/CVIPTCL/lib:${LD_LIBRARY_PATH}
+	export PATH=${PATH}:~/Software/cvip/CVIPTCL:~/Software/cvip/bin
 fi
 
 #virtualenvwrapper
