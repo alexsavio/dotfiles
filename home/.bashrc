@@ -75,5 +75,5 @@ fi
 
 for i in `ls ~/.bash.d/*.bash`; do source $i; done
 
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+USERNAME='Alexandre M. Savio'
+TODAY=`date +%d/%m/%Y`
