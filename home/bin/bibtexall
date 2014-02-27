@@ -1,0 +1,17 @@
+#!/usr/bin/env python
+# -*- coding: iso-8859-15 -*-
+
+# \author Juergen Spitzmueller
+
+# This file is a wrapper on bibtex to let LyX
+# process every aux file in the temp directory
+# this is needed if you use chapterbib with LyX.
+# Place this file somewhere in your PATH , then
+# open Tools->Preferences->LaTeX in LyX and change
+# the "bibtex command" from "bibtex" to "bibtexall".
+
+import sys, os
+for filename in os.listdir("."):
+	if filename.endswith('.aux'):
+		f = os.path.splitext(filename)[0]
+		os.popen('bibtex ' + f)
