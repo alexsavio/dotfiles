@@ -20,16 +20,22 @@ then
 	source $FREESURFER_HOME/SetUpFreeSurfer.sh
 fi
 
+#Komodo-Edit
+if [ -d /opt/Komodo-Edit ];
+then
+    export PATH="/opt/Komodo-Edit/bin:$PATH"
+fi
+
 #CUDA
 if [ -d /usr/local/cuda/bin ]; 
 then
-	export PATH=/usr/local/cuda/bin:${PATH}
+    export PATH=/usr/local/cuda/bin:${PATH}
 fi
 
 #AFNI
 if [ -d ~/abin ]; 
 then
-	export PATH=~/abin:${PATH}
+    export PATH=~/abin:${PATH}
 fi
 
 #CVIP

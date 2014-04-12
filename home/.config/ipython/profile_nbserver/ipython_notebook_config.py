@@ -10,7 +10,7 @@ c = get_config()
 c.IPKernelApp.pylab = 'inline'  # if you want plotting support always
 
 # Notebook config
-c.NotebookApp.certfile = u'/home/alexandre/Dropbox/Documents/ipy_notebooks/mycert.pem'
+c.NotebookApp.certfile = u'/home/alexandre/Dropbox/Documents/ipynb/mycert.pem'
 c.NotebookApp.ip = '*'
 c.NotebookApp.open_browser = False
 c.NotebookApp.password = u'sha1:9183da9e275b:0510f331cf8d231a778b864415192e36eebc6aa7'

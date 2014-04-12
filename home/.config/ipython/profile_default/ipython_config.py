@@ -39,7 +39,7 @@ c.InteractiveShellApp.gui = 'qt'
 
 # Pre-load matplotlib and numpy for interactive use, selecting a particular
 # matplotlib backend and loop integration.
-# c.InteractiveShellApp.pylab = None
+#c.InteractiveShellApp.pylab = True
 
 # If true, an 'import *' is done from numpy and pylab, when using pylab
 # c.InteractiveShellApp.pylab_import_all = True

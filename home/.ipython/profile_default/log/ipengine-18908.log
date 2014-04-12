@@ -1,0 +1,13 @@
+2013-07-23 15:50:06.729 [IPEngineApp] Loading url_file u'/home/alexandre/.config/ipython/profile_default/security/ipcontroller-engine.json'
+2013-07-23 15:50:06.734 [IPEngineApp] Registering with controller at tcp://127.0.0.1:58963
+2013-07-23 15:50:06.781 [IPEngineApp] Using existing profile dir: u'/home/alexandre/.config/ipython/profile_default'
+2013-07-23 15:50:06.782 [IPEngineApp] Completed registration with id 1
+2013-07-23 15:57:35.692 [IPEngineApp] Exception in control handler:
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/IPython/zmq/ipkernel.py", line 189, in dispatch_control
+    handler(self.control_stream, idents, msg)
+  File "/usr/local/lib/python2.7/dist-packages/IPython/zmq/ipkernel.py", line 630, in abort_request
+    self.abort_queues()
+AttributeError: 'Kernel' object has no attribute 'abort_queues'
+2013-07-23 21:34:03.591 [IPEngineApp] Engine Interrupted, shutting down...
+
