@@ -75,5 +75,5 @@ fi
 
 for i in `ls ~/.bash.d/*.bash`; do source $i; done
 
-USERNAME='Alexandre M. Savio'
+USERNAME='Alexandre M. S.'
 TODAY=`date +%d/%m/%Y`
