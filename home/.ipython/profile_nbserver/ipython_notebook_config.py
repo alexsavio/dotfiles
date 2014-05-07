@@ -1,1 +1,0 @@
-/home/alexandre/.homesick/repos/dotfiles/home/.config/ipython/profile_nbserver/ipython_notebook_config.py
