@@ -13,7 +13,7 @@ c.IPKernelApp.pylab = 'inline' # if you want plotting support always
 c.NotebookApp.certfile = u'/home/alexandre/Dropbox/Documents/ipynb/mycert.pem'
 c.NotebookApp.ip = '*'
 c.NotebookApp.open_browser = True
-c.NotebookApp.password = u'sha1:9183da9e275b:0510f331cf8d231a778b864415192e36eebc6aa7'
+c.NotebookApp.password = u'sha1:51db9ac62db9:e4792bb7be371eb6dc5ef2944a91fbb195710464'
 # It is a good idea to put it on a known, fixed port
 c.NotebookApp.port = 8081
 
