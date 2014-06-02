@@ -419,7 +419,7 @@ c = get_config()
 # An object to store configuration of the inline backend.
 
 # The image format for figures with the inline backend.
-# c.InlineBackend.figure_format = 'png'
+#c.InlineBackend.figure_format = 'png'
 
 # Close all figures at the end of each cell.
 # 
@@ -437,7 +437,7 @@ c = get_config()
 # c.InlineBackend.close_figures = True
 
 # Subset of matplotlib rcParams that should be different for the inline backend.
-# c.InlineBackend.rc = {'font.size': 10, 'savefig.dpi': 72, 'figure.figsize': (6.0, 4.0), 'figure.subplot.bottom': 0.125}
+c.InlineBackend.rc = {'font.size': 8, 'savefig.dpi': 300, 'figure.figsize': (16.0, 16.0), 'figure.subplot.bottom': 0.125}
 
 #------------------------------------------------------------------------------
 # MappingKernelManager configuration
