@@ -59,7 +59,7 @@ export PIP_REQUIRE_VIRTUALENV=true
 #autoenv
 #Python
 #git clone git://github.com/kennethreitz/autoenv.git ~/.autoenv
-source ~/.autoenv/activate.sh
+#source ~/.autoenv/activate.sh
 
 #Intel C++ Studio
 if [ -d /opt/intel ]; 
