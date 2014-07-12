@@ -2,6 +2,8 @@
 
 c = get_config()
 
+gui_module = 'qt4'
+
 #------------------------------------------------------------------------------
 # InteractiveShellApp configuration
 #------------------------------------------------------------------------------
@@ -32,14 +34,14 @@ c = get_config()
 
 # Enable GUI event loop integration with any of ('glut', 'gtk', 'gtk3', 'none',
 # 'osx', 'pyglet', 'qt', 'qt4', 'tk', 'wx').
-# c.InteractiveShellApp.gui = None
+c.InteractiveShellApp.gui = gui_module
 
 # Pre-load matplotlib and numpy for interactive use, selecting a particular
 # matplotlib backend and loop integration.
 # c.InteractiveShellApp.pylab = None
 
 # Configure matplotlib for interactive use with the default matplotlib backend.
-# c.InteractiveShellApp.matplotlib = None
+c.InteractiveShellApp.matplotlib = gui_module
 
 # If true, IPython will populate the user namespace with numpy, pylab, etc. and
 # an ``import *`` is done from numpy and pylab, when using pylab mode.
@@ -79,7 +81,7 @@ c = get_config()
 
 # Pre-load matplotlib and numpy for interactive use, selecting a particular
 # matplotlib backend and loop integration.
-# c.TerminalIPythonApp.pylab = None
+c.TerminalIPythonApp.pylab = gui_module
 
 # Create a massive crash report when IPython encounters what may be an internal
 # error.  The default is to append a short message to the usual traceback
@@ -125,11 +127,11 @@ c = get_config()
 # c.TerminalIPythonApp.profile = u'default'
 
 # Configure matplotlib for interactive use with the default matplotlib backend.
-# c.TerminalIPythonApp.matplotlib = None
+c.TerminalIPythonApp.matplotlib = gui_module
 
 # If a command or file is given via the command-line, e.g. 'ipython foo.py',
 # start an interactive shell after executing the file or command.
-# c.TerminalIPythonApp.force_interact = False
+c.TerminalIPythonApp.force_interact = True
 
 # If true, IPython will populate the user namespace with numpy, pylab, etc. and
 # an ``import *`` is done from numpy and pylab, when using pylab mode.
@@ -157,7 +159,7 @@ c = get_config()
 
 # Enable GUI event loop integration with any of ('glut', 'gtk', 'gtk3', 'none',
 # 'osx', 'pyglet', 'qt', 'qt4', 'tk', 'wx').
-# c.TerminalIPythonApp.gui = None
+c.TerminalIPythonApp.gui = gui_module
 
 # A list of dotted module names of IPython extensions to load.
 # c.TerminalIPythonApp.extensions = []
