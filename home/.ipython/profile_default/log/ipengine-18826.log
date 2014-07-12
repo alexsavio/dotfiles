@@ -1,6 +1,0 @@
-2013-07-23 15:44:00.476 [IPEngineApp] Loading url_file u'/home/alexandre/.config/ipython/profile_default/security/ipcontroller-engine.json'
-2013-07-23 15:44:00.481 [IPEngineApp] Registering with controller at tcp://127.0.0.1:36574
-2013-07-23 15:44:00.530 [IPEngineApp] Using existing profile dir: u'/home/alexandre/.config/ipython/profile_default'
-2013-07-23 15:44:00.530 [IPEngineApp] Completed registration with id 0
-2013-07-23 15:50:02.343 [IPEngineApp] Engine Interrupted, shutting down...
-
