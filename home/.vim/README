@@ -1,0 +1,9 @@
+Put this repo into ~/.vim
+
+    git clone https://github.com/Apreche/vim.git ~/.vim
+
+run the included setup.sh script
+
+    ~/.vim/setup.sh
+
+Use vim!
