@@ -77,3 +77,6 @@ for i in `ls ~/.bash.d/*.bash`; do source $i; done
 
 USERNAME='Alexandre M. S.'
 TODAY=`date +%d/%m/%Y`
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
