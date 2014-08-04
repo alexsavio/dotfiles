@@ -1,0 +1,25 @@
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+#Auto Completions
+fpath=("${ZDOTDIR:-$HOME}/.homesick/repos/homeshick/completions" $fpath)
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# Customize to your needs...
+if [[ -s "${ZDOTDIR:-$HOME}/.zsh.d" ]]; then
+  for i in `ls ~/.zsh.d/*.zsh`; do source $i; done
+fi
+
+USERNAME='Alexandre M. S.'
+TODAY=`date +%d/%m/%Y`
+
+### Added by the Heroku Toolbelt
+#export PATH="/usr/local/heroku/bin:$PATH"
