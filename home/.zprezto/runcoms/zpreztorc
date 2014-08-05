@@ -90,7 +90,7 @@ zstyle ':prezto:module:pacman' frontend 'yaourt'
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
 #zstyle ':prezto:module:prompt' theme 'superlinh'
-zstyle ':prezto:module:prompt' theme 'soup'
+zstyle ':prezto:module:prompt' theme 'mysoup'
 
 #
 # Ruby
@@ -130,10 +130,10 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
    'root'
 
 # Set syntax highlighting styles.
-zstyle ':prezto:module:syntax-highlighting' styles \
-   'builtin' 'bg=blue' \
-   'command' 'bg=blue' \
-   'function' 'bg=blue'
+#zstyle ':prezto:module:syntax-highlighting' styles \
+#   'builtin' 'bg=blue' \
+#   'command' 'bg=blue' \
+#   'function' 'bg=blue'
 
 #
 # Terminal
