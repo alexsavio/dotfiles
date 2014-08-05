@@ -34,6 +34,8 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'ssh' \
   'git' \
+  'tmux' \
+  'python' \
   'syntax-highlighting' \
   'history-substring-search' \
   'prompt'
@@ -80,7 +82,7 @@ zstyle ':prezto:module:git:status:ignore' submodules 'all'
 #
 
 # Set the Pacman frontend.
-zstyle ':prezto:module:pacman' frontend 'yaourt'
+#zstyle ':prezto:module:pacman' frontend 'yaourt'
 
 #
 # Prompt
