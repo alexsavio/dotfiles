@@ -37,6 +37,8 @@ if [ $UID -ne 0 ]; then
     alias agi='sudo apt-get install'
     alias agr='sudo apt-get remove'
     alias agr='sudo apt-get purge'
+    alias 'as=apt-cache search'
+    alias 'aw=apt-cache show'
 fi
 
 #folders gotos
