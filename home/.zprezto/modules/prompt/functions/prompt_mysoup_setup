@@ -176,3 +176,4 @@ function prompt_soup_setup {
 #Auto call our setup method after file load.
 prompt_soup_setup "$@"
 
+
