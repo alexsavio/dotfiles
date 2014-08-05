@@ -1,1 +1,0 @@
-/home/alexandre/.vim/vimrc
