@@ -18,6 +18,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zsh.d" ]]; then
   for i in `ls ~/.zsh.d/*.zsh`; do source $i; done
 fi
 
+bindkey '5D' emacs-backward-word
+bindkey '5C' emacs-forward-word
+export WORDCHARS=''
+
 USERNAME='Alexandre M. S.'
 TODAY=`date +%d/%m/%Y`
 
