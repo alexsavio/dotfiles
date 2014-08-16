@@ -32,7 +32,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 if [ $UID -ne 0 ]; then
     alias reboot='sudo reboot'
-    alias update='sudo apt-get upgrade'
+    alias update='sudo apt-get update'
     alias agu='sudo apt-get upgrade'
     alias agi='sudo apt-get install'
     alias agr='sudo apt-get remove'
@@ -54,6 +54,7 @@ hash -d dbox='~/Dropbox'
 hash -d prjs='~/Projects'
 
 alias lock='gnome-screensaver-command --lock'
+alias skn='sudo killall -9 NetworkManager'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
