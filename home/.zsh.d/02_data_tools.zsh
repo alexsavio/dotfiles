@@ -1,6 +1,9 @@
 #FSL
-. /etc/fsl/5.0/fsl.sh
-export FSLPARALLEL=condor
+if [ -d /etc/fsl/5.0 ]
+then
+    . /etc/fsl/5.0/fsl.sh
+    export FSLPARALLEL=condor
+fi
 
 if [ -d ~/bin ];
 then
@@ -52,9 +55,12 @@ then
 fi
 
 #virtualenvwrapper
-export WORKON_HOME=~/envs
-source /usr/local/bin/virtualenvwrapper.sh
-export PIP_REQUIRE_VIRTUALENV=true
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]
+then
+    export WORKON_HOME=~/envs
+    source /usr/local/bin/virtualenvwrapper.sh
+    export PIP_REQUIRE_VIRTUALENV=true
+fi
 
 #autoenv
 #Python
