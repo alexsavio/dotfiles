@@ -41,6 +41,20 @@ if [ $UID -ne 0 ]; then
     alias aw='apt-cache show'
 fi
 
+#vagrant aliases
+alias vagrup="FORWARD_DOCKER_PORTS='true' vagrant up"
+alias vagrhalt='vagrant halt'
+
+#docker aliases
+#http://kartar.net/2014/03/some-useful-docker-bash-functions-and-aliases/
+alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+drm() { docker rm $(docker ps -q -a); }
+dri() { docker rmi $(docker images -q); }
+alias dkd="docker run -d -P"
+alias dki="docker run -t -i -P"
+db() { docker build -t="$1" .; }
+
+
 #folders gotos
 alias mydocs='cd ~/Documents'
 alias mydowns='cd ~/Downloads'
