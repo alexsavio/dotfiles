@@ -26,10 +26,8 @@ function prompt_sorin_precmd {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
 
-  # Format PWD.
   prompt_sorin_pwd
 
-  # Get Git repository information.
   if (( $+functions[git-info] )); then
     git-info
   fi

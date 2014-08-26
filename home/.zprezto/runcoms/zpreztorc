@@ -32,8 +32,9 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'ssh' \
   'git' \
+  'gitfast' \
+  'ssh' \
   'python' \
   'syntax-highlighting' \
   'history-substring-search' \
@@ -53,8 +54,11 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 # Git
 #
 
+zstyle ':prezto:module:git:log:context' format 'brief'
+
 # Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
 zstyle ':prezto:module:git:status:ignore' submodules 'all'
+
 
 #
 # GNU Utility
@@ -91,7 +95,8 @@ zstyle ':prezto:module:git:status:ignore' submodules 'all'
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
 #zstyle ':prezto:module:prompt' theme 'sorin'
-zstyle ':prezto:module:prompt' theme 'mysoup'
+#zstyle ':prezto:module:prompt' theme 'mysoup'
+zstyle ':prezto:module:prompt' theme 'jerome'
 
 #
 # Ruby
@@ -131,8 +136,8 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
 #   'cursor'
 
 # Set syntax highlighting styles.
-#zstyle ':prezto:module:syntax-highlighting' styles \
-#   'builtin' 'bg=blue' \
+zstyle ':prezto:module:syntax-highlighting' styles \
+   'builtin' 'bg=blue' \
 #   'command' 'bg=blue' \
 #   'function' 'bg=blue'
 

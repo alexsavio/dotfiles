@@ -174,7 +174,9 @@ function prompt_soup_setup {
 %B%F{green}%n@%m%f%b:%F{cyan}${_prompt_soup_pwd}%f ${git_info:+${(e)git_info[prompt]}}
 %F{blue}%D{%H:%M:%S} %F{red}❯%f %{$reset_color%}'
   PS2="       ... "
-  RPROMPT='%{$fg[green]%}$(virtualenv_info)%{$reset_color%}% ${return_status} $(git_time_since_commit)${git_info:+${(e)git_info[rprompt]}}%{$reset_color%}'
+  #RPROMPT='%{$fg[green]%}$(virtualenv_info)%{$reset_color%}% ${return_status} $(git_time_since_commit)${git_info:+${(e)git_info[rprompt]}}%{$reset_color%}'
+  #RPROMPT='%{$fg[green]%}$(virtualenv_info)%{$reset_color%}% ${return_status} ${git_info:+${(e)git_info[rprompt]}}%{$reset_color%}'
+  RPROMPT='%{$fg[green]%}$(virtualenv_info)%{$reset_color%}% ${return_status} %{$reset_color%}'
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
 
