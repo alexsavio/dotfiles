@@ -96,7 +96,8 @@ zstyle ':prezto:module:git:status:ignore' submodules 'all'
 # Auto set to 'off' on dumb terminals.
 #zstyle ':prezto:module:prompt' theme 'sorin'
 #zstyle ':prezto:module:prompt' theme 'mysoup'
-zstyle ':prezto:module:prompt' theme 'jerome'
+#zstyle ':prezto:module:prompt' theme 'jerome'
+zstyle ':prezto:module:prompt' theme 'pure'
 
 #
 # Ruby
