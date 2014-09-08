@@ -10,12 +10,15 @@ import subprocess
 
 
 def create_argparser():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description='Launch web server to present'
+                                                 ' the notebook slides from a '
+                                                 ' temporary folder.')
     parser.add_argument('-n', '--notebook', action='store',
-                        dest='notebook',
+                        dest='notebook', default='a',
                         help='The IPython notebook file path.')
     parser.add_argument('-o', '--other', action='append', dest='others', default=[],
-                        help='Other files needed by the notebook. This flag can be used more than once.')
+                        help='Other files needed by the notebook.'
+                             'This flag can be used more than once.')
     return parser
 
 if __name__ == '__main__':
