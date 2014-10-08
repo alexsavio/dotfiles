@@ -1,0 +1,20 @@
+#!/bin/bash
+
+workdir=$1
+cwd=`pwd`
+repos=`ls $workdir`
+
+echo "Updating $repos"
+
+for repo in $repos; do
+
+    target=${workdir}/${repo}
+
+    if [ -d ${target}/.git ]; then
+        echo "Pulling ${target}
+        cd ${workdir}/${repo}
+        git pull
+        cd $cwd
+    fi
+done
+
