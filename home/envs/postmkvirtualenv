@@ -30,6 +30,7 @@ do
     libsyspath=''
     find_real_lib $syspy $lib libsyspath
     if [ $? == '0' ]; then
+        echo "Linking $lib"
         ln -s $libsyspath $lib_virtualenv_path/$lib
     fi
 done

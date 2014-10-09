@@ -13,9 +13,10 @@ c.IPKernelApp.pylab = 'inline' # if you want plotting support always
 c.NotebookApp.certfile = u'/home/alexandre/Dropbox/Documents/ipynb/mycert.pem'
 c.NotebookApp.ip = '*'
 c.NotebookApp.open_browser = True
-c.NotebookApp.password = u'sha1:51db9ac62db9:e4792bb7be371eb6dc5ef2944a91fbb195710464'
+#c.NotebookApp.password = u'sha1:51db9ac62db9:e4792bb7be371eb6dc5ef2944a91fbb195710464'
+c.NotebookApp.password = u'sha1:aaffdff113ff:8ea91cc3bffa631a4f4d5bb9b3e2f8dd153dfedd'
 # It is a good idea to put it on a known, fixed port
-c.NotebookApp.port = 8081
+c.NotebookApp.port = 9999
 
 # NotebookApp will inherit config from: BaseIPythonApplication, Application
 
