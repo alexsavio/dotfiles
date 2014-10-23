@@ -19,8 +19,8 @@ fi
 #FREESURFER
 if [ -d /opt/freesurfer ]; 
 then
-	export FREESURFER_HOME=/opt/freesurfer
-	source $FREESURFER_HOME/SetUpFreeSurfer.sh
+    export FREESURFER_HOME=/opt/freesurfer
+    source $FREESURFER_HOME/SetUpFreeSurfer.sh
 fi
 
 #Komodo-Edit
@@ -44,14 +44,14 @@ fi
 #CVIP
 if [ -d ~/Software/cvip ]; 
 then
-	export CVIPHOME=~/Software/cvip 
-	export CVIP_IMGPATH=./
-	export CVIP_DISPLAY=picture
-	export TCL_LIBRARY=~/Software/cvip/CVIPTCL/lib/tcl8.0
-	export TK_LIBRARY=~/Software/cvip/CVIPTCL/lib/tk8.0
-	export XF_LOAD_PATH=~/cvip/CVIPTCL/GUI_SCRIPTS
-	export LD_LIBRARY_PATH=/usr/lib/fsl/5.0:~/Software/cvip/lib:~/cvip/CVIPTCL/lib:${LD_LIBRARY_PATH}
-	export PATH=${PATH}:~/Software/cvip/CVIPTCL:~/Software/cvip/bin
+    export CVIPHOME=~/Software/cvip 
+    export CVIP_IMGPATH=./
+    export CVIP_DISPLAY=picture
+    export TCL_LIBRARY=~/Software/cvip/CVIPTCL/lib/tcl8.0
+    export TK_LIBRARY=~/Software/cvip/CVIPTCL/lib/tk8.0
+    export XF_LOAD_PATH=~/cvip/CVIPTCL/GUI_SCRIPTS
+    export LD_LIBRARY_PATH=/usr/lib/fsl/5.0:~/Software/cvip/lib:~/cvip/CVIPTCL/lib:${LD_LIBRARY_PATH}
+    export PATH=${PATH}:~/Software/cvip/CVIPTCL:~/Software/cvip/bin
 fi
 
 #virtualenvwrapper
@@ -61,6 +61,13 @@ then
     source /usr/local/bin/virtualenvwrapper.sh
     export PIP_REQUIRE_VIRTUALENV=true
 fi
+
+#miniconda3
+if [ -d ~/miniconda3 ]
+then
+    export PATH=~/miniconda3/bin:$PATH
+fi
+
 
 #autoenv
 #Python
@@ -73,8 +80,8 @@ fi
 #Intel C++ Studio
 if [ -d /opt/intel ]; 
 then
-	export INTEL_HOME=/opt/intel
-	export PATH=${PATH}:${INTEL_HOME}/bin
-	export LD_LIBRARY_PATH=/opt/intel/mkl/lib/intel64:/opt/intel/lib/intel64:${LD_LIBRARY_PATH}
+    export INTEL_HOME=/opt/intel
+    export PATH=${PATH}:${INTEL_HOME}/bin
+    export LD_LIBRARY_PATH=/opt/intel/mkl/lib/intel64:/opt/intel/lib/intel64:${LD_LIBRARY_PATH}
 fi
 
