@@ -59,7 +59,7 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]
 then
     export WORKON_HOME=~/envs
     source /usr/local/bin/virtualenvwrapper.sh
-    export PIP_REQUIRE_VIRTUALENV=true
+#    export PIP_REQUIRE_VIRTUALENV=true
 fi
 
 #miniconda3
