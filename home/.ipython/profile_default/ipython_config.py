@@ -82,7 +82,7 @@ c.InteractiveShellApp.extensions = ['line_profiler_ext',
 
 # Pre-load matplotlib and numpy for interactive use, selecting a particular
 # matplotlib backend and loop integration.
-c.TerminalIPythonApp.pylab = gui_module
+#c.TerminalIPythonApp.pylab = gui_module
 
 # Create a massive crash report when IPython encounters what may be an internal
 # error.  The default is to append a short message to the usual traceback
@@ -125,7 +125,7 @@ c.TerminalIPythonApp.pylab = gui_module
 # c.TerminalIPythonApp.file_to_run = ''
 
 # The IPython profile to use.
-# c.TerminalIPythonApp.profile = u'default'
+c.TerminalIPythonApp.profile = u'default'
 
 # Configure matplotlib for interactive use with the default matplotlib backend.
 c.TerminalIPythonApp.matplotlib = gui_module
