@@ -53,7 +53,12 @@ class Piper(object):
         return self._check_output([self._pip_path, 'freeze'])
 
 if __name__ == '__main__':
-    mypip = Piper(os.path.join(env_root, bin, 'pip'))
+    if env_root is not None:
+        pip_path = os.path.join(env_root, bin, 'pip')
+    else:
+        pip_path = sys.argv[1]
+
+    mypip = Piper(pip_path)
     env_packages = mypip.freeze()
 
     for pck in env_packages:
