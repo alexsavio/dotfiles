@@ -11,7 +11,7 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'editorconfig/editorconfig-vim'
 
 filetype plugin indent on
-set background=dark
+set background=light
 colorscheme base16-default
 
 if &t_Co > 2 || has("gui_running")
