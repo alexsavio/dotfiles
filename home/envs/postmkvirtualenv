@@ -32,6 +32,8 @@ do
     if [ $? == '0' ]; then
         echo "Linking $lib"
         ln -s $libsyspath $lib_virtualenv_path/$lib
+    else
+        echo "Could not find system's $lib"
     fi
 done
 

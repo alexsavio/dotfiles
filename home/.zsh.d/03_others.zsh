@@ -5,10 +5,10 @@
 
 ### START-Keychain ###
 # Let  re-use ssh-agent and/or gpg-agent between logins
-#if [ -f /usr/bin/keychain ]; then
-#  alias ssh='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa) && ssh'
-#  alias git='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa) && git'
-#fi
+if [ -f /usr/bin/keychain ]; then
+  alias ssh='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa) && ssh'
+  alias git='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa) && git'
+fi
 
 #eval $(keychain --clear --eval id_rsa)
 #source $HOME/.keychain/$HOSTNAME-sh
