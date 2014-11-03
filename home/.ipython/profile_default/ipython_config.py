@@ -128,7 +128,7 @@ c.InteractiveShellApp.extensions = ['line_profiler_ext',
 c.TerminalIPythonApp.profile = u'default'
 
 # Configure matplotlib for interactive use with the default matplotlib backend.
-c.TerminalIPythonApp.matplotlib = gui_module
+# c.TerminalIPythonApp.matplotlib = gui_module
 
 # If a command or file is given via the command-line, e.g. 'ipython foo.py',
 # start an interactive shell after executing the file or command.
