@@ -1,0 +1,12 @@
+! -------------------
+! My UK international Macintosh settings
+! -------------------
+! keycode 104 is the numeric pad enter
+keycode 104 = Return
+
+keycode 49 = grave asciitilde grave asciitilde bar
+keycode 94 = section plusminus section plusminus notsign
+
+
+
+
