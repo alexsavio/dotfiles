@@ -2,14 +2,41 @@
 
 import os
 import sys
+import pip
+import tempfile
+import logging
 import subprocess
+from   pip.req    import parse_requirements
 
+logging.basicConfig()
+log = logging.getLogger()
 env_root = os.getenv('VIRTUAL_ENV')
 
 if sys.platform == 'win32':
     bin = 'Scripts'
 else:
     bin = 'bin'
+
+
+def save_strlist_to_tmpfile(str_values):
+    """Return the path to the temp file"""
+    try:
+        with tempfile.NamedTemporaryFile(mode='w+t', delete=False) as temp:
+            for item in str_values:
+                temp.file.write("{}\n".format(item))
+    except:
+        log.exception('Error writing to temp file {}'.format(temp.name))
+        raise
+    finally:
+        temp.file.close()
+
+    return temp.name
+
+
+def get_package_names(requirements_filepath):
+    reqs = parse_requirements(requirements_filepath)
+    return [req.name for req in reqs if req is not None]
+
 
 class Piper(object):
 
@@ -52,6 +79,7 @@ class Piper(object):
     def freeze(self):
         return self._check_output([self._pip_path, 'freeze'])
 
+
 if __name__ == '__main__':
     if env_root is not None:
         pip_path = os.path.join(env_root, bin, 'pip')
@@ -59,12 +87,9 @@ if __name__ == '__main__':
         pip_path = sys.argv[1]
 
     mypip = Piper(pip_path)
-    env_packages = mypip.freeze()
+    freeze_list = [pkg_str.decode() for pkg_str in mypip.freeze() if b'==' in pkg_str]
+    env_packages = get_package_names(save_strlist_to_tmpfile(freeze_list))
 
-    for pck in env_packages:
-        if sys.version > '3':
-            pck = pck.decode()
-
-        pck_name = pck.split('==')[0]
+    for pck_name in env_packages:
+        print('Looking if update for {}.'.format(pck_name))
         mypip.upgrade(pck_name)
-
