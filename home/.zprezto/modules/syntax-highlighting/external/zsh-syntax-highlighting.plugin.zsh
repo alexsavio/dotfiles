@@ -1,1 +1,1 @@
-zsh-syntax-highlighting.zsh
+../../../../../../../../.zprezto/modules/syntax-highlighting/external/zsh-syntax-highlighting.zsh
