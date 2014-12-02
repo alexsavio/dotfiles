@@ -5,3 +5,6 @@ mainly to be overridden in profile/static/custom/custom.css
 
 This will always be an empty file in IPython
 */
+
+/*@import url("font-awesome/css/font-awesome.min.css");*/
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
