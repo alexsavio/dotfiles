@@ -1,3 +1,14 @@
+
+addapath() {
+  if [ -e $1 ]; then
+    export PATH=$PATH:$1
+  fi
+}
+
+addapath ${HOME}/Software/myrepos
+addapath /opt/local/bin
+addapath ~/bin
+
 #FSL
 if [ -d /etc/fsl/5.0 ]
 then
@@ -5,9 +16,12 @@ then
     export FSLPARALLEL=condor
 fi
 
-if [ -d ~/bin ];
+if [[ "$(uname -s)" == 'Darwin' ]]
 then
-    PATH=${PATH}:~/bin
+   export FSLDIR=/usr/local/fsl 
+   source ${FSLDIR}/etc/fslconf/fsl.sh
+   addapath ${FSLDIR}/bin
+   export FSLPARALLEL=condor 
 fi
 
 #RUBY
@@ -17,34 +31,25 @@ then
 fi
 
 #FREESURFER
-if [ -d /opt/freesurfer ]; 
+if [ -d /opt/freesurfer ];
 then
     export FREESURFER_HOME=/opt/freesurfer
     source $FREESURFER_HOME/SetUpFreeSurfer.sh
 fi
 
 #Komodo-Edit
-if [ -d /opt/Komodo-Edit ];
-then
-    export PATH="/opt/Komodo-Edit/bin:$PATH"
-fi
+addapath /opt/Komodo-Edit/bin
 
 #CUDA
-if [ -d /usr/local/cuda/bin ]; 
-then
-    export PATH=/usr/local/cuda/bin:${PATH}
-fi
+addapath /usr/local/cuda/bin
 
 #AFNI
-if [ -d ~/abin ]; 
-then
-    export PATH=~/abin:${PATH}
-fi
+addapath ~/abin
 
 #CVIP
-if [ -d ~/Software/cvip ]; 
+if [ -d ~/Software/cvip ];
 then
-    export CVIPHOME=~/Software/cvip 
+    export CVIPHOME=~/Software/cvip
     export CVIP_IMGPATH=./
     export CVIP_DISPLAY=picture
     export TCL_LIBRARY=~/Software/cvip/CVIPTCL/lib/tcl8.0
@@ -55,19 +60,15 @@ then
 fi
 
 #virtualenvwrapper
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]
+if [ -f ${PYTHON3_PATH}/bin/virtualenvwrapper.sh ]
 then
     export WORKON_HOME=~/envs
-    source /usr/local/bin/virtualenvwrapper.sh
+    source ${PYTHON3_PATH}/bin/virtualenvwrapper.sh
 #    export PIP_REQUIRE_VIRTUALENV=true
 fi
 
 #miniconda3
-if [ -d ~/miniconda3 ]
-then
-    export PATH=~/miniconda3/bin:$PATH
-fi
-
+addapath ~/miniconda3/bin
 
 #autoenv
 #Python
@@ -78,10 +79,9 @@ fi
 #export PYTHONSTARTUP=~/.pythonrc.py
 
 #Intel C++ Studio
-if [ -d /opt/intel ]; 
+if [ -d /opt/intel ];
 then
     export INTEL_HOME=/opt/intel
     export PATH=${PATH}:${INTEL_HOME}/bin
     export LD_LIBRARY_PATH=/opt/intel/mkl/lib/intel64:/opt/intel/lib/intel64:${LD_LIBRARY_PATH}
 fi
-
