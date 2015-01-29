@@ -1,1 +1,1 @@
-../../../../../../../.zprezto/modules/pure/pure.zsh
+/Users/alexandre/.homesick/repos/dotfiles/home/.zprezto/modules/pure/pure.plugin.zsh

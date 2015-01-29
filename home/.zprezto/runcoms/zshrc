@@ -5,9 +5,6 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
-#Auto Completions
-fpath=("${ZDOTDIR:-$HOME}/.homesick/repos/homeshick/completions" $fpath)
-
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -18,13 +15,5 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zsh.d" ]]; then
   for i in `ls ~/.zsh.d/*.zsh`; do source $i; done
 fi
 
-bindkey '5D' emacs-backward-word
-bindkey '5C' emacs-forward-word
-export WORDCHARS=''
-
 USERNAME='Alexandre M. S.'
 TODAY=`date +%d/%m/%Y`
-
-### Added by the Heroku Toolbelt
-#export PATH="/usr/local/heroku/bin:$PATH"
-

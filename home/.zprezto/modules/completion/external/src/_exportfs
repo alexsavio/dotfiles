@@ -1,4 +1,4 @@
-#compdef gcc-config
+#compdef exportfs
 # ------------------------------------------------------------------------------
 # Copyright (c) 2011 Github zsh-users - http://github.com/zsh-users
 # All rights reserved.
@@ -28,51 +28,24 @@
 # Description
 # -----------
 #
-#  Completion script for GCC config script (symlink manager for multiversioning).
+#  Completion script for nfs's exportfs - maintain table of exported NFS file systems.
 #
 # ------------------------------------------------------------------------------
 # Authors
 # -------
 #
-#  * Vadim A. Misbakh-Soloviov <mva@mva.name>
-#  * Bapt <bapt@tuxfamily.org>
-#  * kaworu <kaworu@kaworu.ch>
-#  * David Durrleman <dualmoo@gmail.com>
-#  * oberyno <oberyno@gmail.com>
-#  * Mamoru Komachi <usata@usata.org>
+#  * Timofey Titovets <nefelim4ag@gmail.com>
 #
 # ------------------------------------------------------------------------------
-#<sys-devel/gcc-config-0.0>
-
-local arguments
-
-arguments=(
-	'(- :)'{--use-old,-O}'[use the old profile if one was selected]'
-	'(- :)'{--use-portage-chost,-P}'[only set profile if its CHOST matches /etc/{portage/}make.conf]:profiles:_gcc_profile'
-	'(- :)'{--get-current-profile,-c}'[print current used gcc profile]'
-	'(- :)'{--list-profiles,-l}'[print a list of available profiles]'
-	'(- :)'{--print-environ,-E}'[print environment of the given/current profile]:profiles:_gcc_profile'
-	'(- :)'{--get-bin-path,-B}'[print binary path of given/current profile]:profiles:_gcc_profile'
-	'(- :)'{--get-lib-path,-L}'[print library path of given/current profile]:profiles:_gcc_profile'
-	'(- :)'{--get-stdcxx-incdir,-X}'[print g++ include path of given/current profile]:profiles:_gcc_profile'
-	'(- :)'{--help,-h}'[show help]'
-	'(- :)'{--version,-v}'[show version info]'
-	'(- :):profiles:_gcc_profile'
-)
-
-_gcc_profile () {
-    local profile
-    profile=(${(f)"$(_call_program gcc-installed RC_NOCOLOR=yes gcc-config --list-profiles)"})
-    profile=${${profile/\[([^]]*)\]/}/\*}
-    _tags profile && { compadd "$@" -k profile || compadd "$@" ${(kv)=profile} }
+_exportfs() {
+  _values -w 'option' \
+    '(-i)-a[Export or unexport all directories]' \
+    '(-a -r -u)-i[Ignore the /etc/exports file and files under /etc/exports.d directory]' \
+    '(-i)-r[Reexport  all  directories]' \
+    '(-i)-u[Unexport one or more directories]' \
+    '-f[flush everything out of export table]' \
+    '-o[option1,option2.. Specify a list of export options]' \
+    '-s[Display the current export list suitable for /etc/exports]' \
+    '-v[Be verbose]'
 }
-
-_arguments $arguments
-
-# Local Variables:
-# mode: Shell-Script
-# sh-indentation: 2
-# indent-tabs-mode: nil
-# sh-basic-offset: 2
-# End:
-# vim: ft=zsh sw=2 ts=2 et
+_exportfs "$@"
