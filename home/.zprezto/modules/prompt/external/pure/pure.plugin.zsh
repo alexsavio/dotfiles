@@ -1,1 +1,1 @@
-../../../../../../../../../.zprezto/modules/prompt/external/pure/pure.zsh
+prompt_pure_setup
