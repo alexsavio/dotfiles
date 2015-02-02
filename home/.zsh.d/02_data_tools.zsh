@@ -59,16 +59,25 @@ then
     export PATH=${PATH}:~/Software/cvip/CVIPTCL:~/Software/cvip/bin
 fi
 
+#Python
+if [[ "$(uname -s)" == 'Darwin' ]]
+then
+   export PYTHON2_PATH=/Library/Frameworks/Python.framework/Versions/2.7
+   export PYTHON3_PATH=/Library/Frameworks/Python.framework/Versions/3.4
+else
+   export PYTHON2_PATH=/usr/local/lib/python2.7/
+   export PYTHON3_PATH=/usr/local/lib/python3.4/
+fi
+
+
 #virtualenvwrapper
-if [ -f ${PYTHON3_PATH}/bin/virtualenvwrapper.sh ]
+if [ -x `which virtualenvwrapper.sh` ]
 then
     export WORKON_HOME=~/envs
-    source ${PYTHON3_PATH}/bin/virtualenvwrapper.sh
+    source virtualenvwrapper.sh
 #    export PIP_REQUIRE_VIRTUALENV=true
 fi
 
-#miniconda3
-addapath ~/miniconda3/bin
 
 #autoenv
 #Python
