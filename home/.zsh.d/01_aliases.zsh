@@ -42,8 +42,17 @@ if [ $UID -ne 0 ]; then
 fi
 
 #vagrant aliases
-alias vagrup="FORWARD_DOCKER_PORTS='true' vagrant up"
-alias vagrhalt='vagrant halt'
+if [ -e ~/vagrant ]; then
+	alias vagrup="FORWARD_DOCKER_PORTS='true' vagrant up"
+	alias vagrhalt='vagrant halt'
+	alias vup="vagrant up"
+	alias vh="vagrant halt"
+	alias vs="vagrant suspend"
+	alias vr="vagrant resume"
+	alias vrld="vagrant reload"
+	alias vssh="vagrant ssh"
+	alias vstat="vagrant status" 
+fi
 
 #docker aliases
 #http://kartar.net/2014/03/some-useful-docker-bash-functions-and-aliases/
