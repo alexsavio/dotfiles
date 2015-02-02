@@ -1,9 +1,16 @@
 
 #PYTHON
+#export PYTHON2_PATH=$(brew --prefix)/Frameworks/Python.framework/Versions/2.7
+#export PYTHON3_PATH=$(brew --prefix)/Frameworks/Python.framework/Versions/3.4
+
+#export PYTHON2_PATH=/Library/Frameworks/Python.framework/Versions/2.7
+#export PYTHON3_PATH=/Library/Frameworks/Python.framework/Versions/3.4
 addapath ${PYTHON2_PATH}/bin
 addapath ${PYTHON3_PATH}/bin
 
-export MANPATH=/opt/local/share/man:$MANPATH
+addapath /usr/local/bin
+addapath /usr/local/sbin
+
 export EDITOR=/usr/bin/vim
 export MP_EDITOR=/usr/bin/edit
 
@@ -16,16 +23,28 @@ export MP_EDITOR=/usr/bin/edit
 
 # Add MacPorts directories, if they exist.
 if [ -d /opt/local ]; then
-        addapath /opt/local/bin
-        addapath /opt/local/sbin
-	export MANPATH=/opt/local/share/man:$MANPATH
-	export C_INCLUDE_PATH=/opt/local/include
-	export CPLUS_INCLUDE_PATH=/opt/local/include
-	alias gcc="gcc -I/opt/local/include -L/opt/local/lib"
-	alias g++="g++ -I/opt/local/include -L/opt/local/lib"
-	if [ -f /opt/local/etc/bash_completion ]; then
-	    . /opt/local/etc/bash_completion
-	fi
+        #addapath /opt/local/bin
+        #addapath /opt/local/sbin
+	#export MANPATH=/opt/local/share/man:$MANPATH
+
+	#export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/local/lib/pkgconfig:${PKG_CONFIG_PATH}
+
+	#export C_INCLUDE_PATH=/opt/local/include
+        #export LD_INCLUDE_PATH=/opt/local/include:${DYLD_INCLUDE_PATH}
+	#export CPLUS_INCLUDE_PATH=/opt/local/include
+
+        #export LDFLAGS="-L/opt/local/lib ${LDFLAGS}"
+        #export CPPFLAGS="-I/opt/local/include ${CPPFLAGS}"
+
+        #export LD_LIBRARY_PATH=/opt/local/lib:${LD_LIBRARY_PATH}
+        #export DYLD_LIBRARY_PATH=/opt/local/lib:${DYLD_LIBRARY_PATH}
+
+	#alias gcc="gcc -I/opt/local/include -L/opt/local/lib"
+	#alias g++="g++ -I/opt/local/include -L/opt/local/lib"
+	
+        #if [ -f /opt/local/etc/bash_completion ]; then
+	#    . /opt/local/etc/bash_completion
+	#fi
 fi
 
 
