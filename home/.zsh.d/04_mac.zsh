@@ -1,7 +1,4 @@
 
-addapath /usr/local/bin
-addapath /usr/local/sbin
-
 export EDITOR=/usr/bin/vim
 export MP_EDITOR=/usr/bin/edit
 

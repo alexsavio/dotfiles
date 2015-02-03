@@ -5,9 +5,15 @@ addapath() {
   fi
 }
 
-addapath ${HOME}/Software/myrepos
-addapath /opt/local/bin
+
 addapath ~/bin
+
+# MYREPOS
+if [ -d ${HOME}/Software/myrepos ];
+then
+    addapath ${HOME}/Software/myrepos
+fi
+
 
 #FSL
 if [ -d /etc/fsl/5.0 ]
@@ -18,10 +24,10 @@ fi
 
 if [[ "$(uname -s)" == 'Darwin' ]]
 then
-   export FSLDIR=/usr/local/fsl 
+   export FSLDIR=/usr/local/fsl
    source ${FSLDIR}/etc/fslconf/fsl.sh
    addapath ${FSLDIR}/bin
-   export FSLPARALLEL=condor 
+   export FSLPARALLEL=condor
 fi
 
 #RUBY
@@ -48,7 +54,7 @@ fi
 
 #AFNI
 if [ -d ~/abin ]
-then 
+then
     export AFNI_PATH=~/abin
     addapath $AFNI_PATH
     export DYLD_FALLBACK_LIBRARY_PATH=$AFNI_PATH
@@ -84,16 +90,18 @@ fi
 #Python
 if [[ "$(uname -s)" == 'Darwin' ]]
 then
-   export PYTHON2_PATH=/Library/Frameworks/Python.framework/Versions/2.7
-   export PYTHON3_PATH=/Library/Frameworks/Python.framework/Versions/3.4
+   #export PYTHON2_PATH=/Library/Frameworks/Python.framework/Versions/2.7
+   #export PYTHON3_PATH=/Library/Frameworks/Python.framework/Versions/3.4
+   export PYTHON2_PATH=/usr/local/lib/python2.7
+   export PYTHON3_PATH=/usr/local/lib/python3.4
 else
-   export PYTHON2_PATH=/usr/local/lib/python2.7/
-   export PYTHON3_PATH=/usr/local/lib/python3.4/
+   export PYTHON2_PATH=/usr/local/lib/python2.7
+   export PYTHON3_PATH=/usr/local/lib/python3.4
 fi
 
 
 # VIRTUALENVWRAPPER
-if [ -x `which virtualenvwrapper.sh` ]
+if (( $+commands[virtualenvwrapper.sh] )) ;
 then
     export WORKON_HOME=~/envs
     source virtualenvwrapper.sh
