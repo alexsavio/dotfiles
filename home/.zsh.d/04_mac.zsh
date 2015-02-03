@@ -1,13 +1,4 @@
 
-#PYTHON
-#export PYTHON2_PATH=$(brew --prefix)/Frameworks/Python.framework/Versions/2.7
-#export PYTHON3_PATH=$(brew --prefix)/Frameworks/Python.framework/Versions/3.4
-
-#export PYTHON2_PATH=/Library/Frameworks/Python.framework/Versions/2.7
-#export PYTHON3_PATH=/Library/Frameworks/Python.framework/Versions/3.4
-addapath ${PYTHON2_PATH}/bin
-addapath ${PYTHON3_PATH}/bin
-
 addapath /usr/local/bin
 addapath /usr/local/sbin
 

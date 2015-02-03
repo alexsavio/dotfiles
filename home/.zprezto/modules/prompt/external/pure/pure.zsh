@@ -31,6 +31,11 @@ prompt_pure_human_time() {
 	echo "${seconds}s"
 }
 
+#Python virtualenv info
+function virtualenv_info {
+ [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
+}
+
 # fastest possible way to check if repo is dirty
 prompt_pure_git_dirty() {
 	# check if we're in a git repo
@@ -120,5 +125,7 @@ prompt_pure_setup() {
 	# prompt turns red if the previous command didn't exit with 0
 	PROMPT='%(?.%F{magenta}.%F{red})❯%f '
 }
+
+RPROMPT='%{$fg[green]%}$(virtualenv_info)%{$reset_color%}% ${return_status} %{$reset_color%}'
 
 prompt_pure_setup "$@"
