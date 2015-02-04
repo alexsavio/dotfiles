@@ -43,6 +43,12 @@ then
     source $FREESURFER_HOME/SetUpFreeSurfer.sh
 fi
 
+if [ -d /Applications/freesurfer ];
+then
+    export FREESURFER_HOME=/Applications/freesurfer
+    source ${FREESURFER_HOME}/SetUpFreeSurfer.sh
+fi
+
 #Komodo-Edit
 addapath /opt/Komodo-Edit/bin
 
