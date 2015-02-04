@@ -49,8 +49,12 @@ then
     source ${FREESURFER_HOME}/SetUpFreeSurfer.sh
 fi
 
-#Komodo-Edit
-addapath /opt/Komodo-Edit/bin
+#CONVERT3D
+if [ -d /Applications/Convert3DGUI.app ];
+then
+    export C3D_PATH=/Applications/Convert3DGUI.app/Contents/bin
+    addapath $C3D_PATH
+fi
 
 #CUDA
 if [ -d /usr/local/cuda ];
