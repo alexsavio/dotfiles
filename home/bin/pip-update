@@ -3,6 +3,7 @@
 import os
 import sys
 import pip
+import uuid
 import tempfile
 import logging
 import subprocess
@@ -34,7 +35,7 @@ def save_strlist_to_tmpfile(str_values):
 
 
 def get_package_names(requirements_filepath):
-    reqs = parse_requirements(requirements_filepath)
+    reqs = parse_requirements(requirements_filepath, session=uuid.uuid1())
     return [req.name for req in reqs if req is not None]
 
 
@@ -84,7 +85,11 @@ if __name__ == '__main__':
     if env_root is not None:
         pip_path = os.path.join(env_root, bin, 'pip')
     else:
-        pip_path = sys.argv[1]
+        if len(sys.argv) < 2:
+            print('Please activate a virtualenv or give me a pip executable path')
+            exit(-1)
+        else:
+            pip_path = sys.argv[1]
 
     mypip = Piper(pip_path)
     freeze_list = [pkg_str.decode() for pkg_str in mypip.freeze() if b'==' in pkg_str]
