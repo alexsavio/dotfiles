@@ -6,12 +6,6 @@
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 
-#HOMEBREW
-if [[ -x $(whence brew) ]]; then
-    fpath=($(brew --prefix)/Library/Contributions/brew_zsh_completion.zsh $fpath)
-fi
-compinit
-
 # Your place for hosting Git repos. I use this for private repos.
 export GIT_HOSTING='git@github.alexsavio.com'
 

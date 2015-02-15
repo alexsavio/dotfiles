@@ -2,6 +2,12 @@
 export EDITOR=/usr/bin/vim
 export MP_EDITOR=/usr/bin/edit
 
+#HOMEBREW
+if [[ -x $(whence brew) ]]; then
+    fpath=($(brew --prefix)/Library/Contributions/brew_zsh_completion.zsh $fpath)
+fi
+compinit
+
 #PORTS LIBS
 #export LDFLAGS="${LDFLAGS} -L/opt/local/lib"
 #export DYLD_LIBRARY_PATH=/opt/local/lib:${DYLD_LIBRARY_PATH}
