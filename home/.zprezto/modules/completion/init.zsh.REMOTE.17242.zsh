@@ -1,1 +1,0 @@
-/Users/alexandre/.homesick/repos/dotfiles/home/.zprezto/modules/completion/init.zsh
