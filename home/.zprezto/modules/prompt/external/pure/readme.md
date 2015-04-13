@@ -89,6 +89,10 @@ Set `PURE_GIT_PULL=0` to prevent Pure from checking whether the current Git remo
 
 Set `PURE_GIT_UNTRACKED_DIRTY=0` to not include untracked files in dirtiness check. Only really useful on extremely huge repos like the WebKit repo.
 
+### `PURE_PROMPT_SYMBOL`
+
+Defines the prompt symbol. The default value is `❯`.
+
 ## Example
 
 ```sh
@@ -118,12 +122,23 @@ Symlink (or copy) `pure.zsh` to `~/.oh-my-zsh/custom/pure.zsh-theme` and add `ZS
 
 ### [prezto](https://github.com/sorin-ionescu/prezto)
 
-Symlink (or copy) `pure.zsh` to `~/.zprezto/modules/prompt/functions/prompt_pure_setup` alongside Prezto's other prompts. Then `set zstyle ':prezto:module:prompt' theme 'pure'` in `~/.zpreztorc`.
+Set `zstyle ':prezto:module:prompt' theme 'pure'` in `~/.zpreztorc`.
 
 ### [antigen](https://github.com/zsh-users/antigen)
 
 Add `antigen bundle sindresorhus/pure` to your .zshrc file (do not use the `antigen theme` function).
 
+
+## FAQ
+
+### Do you hate almost all software?
+
+[Yes.](https://gist.github.com/cookrn/4015437)
+
+### I am stuck in a shell loop in my terminal that ask me to authenticate. What should I do ?
+
+[This is a known issue](https://github.com/sindresorhus/pure/issues/76).
+Using `git pull` when you get the username prompt should help you to break the loop by giving you a real prompt for this. **[This has been fixed in git 2.3](https://github.com/sindresorhus/pure/commit/f43ab97e1cf4a276b7a6e33eac055ee16610be15)**
 
 ## License
 

@@ -140,3 +140,23 @@ then
     export PATH=${PATH}:${INTEL_HOME}/bin
     export LD_LIBRARY_PATH=/opt/intel/mkl/lib/intel64:/opt/intel/lib/intel64:${LD_LIBRARY_PATH}
 fi
+
+
+# SOFTWARE PATH
+export SOFT_PATH=${HOME}/Software
+
+if [ -d ${SOFT_PATH}/vtk ];
+then
+    export VTK_DATA_ROOT=${SOFT_PATH}/vtk/VTKData
+    export VTK_LARGE_DATA_ROOT=${SOFT_PATH}/vtk/VTKLargeData
+    export VTK_ROOT=${SOFT_PATH}/vtk/VTK
+    export VTK_DIR=${SOFT_PATH}/vtk/build-6.1
+
+    alias vtk='${VTK_DIR}/bin/vtk'
+
+    ## For VTK Python programs.
+    alias vtkpython='${VTK_DIR}/bin/vtkpython'
+    export PYTHONPATH=$PYTHONPATH:${VTK_DIR}/Wrapping/Python:${VTK_DIR}/lib
+
+    export DYLD_LIBRARY_PATH=/usr/local/vtk/lib:${DYLD_LIBRARY_PATH}
+fi
