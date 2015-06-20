@@ -15,6 +15,11 @@ compinit
 #export LD_LIBRARY_PATH=/opt/local/lib:${LD_LIBRARY_PATH}
 #export LD_INCLUDE_PATH=/opt/local/include:${DYLD_INCLUDE_PATH}
 
+# Qt5
+if [ -d ${HOME}/Software/Qt/5.4 ]; then
+    addapath ${HOME}/Software/Qt/5.4/clang_64/bin
+fi
+
 # Add MacPorts directories, if they exist.
 if [ -d /opt/local ]; then
         #addapath /opt/local/bin
@@ -41,6 +46,10 @@ if [ -d /opt/local ]; then
 	#fi
 fi
 
+# Julia
+if [ -d /Applications/Juno.app/ ]; then
+    addapath /Applications/Juno.app/Contents/Resources/app/julia/bin
+fi
 
 export LC_ALL=en_GB.UTF-8
 export LANG=en_GB.UTF-8
