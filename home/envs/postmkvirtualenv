@@ -15,7 +15,7 @@ function find_real_lib {
     return 1
 }
 
-libs=( PyQt4 sip.so PySide sip.cpython-34m-x86_64-linux-gnu.so vtk cairo OpenGL)
+libs=( PyQt5 sip.so sip.cpython-34m-x86_64-linux-gnu.so vtk cairo OpenGL)
 #libs=( vtk cairo )
 
 python_version=python$(python -c "import sys; print (str(sys.version_info[0])+'.'+str(sys.version_info[1]))")

@@ -78,6 +78,7 @@ hash -d prjs='~/Projects'
 
 alias lock='gnome-screensaver-command --lock'
 alias skn='sudo killall -9 NetworkManager'
+alias please='sudo'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
