@@ -2,7 +2,7 @@
 
 > Pretty, minimal and fast ZSH prompt
 
-![screenshot](screenshot.png)
+![](screenshot.png)
 
 
 ## Overview
@@ -28,7 +28,7 @@ Can be installed with `npm` or manually. Requires git 2.0.0+ and ZSH 5.0.0+.
 
 ### npm
 
-```sh
+```
 $ npm install --global pure-prompt
 ```
 
@@ -43,10 +43,13 @@ That's it. Skip to [Getting started](#getting-started).
 
 2. Symlink `pure.zsh` to somewhere in [`$fpath`](http://www.refining-linux.org/archives/46/ZSH-Gem-12-Autoloading-functions/) with the name `prompt_pure_setup`.
 
+3. Symlink `async.zsh` in `$fpath` with the name `async`.
+
 #### Example
 
-```sh
+```
 $ ln -s "$PWD/pure.zsh" /usr/local/share/zsh/site-functions/prompt_pure_setup
+$ ln -s "$PWD/async.zsh" /usr/local/share/zsh/site-functions/async
 ```
 *Run `echo $fpath` to see possible locations.*
 
@@ -61,6 +64,7 @@ Then install the theme there:
 
 ```sh
 $ ln -s "$PWD/pure.zsh" "$HOME/.zfunctions/prompt_pure_setup"
+$ ln -s "$PWD/async.zsh" "$HOME/.zfunctions/async"
 ```
 
 
@@ -88,6 +92,10 @@ Set `PURE_GIT_PULL=0` to prevent Pure from checking whether the current Git remo
 ### `PURE_GIT_UNTRACKED_DIRTY`
 
 Set `PURE_GIT_UNTRACKED_DIRTY=0` to not include untracked files in dirtiness check. Only really useful on extremely huge repos like the WebKit repo.
+
+### `PURE_GIT_DELAY_DIRTY_CHECK`
+
+Time in seconds to delay git dirty checking for large repositories (git status takes > 2 seconds). The check is performed asynchronously, this is to save CPU. Defaults to `1800` seconds.
 
 ### `PURE_PROMPT_SYMBOL`
 
@@ -131,14 +139,18 @@ Add `antigen bundle sindresorhus/pure` to your .zshrc file (do not use the `anti
 
 ## FAQ
 
-### Do you hate almost all software?
-
-[Yes.](https://gist.github.com/cookrn/4015437)
-
 ### I am stuck in a shell loop in my terminal that ask me to authenticate. What should I do ?
 
 [This is a known issue](https://github.com/sindresorhus/pure/issues/76).
 Using `git pull` when you get the username prompt should help you to break the loop by giving you a real prompt for this. **[This has been fixed in git 2.3](https://github.com/sindresorhus/pure/commit/f43ab97e1cf4a276b7a6e33eac055ee16610be15)**
+
+
+## Team
+
+[![Sindre Sorhus](https://avatars.githubusercontent.com/u/170270?v=3&s=100)](http://sindresorhus.com) | [![Mathias Fredriksson](https://avatars.githubusercontent.com/u/147409?v=3&s=100)](https://github.com/mafredri)
+---|---
+[Sindre Sorhus](http://sindresorhus.com) | [Mathias Fredriksson](https://github.com/mafredri)
+
 
 ## License
 

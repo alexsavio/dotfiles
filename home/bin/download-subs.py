@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 #pip install subliminal babelfish
 
@@ -35,7 +35,7 @@ def search_video_files(rootdir, max_age=7, embedded_subs=False):
     -------
     list of subliminal.video
     '''
-    dirpath = unicode(rootdir)
+    dirpath = op.abspath(op.expanduser(rootdir))
 
     # data path
     if not op.exists(dirpath):
@@ -69,7 +69,10 @@ def download_subs(videos, languages):
             nu_vids.append(vid)
 
     # download
-    subs = subliminal.download_best_subtitles(nu_vids, languages)
+    try:
+        subs = subliminal.download_best_subtitles(nu_vids, languages)
+    except:
+        raise
 
     log.info('Subs found:')
     log.info(subs)
