@@ -39,6 +39,22 @@ prompt_pure_human_time() {
 	echo "${seconds}s"
 }
 
+#Python virtualenv info
+function virtualenv_info {
+  [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
+}
+
+# fastest possible way to check if repo is dirty
+prompt_pure_git_dirty() {
+	# check if we're in a git repo
+	[[ "$(command git rev-parse --is-inside-work-tree 2>/dev/null)" == "true" ]] || return
+	# check if it's dirty
+	[[ "$PURE_GIT_UNTRACKED_DIRTY" == 0 ]] && local umode="-uno" || local umode="-unormal"
+	command test -n "$(git status --porcelain --ignore-submodules ${umode})"
+
+	(($? == 0)) && echo '*'
+}
+
 # displays the exec time of the last command if set threshold was exceeded
 prompt_pure_check_cmd_exec_time() {
 	local stop=$EPOCHSECONDS
@@ -252,5 +268,7 @@ prompt_pure_setup() {
 	# prompt turns red if the previous command didn't exit with 0
 	PROMPT="%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f "
 }
+
+RPROMPT='%{$fg[green]%}$(virtualenv_info)%{$reset_color%}% ${return_status} %{$reset_color%}'
 
 prompt_pure_setup "$@"
