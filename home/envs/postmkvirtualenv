@@ -10,7 +10,7 @@ function find_real_lib {
         if [ -e $libdir/$libname ]; then
             eval "$3=$libdir/$libname"
             return 0
-        fi 
+        fi
     done
     return 1
 }
@@ -19,8 +19,11 @@ libs=( PyQt5 sip.so sip.cpython-34m-x86_64-linux-gnu.so vtk cairo OpenGL)
 #libs=( vtk cairo )
 
 python_version=python$(python -c "import sys; print (str(sys.version_info[0])+'.'+str(sys.version_info[1]))")
-var=( $(which -a $python_version) )
-syspy=${var[-1]}
+pythons=( $(which -a $python_version) )
+length=${#pythons[@]}
+last_idx=$((length-1))
+syspy=${pythons[${last_idx}]}
+echo "Looking for installed modules in ${syspy}"
 
 get_python_lib_cmd="from distutils.sysconfig import get_python_lib; print (get_python_lib())"
 lib_virtualenv_path=$(python -c "$get_python_lib_cmd")
@@ -36,4 +39,3 @@ do
         echo "Could not find system's $lib"
     fi
 done
-
