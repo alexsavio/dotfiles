@@ -101,6 +101,14 @@ Time in seconds to delay git dirty checking for large repositories (git status t
 
 Defines the prompt symbol. The default value is `❯`.
 
+### `PURE_GIT_DOWN_ARROW`
+
+Defines the git down arrow symbol. The default value is `⇣`.
+
+### `PURE_GIT_UP_ARROW`
+
+Defines the git up arrow symbol. The default value is `⇡`.
+
 ## Example
 
 ```sh
@@ -126,7 +134,10 @@ To have commands colorized as seen in the screenshot install [zsh-syntax-highlig
 
 ### [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 
-Symlink (or copy) `pure.zsh` to `~/.oh-my-zsh/custom/pure.zsh-theme` and add `ZSH_THEME="pure"` to your `.zshrc` file.
+1. Remove competing theme included in oh-my-zsh `~/.oh-my-zsh/themes/pure.zsh-theme`
+2. Symlink (or copy) `pure.zsh` to `~/.oh-my-zsh/custom/pure.zsh-theme`
+3. Symlink (or copy) `async.zsh` to `~/.oh-my-zsh/custom/async.zsh`
+4. Add `ZSH_THEME="pure"` to your `.zshrc` file.
 
 ### [prezto](https://github.com/sorin-ionescu/prezto)
 
@@ -134,16 +145,40 @@ Set `zstyle ':prezto:module:prompt' theme 'pure'` in `~/.zpreztorc`.
 
 ### [antigen](https://github.com/zsh-users/antigen)
 
-Add `antigen bundle sindresorhus/pure` to your .zshrc file (do not use the `antigen theme` function).
+Update your `.zshrc` file with the following two lines (order matters). Do not use the `antigen theme` function.
 
+```
+antigen bundle mafredri/zsh-async
+antigen bundle sindresorhus/pure
+```
 
 ## FAQ
+
+### My preprompt is missing when I clear the screen with Ctrl+L
+
+Pure doesn't register its custom *clear-screen* widget if it has been previously modified. If you haven't registered your own zle widget with `zle -N clear-screen custom-clear-screen` it might have been done by third-party modules. For example `zsh-syntax-highlighting` and `zsh-history-substring-search` are known to do this and they should for that reason be **the very last thing** in your `.zshrc` (as pointed out in their documentation).
+
+To find out the culprit that is overriding your *clear-screen* widget, you can run the following command: `zle -l | grep clear-screen`.
 
 ### I am stuck in a shell loop in my terminal that ask me to authenticate. What should I do ?
 
 [This is a known issue](https://github.com/sindresorhus/pure/issues/76).
 Using `git pull` when you get the username prompt should help you to break the loop by giving you a real prompt for this. **[This has been fixed in git 2.3](https://github.com/sindresorhus/pure/commit/f43ab97e1cf4a276b7a6e33eac055ee16610be15)**
 
+### I am seeing the error `zpty: can't open pseudo terminal: bad file descriptor`.
+
+[This is a known issue](https://github.com/sindresorhus/pure/issues/117). `zsh/zpty` requires either legacy bsd ptys or access to `/dev/ptmx`. Here are some known solutions.
+
+#### Gentoo
+
+```
+sudo sh -c "echo 'SANDBOX_WRITE=\"/dev/ptmx\"' > /etc/sandbox.d/10zsh"
+sudo emerge -1 zsh
+```
+
+#### FreeBSD 10.1
+
+On a default setup, running the command `kldload pty` should do the trick. If you have a custom kernel, you might need to add `device pty` to the configuration file ([example](https://github.com/nbari/freebsd/blob/58646a9c3c4aaabf6f6467ff505f27f09e29dc75/kernels/xen.kernel#L188)).
 
 ## Team
 
