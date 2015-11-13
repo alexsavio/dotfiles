@@ -14,20 +14,9 @@ then
     addapath ${HOME}/Software/myrepos
 fi
 
-
-#FSL
-if [ -d /etc/fsl/5.0 ]
+if [ -d ${HOME}/.local/bin ];
 then
-    . /etc/fsl/5.0/fsl.sh
-    export FSLPARALLEL=condor
-fi
-
-if [[ "$(uname -s)" == 'Darwin' ]]
-then
-   export FSLDIR=/usr/local/fsl
-   source ${FSLDIR}/etc/fslconf/fsl.sh
-   addapath ${FSLDIR}/bin
-   export FSLPARALLEL=condor
+    addapath ${HOME}/.local/bin
 fi
 
 #RUBY
@@ -36,25 +25,6 @@ then
     source ~/.rvm/scripts/rvm
 fi
 
-#FREESURFER
-if [ -d /opt/freesurfer ];
-then
-    export FREESURFER_HOME=/opt/freesurfer
-    source $FREESURFER_HOME/SetUpFreeSurfer.sh
-fi
-
-if [ -d /Applications/freesurfer ];
-then
-    export FREESURFER_HOME=/Applications/freesurfer
-    source ${FREESURFER_HOME}/SetUpFreeSurfer.sh
-fi
-
-#CONVERT3D
-if [ -d /Applications/Convert3DGUI.app ];
-then
-    export C3D_PATH=/Applications/Convert3DGUI.app/Contents/bin
-    addapath $C3D_PATH
-fi
 
 #CUDA
 if [ -d /usr/local/cuda ];
@@ -62,40 +32,6 @@ then
     addapath /usr/local/cuda/bin
 fi
 
-#AFNI
-if [ -d ~/abin ]
-then
-    export AFNI_PATH=~/abin
-    addapath $AFNI_PATH
-    export DYLD_FALLBACK_LIBRARY_PATH=$AFNI_PATH
-fi
-
-#CVIP
-if [ -d ~/Software/cvip ];
-then
-    export CVIPHOME=~/Software/cvip
-    export CVIP_IMGPATH=./
-    export CVIP_DISPLAY=picture
-    export TCL_LIBRARY=~/Software/cvip/CVIPTCL/lib/tcl8.0
-    export TK_LIBRARY=~/Software/cvip/CVIPTCL/lib/tk8.0
-    export XF_LOAD_PATH=~/cvip/CVIPTCL/GUI_SCRIPTS
-    export LD_LIBRARY_PATH=/usr/lib/fsl/5.0:~/Software/cvip/lib:~/cvip/CVIPTCL/lib:${LD_LIBRARY_PATH}
-    export PATH=${PATH}:~/Software/cvip/CVIPTCL:~/Software/cvip/bin
-fi
-
-#ANTS
-if [ -d ~/Software/ants ];
-then
-    export ANTSPATH=~/Software/ants/build/bin
-    addapath $ANTSPATH
-fi
-
-#C3D
-if [ -d ~/Software/c3d ];
-then
-    export C3D_PATH=~/Software/c3d/bin
-    addapath $C3D_PATH
-fi
 
 #Python
 if [[ "$(uname -s)" == 'Darwin' ]]
@@ -115,7 +51,7 @@ if (( $+commands[virtualenvwrapper.sh] )) ;
 then
     export WORKON_HOME=~/envs
     source virtualenvwrapper.sh
-#    export PIP_REQUIRE_VIRTUALENV=true
+    export PIP_REQUIRE_VIRTUALENV=false
 fi
 
 # PIP
@@ -150,7 +86,7 @@ then
     export VTK_DATA_ROOT=${SOFT_PATH}/vtk/VTKData
     export VTK_LARGE_DATA_ROOT=${SOFT_PATH}/vtk/VTKLargeData
     export VTK_ROOT=${SOFT_PATH}/vtk/VTK
-    export VTK_DIR=${SOFT_PATH}/vtk/build-6.1
+    export VTK_DIR=${SOFT_PATH}/vtk/build
 
     alias vtk='${VTK_DIR}/bin/vtk'
 

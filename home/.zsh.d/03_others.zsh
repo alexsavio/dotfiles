@@ -22,4 +22,3 @@ export GIT_PYTHON_TRACE=full
 #    _byobu_sourced=1 
 #    . /usr/bin/byobu-launch
 #fi
-
