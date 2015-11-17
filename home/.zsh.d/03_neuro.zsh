@@ -1,15 +1,9 @@
 
-addapath() {
-  if [ -e $1 ]; then
-    export PATH=$PATH:$1
-  fi
-}
 
-
-# MYREPOS
-if [ -d ${HOME}/Software/root/build ];
+# ROOT
+if [ -d ${SOFT_PATH}/root/build ];
 then
-    export ROOTSYS=${HOME}/Software/root/build
+    export ROOTSYS=${SOFT_PATH}/root/build
     cd ${ROOTSYS}
     source bin/thisroot.sh
     cd
@@ -52,36 +46,39 @@ then
 fi
 
 #CVIP
-if [ -d ~/Software/cvip ];
+if [ -d ${SOFT_PATH}/cvip ];
 then
-    export CVIPHOME=~/Software/cvip
+    export CVIPHOME=${SOFT_PATH}/cvip
     export CVIP_IMGPATH=./
     export CVIP_DISPLAY=picture
-    export TCL_LIBRARY=~/Software/cvip/CVIPTCL/lib/tcl8.0
-    export TK_LIBRARY=~/Software/cvip/CVIPTCL/lib/tk8.0
-    export XF_LOAD_PATH=~/cvip/CVIPTCL/GUI_SCRIPTS
-    export LD_LIBRARY_PATH=/usr/lib/fsl/5.0:~/Software/cvip/lib:~/cvip/CVIPTCL/lib:${LD_LIBRARY_PATH}
-    export PATH=${PATH}:~/Software/cvip/CVIPTCL:~/Software/cvip/bin
+    export TCL_LIBRARY=${CVIPHOME}/CVIPTCL/lib/tcl8.0
+    export TK_LIBRARY=${CVIPHOME}/cvip/CVIPTCL/lib/tk8.0
+    export XF_LOAD_PATH=${CVIPHOME}/CVIPTCL/GUI_SCRIPTS
+    
+    addlibpath ${CVIPHOME}/lib
+    addlibpath ${CVIPHOME}/CVIPTCL/lib
+    addapath ${CVIPHOME}/cvip/CVIPTCL
+    addapath ${CVIPHOME}/cvip/bin
 fi
 
 #MRTRIX3
-if [ -d ~/Software/mrtrix3 ];
+if [ -d ${SOFT_PATH}/mrtrix3 ];
 then
-    export MRTRIXPATH=~/Software/mrtrix3/bin
+    export MRTRIXPATH=${SOFT_PATH}/mrtrix3/bin
     addapath $MRTRIXPATH
 fi
 
 #ANTS
-if [ -d ~/Software/ants ];
+if [ -d ${SOFT_PATH}/ants ];
 then
-    export ANTSPATH=~/Software/ants/build/bin
+    export ANTSPATH=${SOFT_PATH}/ants/build/bin
     addapath $ANTSPATH
 fi
 
 #ITKSNAP
-if [ -d ~/Software/itksnap-bin ];
+if [ -d ${SOFT_PATH}/itksnap-bin ];
 then
-    export ITKSNAP_PATH=~/Software/itksnap-bin/bin
+    export ITKSNAP_PATH=${SOFT_PATH}/itksnap-bin/bin
     addapath $ITKSNAP_PATH
     alias snap=itksnap
 fi
@@ -94,8 +91,8 @@ then
     addapath $C3D_PATH
 fi
 
-if [ -d ~/Software/c3d ];
+if [ -d ${SOFT_PATH}/c3d ];
 then
-    export C3D_PATH=~/Software/c3d/bin
+    export C3D_PATH=${SOFT_PATH}/c3d/bin
     addapath $C3D_PATH
 fi

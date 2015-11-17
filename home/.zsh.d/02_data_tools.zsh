@@ -1,17 +1,14 @@
 
-addapath() {
-  if [ -e $1 ]; then
-    export PATH=$PATH:$1
-  fi
-}
-
 
 addapath ~/bin
 
+# SOFTWARE PATH
+export SOFT_PATH=${HOME}/Software
+
 # MYREPOS
-if [ -d ${HOME}/Software/myrepos ];
+if [ -d ${SOFT_PATH}/myrepos ];
 then
-    addapath ${HOME}/Software/myrepos
+    addapath ${SOFT_PATH}/myrepos
 fi
 
 if [ -d ${HOME}/.local/bin ];
@@ -73,14 +70,12 @@ compctl -K _pip_completion pip
 if [ -d /opt/intel ];
 then
     export INTEL_HOME=/opt/intel
-    export PATH=${PATH}:${INTEL_HOME}/bin
-    export LD_LIBRARY_PATH=/opt/intel/mkl/lib/intel64:/opt/intel/lib/intel64:${LD_LIBRARY_PATH}
+    addapath ${INTEL_HOME}/bin
+    addlibpath /opt/intel/mkl/lib/intel64
+    addlibpath /opt/intel/lib/intel64
 fi
 
-
-# SOFTWARE PATH
-export SOFT_PATH=${HOME}/Software
-
+# VTK
 if [ -d ${SOFT_PATH}/vtk ];
 then
     export VTK_DATA_ROOT=${SOFT_PATH}/vtk/VTKData
@@ -94,5 +89,22 @@ then
     alias vtkpython='${VTK_DIR}/bin/vtkpython'
     export PYTHONPATH=$PYTHONPATH:${VTK_DIR}/Wrapping/Python:${VTK_DIR}/lib
 
-    export DYLD_LIBRARY_PATH=/usr/local/vtk/lib:${DYLD_LIBRARY_PATH}
+    addlibpath /usr/local/vtk/lib
+fi
+
+# Qt5
+if [ -d ${SOFT_PATH}/Qt ];
+then
+    export QT_PATH=${SOFT_PATH}/Qt
+
+    export QT_VERSION=`python -c "import os,re; print([re.match(re.compile(r'\d\.\d', re.UNICODE), x) for x in os.listdir(os.environ['QT_PATH'])][0].group(0))"`
+
+    export QT_ARCH=`python -c "import os,re; print([x for x in ('gcc_64', 'clang_64') if os.path.exists(os.path.join(os.environ['QT_PATH'], os.environ['QT_VERSION'], x))][0])"`
+
+    export QT_ARCH_PATH=${QT_PATH}/${QT_VERSION}/${QT_ARCH}
+
+    export MOC=${QT_ARCH_PATH}/bin/moc
+
+    addapath ${QT_ARCH_PATH}/bin
+    addlibpath ${QT_ARCH_PATH}/lib
 fi

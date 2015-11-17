@@ -1,4 +1,22 @@
 
+addapath() {
+  if [ -e $1 ]; then
+    export PATH=$PATH:$1
+  fi
+}
+
+addlibpath() {
+    if [ -e $1 ]; then
+        if [[ "$(uname -s)" == 'Darwin' ]]
+        then
+            export DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH}:$1
+        else
+            export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$1
+        fi
+    fi
+}
+
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
