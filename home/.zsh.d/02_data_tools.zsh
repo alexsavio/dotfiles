@@ -97,7 +97,7 @@ if [ -d ${SOFT_PATH}/Qt ];
 then
     export QT_PATH=${SOFT_PATH}/Qt
 
-    export QT_VERSION=`python -c "import os,re; print([re.match(re.compile(r'\d\.\d', re.UNICODE), x) for x in os.listdir(os.environ['QT_PATH'])][0].group(0))"`
+    export QT_VERSION=`python -c "import os,re; print(list(filter(lambda x: re.match(re.compile(r'\d\.\d', re.UNICODE), x), os.listdir(os.environ['QT_PATH'])))[0])"`
 
     export QT_ARCH=`python -c "import os,re; print([x for x in ('gcc_64', 'clang_64') if os.path.exists(os.path.join(os.environ['QT_PATH'], os.environ['QT_VERSION'], x))][0])"`
 
