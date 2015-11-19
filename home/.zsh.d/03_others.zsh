@@ -14,6 +14,14 @@ fi
 #source $HOME/.keychain/$HOSTNAME-sh
 ### End-Keychain ###
 
+# zsh-functional
+if [ -d ${SOFT_PATH}/zsh-functional ];
+then
+    . ${SOFT_PATH}/zsh-functional/functional.plugin.zsh
+fi
+
+
+# CUDA
 export CUDA_VISIBLE_DEVICES="1"
 
 export GIT_PYTHON_TRACE=full
