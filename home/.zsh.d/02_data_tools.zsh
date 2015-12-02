@@ -44,7 +44,14 @@ fi
 
 
 # VIRTUALENVWRAPPER
-if (( $+commands[virtualenvwrapper.sh] )) ;
+if [ -d /usr/share/virtualenvwrapper/ ];
+then
+    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+    export WORKON_HOME=~/envs
+    export PIP_REQUIRE_VIRTUALENV=false
+fi
+
+if [ $+commands[virtualenvwrapper.sh] ];
 then
     export WORKON_HOME=~/envs
     source virtualenvwrapper.sh

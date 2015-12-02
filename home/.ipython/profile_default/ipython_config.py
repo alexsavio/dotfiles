@@ -2,7 +2,7 @@
 
 c = get_config()
 
-gui_module = 'wx'
+gui_module = 'qt'
 
 #------------------------------------------------------------------------------
 # InteractiveShellApp configuration
