@@ -2,6 +2,14 @@
 # This hook is run after a new virtualenv is activated.
 # ~/.virtualenvs/postmkvirtualenv
 
+# determine if virtualenv is activated
+python -c 'import sys; print(sys.real_prefix)' 2>/dev/null && INVENV=1 || INVENV=0
+if [ ! $INVENV == 1 ]; then
+    echo "You must activate a virtualenv for this to work."
+    exit -1
+fi
+
+
 function find_real_lib {
     syspy=$1
     libname=$2
@@ -15,8 +23,8 @@ function find_real_lib {
     return 1
 }
 
-libs=( PyQt5 sip.so sip.cpython-34m-x86_64-linux-gnu.so vtk cairo OpenGL)
-#libs=( vtk cairo )
+
+libs=( PyQt5 sip.so vtk cairo OpenGL)
 
 python_version=python$(python -c "import sys; print (str(sys.version_info[0])+'.'+str(sys.version_info[1]))")
 pythons=( $(which -a $python_version) )
@@ -30,12 +38,17 @@ lib_virtualenv_path=$(python -c "$get_python_lib_cmd")
 
 for lib in ${libs[@]}
 do
-    libsyspath=''
+    libsyspath=""
     find_real_lib $syspy $lib libsyspath
-    if [ $? == '0' ]; then
-        echo "Linking $lib"
-        ln -s $libsyspath $lib_virtualenv_path/$lib
+    dest=$lib_virtualenv_path/$lib
+    if [ -e $dest ]; then
+        echo "Module $lib already linked in $dest."
     else
-        echo "Could not find system's $lib"
+        if [ "$libsyspath" != "" ]; then
+            echo "Linking $lib"
+            ln -s $libsyspath $dest
+        else
+            echo "Could not find system's $lib"
+        fi
     fi
 done
