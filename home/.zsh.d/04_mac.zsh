@@ -18,5 +18,10 @@ if [ -d /Applications/MATLAB_R2015b.app/ ]; then
     addapath /Applications/MATLAB_R2015b.app/bin
 fi
 
+# llvm-config
+if [ -d /usr/local/opt/llvm/ ]; then
+    export LLVM_CONFIG=/usr/local/opt/llvm/bin/llvm-config
+fi
+
 export LC_ALL=en_GB.UTF-8
 export LANG=en_GB.UTF-8
