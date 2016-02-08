@@ -73,6 +73,15 @@ compctl -K _pip_completion pip
 # pip zsh completion end
 
 
+# Load pyenv automatically by adding
+#if [ -d $HOME/.pyenv ];
+#then
+#  export PATH="$HOME/.pyenv/bin:$PATH"
+#  eval "$(pyenv init -)"
+#  eval "$(pyenv virtualenv-init -)"
+#fi
+
+
 #Intel C++ Studio
 if [ -d /opt/intel ];
 then
