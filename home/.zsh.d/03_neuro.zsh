@@ -96,3 +96,10 @@ then
     export C3D_PATH=${SOFT_PATH}/c3d/bin
     addapath $C3D_PATH
 fi
+
+# Camino
+if [ -d ${SOFT_PATH}/camino ];
+then
+   export MANPATH=${SOFT_PATH}/camino/man:$MANPATH
+   addapath ${SOFT_PATH}/camino/bin 
+fi
