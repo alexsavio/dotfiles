@@ -1,0 +1,37 @@
+"*":
+  "exception-reporting":
+    userId: "a6f1d2bd-6923-f904-34a4-bafac1e7aeb2"
+  welcome:
+    showOnStartup: false
+  core:
+    disabledPackages: [
+      "language-gfm"
+      "language-gfm"
+      "markdown-preview"
+      "language-gfm"
+      "language-gfm"
+      "language-gfm"
+      "language-gfm"
+      "language-gfm"
+      "language-gfm"
+      "language-gfm"
+      "language-gfm"
+      "language-gfm"
+      "language-gfm"
+      "language-gfm"
+      "language-gfm"
+      "language-gfm"
+      "language-gfm"
+      "linter-flake8"
+    ]
+  editor:
+    invisibles: {}
+    showIndentGuide: true
+    showInvisibles: true
+    tabLength: 4
+    tabType: "soft"
+  "markdown-preview-plus":
+    enableLatexRenderingByDefault: true
+    useGitHubStyle: true
+    enablePandoc: true
+    pandocBibliography: true
