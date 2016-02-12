@@ -103,13 +103,15 @@ alias please='sudo'
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-alias ipy="python3 -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
-function ipyqt(){
-    python3 -c 'import IPython; IPython.start_ipython(['"'"'qtconsole'"'"']);'
-}
+alias jupy="jupyter console"
+alias jupynote="jupyter notebook"
 
-function ipynote(){
-    python3 -c 'import IPython; IPython.start_ipython(['"'"'notebook'"'"']);'
-}
+#function ipyqt(){
+    #python3 -c 'import IPython; IPython.start_ipython(['"'"'qtconsole'"'"']);'   
+#}
+
+#function ipynote(){
+#    python3 -c 'import IPython; IPython.start_ipython(['"'"'notebook'"'"']);'
+#}
 
 #alias pip_Uall="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
