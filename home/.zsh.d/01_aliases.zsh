@@ -106,6 +106,8 @@ alias please='sudo'
 alias jupy="jupyter console"
 alias jupynote="jupyter notebook"
 
+alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
+
 #function ipyqt(){
     #python3 -c 'import IPython; IPython.start_ipython(['"'"'qtconsole'"'"']);'   
 #}
