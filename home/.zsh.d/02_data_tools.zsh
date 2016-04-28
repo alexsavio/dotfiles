@@ -111,8 +111,8 @@ fi
 # CLING C++ Interpreter
 if [ -d ${SOFT_PATH}/cling ];
 then
-    addapath ${SOFT_PATH}/cling/bin
-    addlibpath ${SOFT_PATH}/cling/lib
+    addapath ${SOFT_PATH}/cling/bin/bin
+    addlibpath ${SOFT_PATH}/cling/bin/lib
 fi
 
 # Qt5
