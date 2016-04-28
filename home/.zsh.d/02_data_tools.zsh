@@ -108,6 +108,13 @@ then
     addlibpath /usr/local/vtk/lib
 fi
 
+# CLING C++ Interpreter
+if [ -d ${SOFT_PATH}/cling ];
+then
+    addapath ${SOFT_PATH}/cling/bin
+    addlibpath ${SOFT_PATH}/cling/lib
+fi
+
 # Qt5
 if [ -d ${SOFT_PATH}/Qt ];
 then
