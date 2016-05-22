@@ -121,3 +121,21 @@ let python_highlight_all = 1
 let php_sql_query = 1
 let php_htmlInStrings = 1
 let php_baselib = 1
+
+
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+
+
+set expandtab
+set textwidth=79
+set tabstop=8
+set softtabstop=4
+set shiftwidth=4
+set autoindent
+:syntax on
+

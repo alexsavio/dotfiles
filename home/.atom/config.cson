@@ -22,7 +22,10 @@
       "language-gfm"
       "language-gfm"
       "language-gfm"
-      "linter-flake8"
+    ]
+    themes: [
+      "atom-light-ui"
+      "solarized-light-syntax"
     ]
   editor:
     invisibles: {}
@@ -30,8 +33,13 @@
     showInvisibles: true
     tabLength: 4
     tabType: "soft"
+    autoIndent: false
+    autoIndentOnPaste: false
+    softTabs: false
   "markdown-preview-plus":
     enableLatexRenderingByDefault: true
     useGitHubStyle: true
     enablePandoc: true
     pandocBibliography: true
+  linter:
+    errorPanelHeight: 22

@@ -98,6 +98,8 @@ alias lock='gnome-screensaver-command --lock'
 alias skn='sudo killall -9 NetworkManager'
 alias please='sudo'
 
+alias annex='git annex'
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
