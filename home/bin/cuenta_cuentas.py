@@ -32,9 +32,9 @@ rename_cols = {'bbva': {'date': 'Fecha',
                         'description': 'Booking text',
                         'amount': 'Amount',
                        },
-                'ing': {'date': 'FECHA',
+                'ing': {'date': 'FECHA VALOR',
                         'description': 'DESCRIPCIÓN',
-                        'amount': 'IMPORTE',
+                        'amount': 'IMPORTE (€)',
                        },
               }
 
