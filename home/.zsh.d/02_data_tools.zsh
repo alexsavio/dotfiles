@@ -103,7 +103,7 @@ then
 
     ## For VTK Python programs.
     alias vtkpython='${VTK_DIR}/bin/vtkpython'
-    export PYTHONPATH=$PYTHONPATH:${VTK_DIR}/Wrapping/Python:${VTK_DIR}/lib
+    #export PYTHONPATH=$PYTHONPATH:${VTK_DIR}/Wrapping/Python:${VTK_DIR}/lib
 
     addlibpath /usr/local/vtk/lib
 fi
