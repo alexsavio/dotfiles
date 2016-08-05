@@ -106,7 +106,7 @@ alias annex='git annex'
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 alias jupy="jupyter console"
-alias jupynote="jupyter notebook"
+alias jupynb="jupyter notebook"
 
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 
