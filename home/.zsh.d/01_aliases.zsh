@@ -146,7 +146,8 @@ if [ -e `which docker` ]; then
     dbash() { docker exec -it $(docker ps -aqf "name=$1") bash; }
     # clean up all dangling images:
     docker-clean() { docker rmi -f $(docker images -q -a -f dangling=true) }
-
+    # remove all docker images
+    alias dimgrm='docker images | awk "{print $3}" | xargs docker rmi'
     # clean up ALL
     docker-cleanall() { docker rm -v $(docker ps -a -q -f status=exited);
                         docker-clean;
