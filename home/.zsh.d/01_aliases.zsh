@@ -146,5 +146,11 @@ if [ -e `which docker` ]; then
     dbash() { docker exec -it $(docker ps -aqf "name=$1") bash; }
     # clean up all dangling images:
     docker-clean() { docker rmi -f $(docker images -q -a -f dangling=true) }
+
+    # clean up ALL
+    docker-cleanall() { docker rm -v $(docker ps -a -q -f status=exited);
+                        docker-clean;
+                        docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker --rm martin/docker-cleanup-volumes;
+                    }
 fi
 
