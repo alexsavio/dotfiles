@@ -111,7 +111,7 @@ alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance
 #alias pip_Uall="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
 
 #docker aliases
-if [ -e `which docker` ]; then
+if [ -e /usr/bin/docker ]; then
     # check that the Docker environment is setup
     alias de="env | grep DOCKER_"
     # Get latest container ID
