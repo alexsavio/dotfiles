@@ -16,9 +16,12 @@ addlibpath() {
     fi
 }
 
-
+isinpath() {
+    (( $+commands[$1] ))
+} 
+    
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
+if ( isinpath dircolors ); then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --group-directories-first --color=auto'
     alias dir='dir --color=auto'
@@ -60,7 +63,7 @@ if [ $UID -ne 0 ]; then
 fi
 
 #vagrant aliases
-if [ -e ~/vagrant ]; then
+if ( isinpath vagrant ); then
 	alias vagrup="FORWARD_DOCKER_PORTS='true' vagrant up"
 	alias vagrhalt='vagrant halt'
 	alias vup="vagrant up"
@@ -111,7 +114,7 @@ alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance
 #alias pip_Uall="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
 
 #docker aliases
-if [ -e /usr/bin/docker ]; then
+if ( isinpath docker ); then
     # check that the Docker environment is setup
     alias de="env | grep DOCKER_"
     # Get latest container ID

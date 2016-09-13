@@ -3,11 +3,11 @@
 #source ~/bin/ssh-find-agent.sh
 #set_ssh_agent_socket
 
-### START-Keychain ###
+## START-Keychain ###
 # Let  re-use ssh-agent and/or gpg-agent between logins
-if [ -f /usr/bin/keychain ]; then
-  alias ssh='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa) && ssh'
-  alias git='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa) && git'
+if ( isinpath keychain ); then
+  alias ssh='eval $(keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa) && ssh'
+  alias git='eval $(keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa) && git'
 fi
 
 #eval $(keychain --clear --eval id_rsa)
@@ -30,3 +30,10 @@ export GIT_PYTHON_TRACE=full
 #    _byobu_sourced=1 
 #    . /usr/bin/byobu-launch
 #fi
+#
+
+#ntfy
+if ( isinpath ntfy ); then
+    eval "$(ntfy shell-integration)"
+    export AUTO_NTFY_DONE_IGNORE="vim screen meld tig git"
+fi

@@ -51,26 +51,29 @@ then
     export PIP_REQUIRE_VIRTUALENV=false
 fi
 
-if [ $+commands[virtualenvwrapper.sh] ];
+if ( isinpath virtualenvwrapper.sh );
 then
     export WORKON_HOME=~/envs
     source virtualenvwrapper.sh
     export PIP_REQUIRE_VIRTUALENV=false
 fi
 
-# PIP
-export PIP_CONFIG_FILE=~/.pip/pip.conf
-# pip zsh completion start
-function _pip_completion {
-  local words cword
-  read -Ac words
-  read -cn cword
-  reply=( $( COMP_WORDS="$words[*]" \
-             COMP_CWORD=$(( cword-1 )) \
-             PIP_AUTO_COMPLETE=1 $words[1] ) )
-}
-compctl -K _pip_completion pip
+if ( isinpath pip ); 
+then
+  # PIP
+  export PIP_CONFIG_FILE=~/.pip/pip.conf
+  # pip zsh completion start
+  function _pip_completion {
+    local words cword
+    read -Ac words
+    read -cn cword
+    reply=( $( COMP_WORDS="$words[*]" \
+               COMP_CWORD=$(( cword-1 )) \
+               PIP_AUTO_COMPLETE=1 $words[1] ) )
+  }
+  compctl -K _pip_completion pip
 # pip zsh completion end
+fi
 
 
 # Load pyenv automatically by adding

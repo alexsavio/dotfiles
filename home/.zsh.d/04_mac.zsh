@@ -3,7 +3,7 @@ export EDITOR=/usr/bin/vim
 export MP_EDITOR=/usr/bin/edit
 
 #HOMEBREW
-if [[ -x $(whence brew) ]]; then
+if ( isinpath brew ); then
     fpath=($(brew --prefix)/Library/Contributions/brew_zsh_completion.zsh $fpath)
 fi
 compinit
