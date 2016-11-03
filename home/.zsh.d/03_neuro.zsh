@@ -103,3 +103,12 @@ then
    export MANPATH=${SOFT_PATH}/camino/man:$MANPATH
    addapath ${SOFT_PATH}/camino/bin 
 fi
+
+# SPM MCR
+if [ -d ${SOFT_PATH}/spm_mcr ];
+then
+    export MCR_DIR=$SOFT_PATH/spm_mcr/mcr
+    export SPM_DIR=$SOFT_PATH/spm_mcr/spm12
+    export SPMMCRCMD='$SPM_DIR/run_spm12.sh $MCR_DIR script'
+    export FORCE_SPMMCR=1
+fi
