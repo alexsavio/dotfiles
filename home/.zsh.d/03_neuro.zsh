@@ -107,8 +107,13 @@ fi
 # SPM MCR
 if [ -d ${SOFT_PATH}/spm_mcr ];
 then
-    export MCR_DIR=$SOFT_PATH/spm_mcr/mcr
-    export SPM_DIR=$SOFT_PATH/spm_mcr/spm12
-    export SPMMCRCMD='$SPM_DIR/run_spm12.sh $MCR_DIR script'
+    export MCR_DIR=${SOFT_PATH}/spm_mcr/mcr/v85
+    export SPM_DIR=${SOFT_PATH}/spm_mcr/spm12
+    export SPMMCRCMD="$SPM_DIR/run_spm12.sh $MCR_DIR script"
     export FORCE_SPMMCR=1
+    
+    addapath ${MCR_DIR}/bin
+    #addlibpath ${MCR_DIR}/runtime/glnxa64
+    #addlibpath ${MCR_DIR}/bin/glnxa64
+    #addlibpath ${MCR_DIR}/sys/os/glnxa64
 fi
