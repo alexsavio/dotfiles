@@ -85,6 +85,12 @@ fi
 #fi
 
 
+# AnaConda
+if [ -d $HOME/anaconda3 ];
+then
+    addapath $HOME/anaconda3/bin
+fi
+
 #Intel C++ Studio
 if [ -d /opt/intel ];
 then
