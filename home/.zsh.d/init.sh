@@ -9,7 +9,6 @@ echo '03_others.zsh'
 if [ "$(uname)" == "Darwin" ]; then
     # Do something under Mac OS X platform
     echo '04_mac.zsh'
-    echo '04_xmodmap.zsh'
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # Do something under GNU/Linux platform
     echo '04_ubuntu.zsh'
