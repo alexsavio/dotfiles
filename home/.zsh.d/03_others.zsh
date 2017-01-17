@@ -24,6 +24,12 @@ then
     . ${SOFT_PATH}/zsh-functional/functional.plugin.zsh
 fi
 
+# github.com/rupa/z
+
+if [ -d ${SOFT_PATH}/z ];
+then
+    . ${SOFT_PATH}/z/z.sh
+fi
 
 # CUDA
 export CUDA_VISIBLE_DEVICES="1"
