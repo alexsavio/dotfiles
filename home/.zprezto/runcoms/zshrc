@@ -12,7 +12,7 @@ fi
 
 # Customize to your needs...
 if [[ -s "${ZDOTDIR:-$HOME}/.zsh.d" ]]; then
-  for i in `cat ~/.zsh.d/init.zsh`; do source ~/.zsh.d/$i; done
+  for i in `~/.zsh.d/init.sh`; do source ~/.zsh.d/$i; done
 fi
 
 USERNAME='Alexandre M. S.'
