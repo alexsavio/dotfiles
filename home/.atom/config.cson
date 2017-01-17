@@ -37,7 +37,7 @@
     autoIndent: false
     autoIndentOnPaste: false
     softTabs: false
-    fontSize: 15
+    fontSize: 16
   "markdown-preview-plus":
     enableLatexRenderingByDefault: true
     useGitHubStyle: true
