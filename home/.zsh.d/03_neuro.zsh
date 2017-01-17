@@ -107,7 +107,7 @@ fi
 # SPM MCR
 if [ -d ${SOFT_PATH}/spm_mcr ];
 then
-    export MCR_DIR=${SOFT_PATH}/spm_mcr/mcr/v85
+    export MCR_DIR=${SOFT_PATH}/spm_mcr/mcr/v91
     export SPM_DIR=${SOFT_PATH}/spm_mcr/spm12
     export SPMMCRCMD="$SPM_DIR/run_spm12.sh $MCR_DIR script"
     export FORCE_SPMMCR=1
