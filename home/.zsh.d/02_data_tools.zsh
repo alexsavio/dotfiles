@@ -36,16 +36,17 @@ then
    #export PYTHON2_PATH=/Library/Frameworks/Python.framework/Versions/2.7
    #export PYTHON3_PATH=/Library/Frameworks/Python.framework/Versions/3.4
    export PYTHON2_PATH=/usr/local/lib/python2.7
-   export PYTHON3_PATH=/usr/local/lib/python3.4
+   export PYTHON3_PATH=/usr/local/lib/python3.5
 else
    export PYTHON2_PATH=/usr/local/lib/python2.7
-   export PYTHON3_PATH=/usr/local/lib/python3.4
+   export PYTHON3_PATH=/usr/local/lib/python3.5
 fi
 
 
 # VIRTUALENVWRAPPER
 if [ -d /usr/share/virtualenvwrapper/ ];
 then
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
     source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
     export WORKON_HOME=~/envs
     export PIP_REQUIRE_VIRTUALENV=false
@@ -53,6 +54,7 @@ fi
 
 if ( isinpath virtualenvwrapper.sh );
 then
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
     export WORKON_HOME=~/envs
     source virtualenvwrapper.sh
     export PIP_REQUIRE_VIRTUALENV=false
