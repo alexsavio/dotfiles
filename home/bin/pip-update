@@ -11,7 +11,6 @@ from   pip.req    import parse_requirements
 
 logging.basicConfig()
 log = logging.getLogger()
-env_root = os.getenv('VIRTUAL_ENV')
 
 if sys.platform == 'win32':
     bin = 'Scripts'
@@ -61,7 +60,22 @@ class Piper(object):
         return self._check_output([self._pip_path, 'freeze'])
 
 
+def get_env_path():
+    env_root = ''
+    env_vars = ('CONDA_PREFIX',
+                'VIRTUAL_ENV')
+
+    for var_name in env_vars:
+        env_root = os.getenv(var_name)
+        if env_root:
+            break
+
+    return env_root
+
+
 if __name__ == '__main__':
+    env_root = get_env_path()
+
     if env_root is not None:
         pip_path = os.path.join(env_root, bin, 'pip')
     else:
