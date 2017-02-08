@@ -32,7 +32,7 @@ rename_cols = {'bbva': {'date': 'Fecha',
                         'description': 'Booking text',
                         'amount': 'Amount',
                        },
-                'ing': {'date': 'FECHA VALOR',
+                'ing': {'date': 'F. VALOR',
                         'description': 'DESCRIPCIÓN',
                         'amount': 'IMPORTE (€)',
                        },
@@ -91,13 +91,14 @@ def read_comm_csv(file_name):
     # rename cols
     _rename_cols(df, 'comm')
 
-    df['date'] = df['date'].apply(lambda x: pd.Timestamp(x))
+    df['date'] = df['date'].apply(lambda x: pd.to_datetime(x,
+                                                           format='%d.%m.%Y'))
 
     return df
 
 
 def read_ing_excel(file_name):
-        df = pd.read_excel(file_name, skiprows=3)
+        df = pd.read_excel(file_name, skiprows=5)
 
         # rename cols
         _rename_cols(df, 'ing')
