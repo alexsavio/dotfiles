@@ -1,0 +1,1 @@
+/home/alexandre/.homesick/repos/dotfiles/home/.zprezto/modules/syntax-highlighting/external/highlighters/main/test-data/path-space- .zsh

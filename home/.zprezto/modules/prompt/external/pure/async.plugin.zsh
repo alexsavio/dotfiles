@@ -1,0 +1,1 @@
+/home/alexandre/.homesick/repos/dotfiles/home/.zprezto/modules/prompt/external/pure/async.plugin.zsh
