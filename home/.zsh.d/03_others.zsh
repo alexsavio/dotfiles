@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 
 #export SSH_AUTH_SOCK=0
 #source ~/bin/ssh-find-agent.sh

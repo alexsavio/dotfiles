@@ -1,3 +1,4 @@
+#!/usr/bin/zsh
 
 export EDITOR=/usr/bin/vim
 export MP_EDITOR=/usr/bin/edit

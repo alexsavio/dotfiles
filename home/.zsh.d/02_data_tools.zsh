@@ -1,4 +1,4 @@
-
+#!/usr/bin/zsh
 
 addapath ~/bin
 
@@ -60,7 +60,7 @@ then
     export PIP_REQUIRE_VIRTUALENV=false
 fi
 
-if ( isinpath pip ); 
+if ( isinpath pip );
 then
   # PIP
   export PIP_CONFIG_FILE=~/.pip/pip.conf

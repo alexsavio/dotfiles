@@ -11,11 +11,3 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
-if [[ -s "${ZDOTDIR:-$HOME}/.zsh.d" ]]; then
-  for i in `~/.zsh.d/init.sh`; do source ~/.zsh.d/$i; done
-fi
-
-USERNAME='Alexandre M. S.'
-TODAY=`date +%d/%m/%Y`
-
-test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh

@@ -1,4 +1,4 @@
-
+#!/usr/bin/zsh
 
 # ROOT
 if [ -d ${SOFT_PATH}/root/build ];
@@ -54,7 +54,7 @@ then
     export TCL_LIBRARY=${CVIPHOME}/CVIPTCL/lib/tcl8.0
     export TK_LIBRARY=${CVIPHOME}/cvip/CVIPTCL/lib/tk8.0
     export XF_LOAD_PATH=${CVIPHOME}/CVIPTCL/GUI_SCRIPTS
-    
+
     addlibpath ${CVIPHOME}/lib
     addlibpath ${CVIPHOME}/CVIPTCL/lib
     addapath ${CVIPHOME}/cvip/CVIPTCL
@@ -101,7 +101,7 @@ fi
 if [ -d ${SOFT_PATH}/camino ];
 then
    export MANPATH=${SOFT_PATH}/camino/man:$MANPATH
-   addapath ${SOFT_PATH}/camino/bin 
+   addapath ${SOFT_PATH}/camino/bin
 fi
 
 # SPM MCR
@@ -111,7 +111,7 @@ then
     export SPM_DIR=${SOFT_PATH}/spm_mcr/spm12
     export SPMMCRCMD="$SPM_DIR/run_spm12.sh $MCR_DIR script"
     export FORCE_SPMMCR=1
-    
+
     addapath ${MCR_DIR}/bin
     #addlibpath ${MCR_DIR}/runtime/glnxa64
     #addlibpath ${MCR_DIR}/bin/glnxa64

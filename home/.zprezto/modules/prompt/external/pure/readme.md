@@ -2,7 +2,7 @@
 
 > Pretty, minimal and fast ZSH prompt
 
-![](screenshot.png)
+<img src="screenshot.png" width="550">
 
 
 ## Overview
@@ -28,7 +28,7 @@ Can be installed with `npm` or manually. Requires git 2.0.0+ and ZSH 5.0.0+.
 
 ### npm
 
-```
+```console
 $ npm install --global pure-prompt
 ```
 
@@ -47,7 +47,7 @@ That's it. Skip to [Getting started](#getting-started).
 
 #### Example
 
-```
+```console
 $ ln -s "$PWD/pure.zsh" /usr/local/share/zsh/site-functions/prompt_pure_setup
 $ ln -s "$PWD/async.zsh" /usr/local/share/zsh/site-functions/async
 ```
@@ -62,7 +62,7 @@ fpath=( "$HOME/.zfunctions" $fpath )
 
 Then install the theme there:
 
-```sh
+```console
 $ ln -s "$PWD/pure.zsh" "$HOME/.zfunctions/prompt_pure_setup"
 $ ln -s "$PWD/async.zsh" "$HOME/.zfunctions/async"
 ```
@@ -141,15 +141,26 @@ To have commands colorized as seen in the screenshot install [zsh-syntax-highlig
 
 ### [prezto](https://github.com/sorin-ionescu/prezto)
 
+Pure is bundled with Prezto. No need to install it.
+
 Set `zstyle ':prezto:module:prompt' theme 'pure'` in `~/.zpreztorc`.
 
 ### [antigen](https://github.com/zsh-users/antigen)
 
 Update your `.zshrc` file with the following two lines (order matters). Do not use the `antigen theme` function.
 
+```console
+$ antigen bundle mafredri/zsh-async
+$ antigen bundle sindresorhus/pure
 ```
-antigen bundle mafredri/zsh-async
-antigen bundle sindresorhus/pure
+
+### [antibody](https://github.com/getantibody/antibody)
+
+Update your `.zshrc` file with the following two lines (order matters):
+
+```console
+$ antibody bundle mafredri/zsh-async
+$ antibody bundle sindresorhus/pure
 ```
 
 ## FAQ
@@ -171,14 +182,24 @@ Using `git pull` when you get the username prompt should help you to break the l
 
 #### Gentoo
 
-```
-sudo sh -c "echo 'SANDBOX_WRITE=\"/dev/ptmx\"' > /etc/sandbox.d/10zsh"
-sudo emerge -1 zsh
+```console
+$ sudo sh -c "echo 'SANDBOX_WRITE=\"/dev/ptmx\"' > /etc/sandbox.d/10zsh"
+$ sudo emerge -1 zsh
 ```
 
 #### FreeBSD 10.1
 
 On a default setup, running the command `kldload pty` should do the trick. If you have a custom kernel, you might need to add `device pty` to the configuration file ([example](https://github.com/nbari/freebsd/blob/58646a9c3c4aaabf6f6467ff505f27f09e29dc75/kernels/xen.kernel#L188)).
+
+## Ports
+
+* **Bash**
+	* [sapegin/dotfiles](https://github.com/sapegin/dotfiles)’s [prompt](https://github.com/sapegin/dotfiles/blob/master/includes/bash_prompt.bash) and [color theme](https://github.com/sapegin/dotfiles/tree/master/color) for `Terminal.app`.
+* **Fish**
+	* [brandonweiss/pure.fish](https://github.com/brandonweiss/pure.fish): a Pure-inspired prompt for Fish, not intended to have feature parity.
+	* [rafaelrinaldi/pure](https://github.com/rafaelrinaldi/pure), support for bare Fish and various framework ([Oh-My-Fish](https://github.com//oh-my-fish/oh-my-fish), [Fisherman](https://github.com//fisherman/fisherman) and [Wahoo](https://github.com//bucaran/wahoo)).
+* **Zsh**
+  * [therealklanni/purity](https://github.com/therealklanni/purity): a more compact current working directory, important details on the main prompt line, and extra Git indicators.
 
 ## Team
 

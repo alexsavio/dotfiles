@@ -32,12 +32,19 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
+  'prompt' \
   'git' \
   'ssh' \
-  'python' \
   'syntax-highlighting' \
   'history-substring-search' \
   'prompt'
+
+#
+# Autosuggestions
+#
+
+# Set the query found color.
+zstyle ':prezto:module:autosuggestions:color' found ''
 
 #
 # Editor

@@ -101,6 +101,9 @@ prompt_pure_check_git_arrows() {
 }
 
 prompt_pure_set_title() {
+	# emacs terminal does not support settings the title
+	(( ${+EMACS} )) && return
+
 	# tell the terminal we are setting the title
 	print -n '\e]0;'
 	# show hostname if connected through ssh
@@ -116,6 +119,9 @@ prompt_pure_set_title() {
 }
 
 prompt_pure_preexec() {
+	# attempt to detect and prevent prompt_pure_async_git_fetch from interfering with user initiated git or hub fetch
+	[[ $2 =~ (git|hub)\ .*(pull|fetch) ]] && async_flush_jobs 'prompt_pure'
+
 	prompt_pure_cmd_timestamp=$EPOCHSECONDS
 
 	# shows the current dir and executed command in the title while a process is active
@@ -187,9 +193,6 @@ prompt_pure_preprompt_render() {
 		elif (( last_lines < lines )); then
 			# move cursor using newlines because ansi cursor movement can't push the cursor beyond the last line
 			printf $'\n'%.0s {1..$(( lines - last_lines ))}
-
-			# redraw the prompt since it has been moved by print
-			zle && zle .reset-prompt
 		fi
 
 		# disable clearing of line if last char of preprompt is last column of terminal
@@ -197,7 +200,10 @@ prompt_pure_preprompt_render() {
 		(( COLUMNS * lines == preprompt_length )) && clr=
 
 		# modify previous preprompt
-		print -Pn "\e7${clr_prev_preprompt}\e[${lines}A\e[1G${preprompt}${clr}\e8"
+		print -Pn "${clr_prev_preprompt}\e[${lines}A\e[${COLUMNS}D${preprompt}${clr}\n"
+
+		# redraw prompt (also resets cursor position)
+		zle && zle .reset-prompt
 	fi
 
 	# store previous preprompt for comparison
@@ -236,7 +242,7 @@ prompt_pure_async_git_dirty() {
 	local untracked_dirty=$1; shift
 
 	# use cd -q to avoid side effects of changing directory, e.g. chpwd hooks
-	cd -q "$*"
+	builtin cd -q "$*"
 
 	if [[ "$untracked_dirty" == "0" ]]; then
 		command git diff --no-ext-diff --quiet --exit-code
@@ -249,7 +255,7 @@ prompt_pure_async_git_dirty() {
 
 prompt_pure_async_git_fetch() {
 	# use cd -q to avoid side effects of changing directory, e.g. chpwd hooks
-	cd -q "$*"
+	builtin cd -q "$*"
 
 	# set GIT_TERMINAL_PROMPT=0 to disable auth prompting for git fetch (git 2.3+)
 	GIT_TERMINAL_PROMPT=0 command git -c gc.auto=0 fetch
