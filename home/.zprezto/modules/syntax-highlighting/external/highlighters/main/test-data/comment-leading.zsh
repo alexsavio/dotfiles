@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
 # -------------------------------------------------------------------------------------------------
-# Copyright (c) 2010-2011 zsh-syntax-highlighting contributors
+# Copyright (c) 2015 zsh-syntax-highlighting contributors
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without modification, are permitted
@@ -33,6 +32,6 @@ setopt interactive_comments
 BUFFER='# echo foo'
 
 expected_region_highlight=(
-  "1 1 ${(q-)ZSH_HIGHLIGHT_STYLES[comment]}" # #
-  "2 10 ${(q-)ZSH_HIGHLIGHT_STYLES[comment]}" # " echo foo"
+  "1 1 comment" # #
+  "2 10 comment" # " echo foo"
 )

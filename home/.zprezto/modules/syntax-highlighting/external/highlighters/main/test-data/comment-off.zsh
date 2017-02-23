@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
 # -------------------------------------------------------------------------------------------------
-# Copyright (c) 2010-2011 zsh-syntax-highlighting contributors
+# Copyright (c) 2015 zsh-syntax-highlighting contributors
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without modification, are permitted
@@ -33,7 +32,7 @@ unsetopt interactive_comments
 BUFFER='# echo foo'
 
 expected_region_highlight=(
-  "1 1 ${(q-)ZSH_HIGHLIGHT_STYLES[unknown-token]}" # #
-  "3 6 ${(q-)ZSH_HIGHLIGHT_STYLES[default]}" # " echo foo"
-  "8 10 ${(q-)ZSH_HIGHLIGHT_STYLES[default]}" # " echo foo"
+  "1 1 unknown-token" # #
+  "3 6 default" # " echo foo"
+  "8 10 default" # " echo foo"
 )
