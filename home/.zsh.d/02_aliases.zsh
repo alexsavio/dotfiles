@@ -1,25 +1,5 @@
+#!/usr/bin/env zsh
 
-addapath() {
-  if [ -e $1 ]; then
-    export PATH=$PATH:$1
-  fi
-}
-
-addlibpath() {
-    if [ -e $1 ]; then
-        if [[ "$(uname -s)" == 'Darwin' ]]
-        then
-            export DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH}:$1
-        else
-            export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$1
-        fi
-    fi
-}
-
-isinpath() {
-    (( $+commands[$1] ))
-} 
-    
 # enable color support of ls and also add handy aliases
 if ( isinpath dircolors ); then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -42,7 +22,7 @@ alias ...='cd ...'
 
 alias -g grp='| grep -i'
 alias du='du -kch'
- 
+
 # top is atop, just like vi is vim
 alias top='atop'
 
@@ -72,7 +52,7 @@ if ( isinpath vagrant ); then
 	alias vr="vagrant resume"
 	alias vrld="vagrant reload"
 	alias vssh="vagrant ssh"
-	alias vstat="vagrant status" 
+	alias vstat="vagrant status"
 fi
 
 # git aliases
@@ -114,7 +94,7 @@ alias jupynb="jupyter notebook"
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 
 #function ipyqt(){
-    #python3 -c 'import IPython; IPython.start_ipython(['"'"'qtconsole'"'"']);'   
+    #python3 -c 'import IPython; IPython.start_ipython(['"'"'qtconsole'"'"']);'
 #}
 
 #function ipynote(){
@@ -151,7 +131,7 @@ if ( isinpath docker ); then
     alias drmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
     # Remove all images
     dri() { docker rmi $(docker images -q); }
-    # Dockerfile build, e.g., $dbu tcnksm/test 
+    # Dockerfile build, e.g., $dbu tcnksm/test
     dbu() { docker build -t=$1 .; }
     # Show all alias related docker
     dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; }
@@ -167,4 +147,3 @@ if ( isinpath docker ); then
                         docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker --rm martin/docker-cleanup-volumes;
                     }
 fi
-

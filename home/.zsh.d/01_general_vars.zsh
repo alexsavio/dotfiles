@@ -6,6 +6,14 @@
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 
+# important paths
+export SOFT_PATH=${HOME}/Software
+
+addapath ~/bin
+addapath ${SOFT_PATH}/myrepos
+addapath ${HOME}/.local/bin
+
+
 # Your place for hosting Git repos. I use this for private repos.
 export GIT_HOSTING='git@github.alexsavio.com'
 
@@ -58,12 +66,9 @@ setopt PUSHD_IGNORE_DUPS
 setopt RM_STAR_WAIT
 
 # use magic (this is default, but it can't hurt!)
-setopt ZLE
+# setopt ZLE
 
 setopt NO_HUP
-
-# only fools wouldn't do this ;-)
-export EDITOR="/usr/bin/vim"
 
 setopt IGNORE_EOF
 

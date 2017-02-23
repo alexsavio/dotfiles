@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 
 export EDITOR=/usr/bin/vim
 export MP_EDITOR=/usr/bin/edit
@@ -9,14 +10,10 @@ fi
 compinit
 
 # Julia
-if [ -d /Applications/Juno.app/ ]; then
-    addapath /Applications/Juno.app/Contents/Resources/app/julia/bin
-fi
+addapath /Applications/Juno.app/Contents/Resources/app/julia/bin
 
 # Matlab
-if [ -d /Applications/MATLAB_R2015b.app/ ]; then
-    addapath /Applications/MATLAB_R2015b.app/bin
-fi
+addapath /Applications/MATLAB_R2015b.app/bin
 
 # llvm-config
 if [ -d /usr/local/opt/llvm/ ]; then

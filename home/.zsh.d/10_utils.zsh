@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 
 #export SSH_AUTH_SOCK=0
 #source ~/bin/ssh-find-agent.sh
@@ -25,25 +26,7 @@ then
 fi
 
 # github.com/rupa/z
-
 if [ -d ${SOFT_PATH}/z ];
 then
     . ${SOFT_PATH}/z/z.sh
-fi
-
-# CUDA
-export CUDA_VISIBLE_DEVICES="1"
-
-export GIT_PYTHON_TRACE=full
-
-#if [ -f /usr/bin/byobu ]; then
-#    _byobu_sourced=1
-#    . /usr/bin/byobu-launch
-#fi
-#
-
-#ntfy
-if ( isinpath ntfy ); then
-    eval "$(ntfy shell-integration)"
-    export AUTO_NTFY_DONE_IGNORE="vim screen meld tig git"
 fi
