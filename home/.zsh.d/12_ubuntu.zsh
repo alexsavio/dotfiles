@@ -1,4 +1,4 @@
-
+#!/usr/bin/env zsh
 
 # Open new tab in current directory
 if [[ -f /etc/profile.d/vte-2.91.sh ]]
