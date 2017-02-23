@@ -46,7 +46,7 @@ fi
 # VIRTUALENVWRAPPER
 if [ -d /usr/share/virtualenvwrapper/ ];
 then
-    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+    export VIRTUALENVWRAPPER_PYTHON=`which python3`
     source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
     export WORKON_HOME=~/envs
     export PIP_REQUIRE_VIRTUALENV=false
@@ -54,7 +54,7 @@ fi
 
 if ( isinpath virtualenvwrapper.sh );
 then
-    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+    export VIRTUALENVWRAPPER_PYTHON=`which python3`
     export WORKON_HOME=~/envs
     source virtualenvwrapper.sh
     export PIP_REQUIRE_VIRTUALENV=false
