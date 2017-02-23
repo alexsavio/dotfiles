@@ -32,6 +32,11 @@ touch A/mu
 BUFFER='ls A/mu'
 
 expected_region_highlight=(
+<<<<<<< HEAD
   "1 2 $ZSH_HIGHLIGHT_STYLES[command]" # ls
   "4 7 $ZSH_HIGHLIGHT_STYLES[path]"     # A/mu
+=======
+  "1 2 command" # ls
+  "4 7 path"     # A/mu
+>>>>>>> fdcaf8a5c0b367a3ae5818dbdf769f764b4567dc
 )

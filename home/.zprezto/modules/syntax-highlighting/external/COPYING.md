@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Copyright (c) 2010-2015 zsh-syntax-highlighting contributors
+=======
+Copyright (c) 2010-2016 zsh-syntax-highlighting contributors
+>>>>>>> fdcaf8a5c0b367a3ae5818dbdf769f764b4567dc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted

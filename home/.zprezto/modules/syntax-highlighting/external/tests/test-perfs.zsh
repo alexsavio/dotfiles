@@ -57,7 +57,10 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=($1)
 # $1: data file
 run_test_internal() {
   local -a highlight_zone
+<<<<<<< HEAD
   local unused_highlight='bg=red,underline' # a style unused by anything else, for tests to use
+=======
+>>>>>>> fdcaf8a5c0b367a3ae5818dbdf769f764b4567dc
 
   local tests_tempdir="$1"; shift
   local srcdir="$PWD"

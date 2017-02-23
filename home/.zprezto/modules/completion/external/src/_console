@@ -47,7 +47,11 @@ _console_get_command_list () {
     IFS=" "
     `_find_console` --no-ansi | \
         sed "1,/Available commands/d" | \
+<<<<<<< HEAD
         awk '/ [a-z]+/ { print $0 }' | \
+=======
+        awk '/  [a-z]+/ { print $0 }' | \
+>>>>>>> fdcaf8a5c0b367a3ae5818dbdf769f764b4567dc
         sed -E 's/^[ ]+//g' | \
         sed -E 's/[:]+/\\:/g' | \
         sed -E 's/[ ]{2,}/\:/g'

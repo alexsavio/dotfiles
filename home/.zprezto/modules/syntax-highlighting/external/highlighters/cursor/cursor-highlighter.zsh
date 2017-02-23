@@ -32,17 +32,28 @@
 : ${ZSH_HIGHLIGHT_STYLES[cursor]:=standout}
 
 # Whether the cursor highlighter should be called or not.
-_zsh_highlight_cursor_highlighter_predicate()
+_zsh_highlight_highlighter_cursor_predicate()
 {
+<<<<<<< HEAD
   # accept-* may trigger removal of cursor highlighting
   [[ $WIDGET == accept-* ]] ||
     _zsh_highlight_cursor_moved
+=======
+  # remove cursor highlighting when the line is finished
+  [[ $WIDGET == zle-line-finish ]] || _zsh_highlight_cursor_moved
+>>>>>>> fdcaf8a5c0b367a3ae5818dbdf769f764b4567dc
 }
 
 # Cursor highlighting function.
-_zsh_highlight_cursor_highlighter()
+_zsh_highlight_highlighter_cursor_paint()
 {
+<<<<<<< HEAD
   [[ $WIDGET == accept-* ]] && return
   
   region_highlight+=("$CURSOR $(( $CURSOR + 1 )) $ZSH_HIGHLIGHT_STYLES[cursor]")
+=======
+  [[ $WIDGET == zle-line-finish ]] && return
+  
+  _zsh_highlight_add_highlight $CURSOR $(( $CURSOR + 1 )) cursor
+>>>>>>> fdcaf8a5c0b367a3ae5818dbdf769f764b4567dc
 }

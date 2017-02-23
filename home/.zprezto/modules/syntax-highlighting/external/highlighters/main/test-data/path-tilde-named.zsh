@@ -34,6 +34,11 @@ hash -d D=mydir
 BUFFER='ls ~D/path-tilde-named.test'
 
 expected_region_highlight=(
+<<<<<<< HEAD
   "1 2  $ZSH_HIGHLIGHT_STYLES[command]" # ls
   "4 27 $ZSH_HIGHLIGHT_STYLES[path]"    # ~D/path-tilde-named.test
+=======
+  "1 2  command" # ls
+  "4 27 path"    # ~D/path-tilde-named.test
+>>>>>>> fdcaf8a5c0b367a3ae5818dbdf769f764b4567dc
 )
