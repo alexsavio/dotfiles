@@ -17,5 +17,3 @@ fi
 
 USERNAME='Alexandre M. S.'
 TODAY=`date +%d/%m/%Y`
-
-test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
