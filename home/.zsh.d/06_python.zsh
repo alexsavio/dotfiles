@@ -14,10 +14,10 @@ fi
 
 
 # VIRTUALENVWRAPPER
-if [ -d /usr/share/virtualenvwrapper/ ];
+if [ -f /usr/local/bin/virtualenvwrapper.sh ];
 then
     export VIRTUALENVWRAPPER_PYTHON=`which python3`
-    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+    source /usr/local/bin/virtualenvwrapper.sh
     export WORKON_HOME=~/envs
     export PIP_REQUIRE_VIRTUALENV=false
 fi
