@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
 Este script sirve para leer la hoja Excel de transacciones
-del BBVA e imprimir los gastos relativos a un mes especifico.
+de diferentes bancos e imprimir los gastos relativos a un mes
+especifico.
 El formato en que se imprimen son especificos para la columna
 de gastos de Miren en la hoja comun en Google Drive de Alex y Miren.
 
@@ -10,7 +11,7 @@ y un modulo para leer archivos Excel.
 
 Para instalar estas dependencias ejecuta:
 
-    pip install pandas xlrd
+    pip install pandas xlrd lxml BeautifulSoup4
 
 Lo que imprime este script puede ser directamente
 copiado a la hoja en Google Drive.
@@ -24,7 +25,7 @@ import argparse
 import pandas as pd
 
 
-rename_cols = {'bbva': {'date': 'Fecha',
+RENAME_COLS = {'bbva': {'date': 'Fecha',
                         'description': 'Observaciones',
                         'amount': 'Importe',
                         },
@@ -36,6 +37,10 @@ rename_cols = {'bbva': {'date': 'Fecha',
                         'description': 'DESCRIPCIÓN',
                         'amount': 'IMPORTE (€)',
                        },
+                'lab': {'date': 'F.Valor',
+                        'description': 'Concepto',
+                        'amount': 'Importe',
+                       }
               }
 
 
@@ -50,7 +55,7 @@ def _clean_unnamed_cols(df):
 
 
 def _rename_cols(df, bank):
-    cols = {v:k for k,v in rename_cols[bank].items()}
+    cols = {v:k for k,v in RENAME_COLS[bank].items()}
     df.rename(columns=cols, inplace=True)
 
 
@@ -70,6 +75,13 @@ def _clean_ing_obs(obs):
 
 
 def read_bbva_excel(file_name):
+    """Process the Excel file from BBVA."
+
+    Return
+    ------
+    df: pandas.DataFrame
+    """
+
     df = pd.read_excel(file_name, skiprows=4)
     # remove unknown columns
     df = _clean_unnamed_cols(df)
@@ -82,6 +94,13 @@ def read_bbva_excel(file_name):
 
 
 def read_comm_csv(file_name):
+    """Process the CSV file from Commerzbank."
+
+    Return
+    ------
+    df: pandas.DataFrame
+    """
+
     df = pd.read_csv(file_name,
                      index_col=False,
                      sep=',',
@@ -98,19 +117,57 @@ def read_comm_csv(file_name):
 
 
 def read_ing_excel(file_name):
-        df = pd.read_excel(file_name, skiprows=5)
+    """Process the Excel file from ING Direct Espana.
 
-        # rename cols
-        _rename_cols(df, 'ing')
-        #datetime.fromtimestamp(int("1284101485")).strftime('%d/%m/%Y'))
-        # make the date colume a timestamp
-        parse_date = lambda x: pd.to_datetime(x, format='%d/%m/%Y')
+    Return
+    ------
+    df: pandas.DataFrame
+    """
 
-        df['date'] = df['date'].apply(parse_date)
+    df = pd.read_html(file_name, skiprows=3)
 
-        df['description'] = df['description'].apply(_clean_ing_obs)
+    # rename cols
+    _rename_cols(df, 'ing')
+    #datetime.fromtimestamp(int("1284101485")).strftime('%d/%m/%Y'))
+    # make the date colume a timestamp
+    parse_date = lambda x: pd.to_datetime(x, format='%d/%m/%Y')
 
-        return df
+    df['date'] = df['date'].apply(parse_date)
+
+    df['description'] = df['description'].apply(_clean_ing_obs)
+
+    return df
+
+
+def read_lab_excel(file_name):
+    """Process the Excel file from Laboral Kutxa.
+
+    Return
+    ------
+    df: pandas.DataFrame
+    """
+    df = pd.read_html(file_name)[1]
+    df.columns = df.ix[0, :]
+    df = df.ix[1:,:]
+
+    # rename cols
+    _rename_cols(df, 'lab')
+
+    # fix the parsing of the numbers:
+    def str2float(x):
+        num, den = x.replace('=', '').split('/');
+        return int(num)/int(den)
+
+    df['amount'] = df['amount'].apply(str2float)
+    # df['Saldo']  = df['Saldo'].apply(str2float)
+
+    #datetime.fromtimestamp(int("1284101485")).strftime('%d/%m/%Y'))
+    # make the date colume a timestamp
+    parse_date = lambda x: pd.to_datetime(x, format='%d-%m-%Y.')
+
+    df['date'] = df['date'].apply(parse_date)
+
+    return df
 
 
 def gdrive_row(row, user_idx=2):
