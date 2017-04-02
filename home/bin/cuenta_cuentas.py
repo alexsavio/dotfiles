@@ -189,7 +189,7 @@ def set_parser():
     parser.add_argument('-i', '--in', dest='file_name', action='store',
                         help='The path to the spreadsheet.')
     parser.add_argument('-b', '--bank', dest='bank', action='store',
-                        choices=['bbva', 'comm', 'ing'], default='bbva',
+                        choices=['bbva', 'comm', 'ing', 'lab'], default='lab',
                         help='The bank from where the table data comes.')
     parser.add_argument('-u', '--user', dest='user', action='store',
                         choices=['miren', 'alex'], default='miren',
@@ -219,7 +219,8 @@ def main(argv=None):
 
     bank_readers = {'bbva': read_bbva_excel,
                     'comm': read_comm_csv,
-                    'ing':  read_ing_excel}
+                    'ing':  read_ing_excel,
+                    'lab':  read_lab_excel}
 
     reader = bank_readers.get(bank, read_comm_csv)
 
