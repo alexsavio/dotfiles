@@ -5,3 +5,5 @@ if [ -f ~/.bashrc ]; then
 fi
 
 zsh
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
