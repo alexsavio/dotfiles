@@ -26,5 +26,5 @@ export LANG=en_GB.UTF-8
 # iterm2_shell_integration
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
 
-export CFLAGS="-I$(brew --prefix openssl)/include"                           (pyt)
+export CFLAGS="-I$(brew --prefix openssl)/include"
 export LDFLAGS="-L$(brew --prefix openssl)/lib"
