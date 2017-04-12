@@ -113,7 +113,13 @@ then
     export FORCE_SPMMCR=1
 
     addapath ${MCR_DIR}/bin
-    #addlibpath ${MCR_DIR}/runtime/glnxa64
-    #addlibpath ${MCR_DIR}/bin/glnxa64
-    #addlibpath ${MCR_DIR}/sys/os/glnxa64
+    if [[ "$(uname -s)" == 'Darwin' ]]
+    then
+        export SPM_ARCH=maci64
+    else
+        export SPM_ARCH=glnx64
+    fi
+    addlibpath ${MCR_DIR}/runtime/$SPM_ARCH
+    #addlibpath ${MCR_DIR}/bin/$SPM_ARCH
+    addlibpath ${MCR_DIR}/sys/os/$SPM_ARCH
 fi

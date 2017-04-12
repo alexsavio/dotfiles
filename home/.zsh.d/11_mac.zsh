@@ -13,7 +13,7 @@ compinit
 addapath /Applications/Juno.app/Contents/Resources/app/julia/bin
 
 # Matlab
-#addapath /Applications/MATLAB_R2015b.app/bin
+addapath /Applications/MATLAB_R2015b.app/bin
 
 # llvm-config
 if [ -d /usr/local/opt/llvm/ ]; then
