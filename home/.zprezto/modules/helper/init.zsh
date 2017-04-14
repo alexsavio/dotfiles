@@ -12,7 +12,7 @@ function is-autoloadable {
 
 # Checks if a name is a command, function, or alias.
 function is-callable {
-  (( $+commands[$1] )) || (( $+functions[$1] )) || (( $+aliases[$1] ))
+  (( $+commands[$1] || $+functions[$1] || $+aliases[$1] || $+builtins[$1] ))
 }
 
 # Checks a boolean variable for "true".
@@ -23,7 +23,9 @@ function is-true {
 
 # Prints the first non-empty string in the arguments array.
 function coalesce {
-  print "${${(s: :)@}[1]}"
+  for arg in $argv; do
+    print "$arg"
+    return 0
+  done
+  return 1
 }
-
-

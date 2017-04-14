@@ -34,10 +34,9 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'git' \
   'ssh' \
-  'python' \
+  'prompt' \
   'syntax-highlighting' \
-  'history-substring-search' \
-  'prompt'
+  'history-substring-search'
 
 #
 # Deer
