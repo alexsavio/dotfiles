@@ -1,16 +1,3 @@
-up to 28d7056a7a06
-
-# Changes in version 0.6.0
-
-
-## Added highlighting of:
-
-- The `isearch` and `suffix` [`$zle_highlight` settings][zshzle-Character-Highlighting].
-  (79e4d3d12405, 15db71abd0cc; requires zsh 5.3 for `$ISEARCHMATCH_ACTIVE` / `$SUFFIX_ACTIVE` support)
-
-[zshzle-Character-Highlighting]: http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Character-Highlighting
-
-
 # Changes in version 0.5.0
 
 

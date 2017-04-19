@@ -27,13 +27,6 @@
 # vim: ft=zsh sw=2 ts=2 et
 # -------------------------------------------------------------------------------------------------
 
-# First of all, ensure predictable parsing.
-zsh_highlight__aliases=`builtin alias -Lm '[^+]*'`
-# In zsh <= 5.2, `alias -L` emits aliases that begin with a plus sign ('alias -- +foo=42')
-# them without a '--' guard, so they don't round trip.
-#
-# Hence, we exclude them from unaliasing:
-builtin unalias -m '[^+]*'
 
 # Set $0 to the expected value, regardless of functionargzero.
 0=${(%):-%N}
@@ -67,7 +60,7 @@ _zsh_highlight()
 
   # Remove all highlighting in isearch, so that only the underlining done by zsh itself remains.
   # For details see FAQ entry 'Why does syntax highlighting not work while searching history?'.
-  if [[ $WIDGET == zle-isearch-update ]] && ! (( $+ISEARCHMATCH_ACTIVE )); then
+  if [[ $WIDGET == zle-isearch-update ]]; then
     region_highlight=()
     return $ret
   fi
@@ -148,12 +141,6 @@ _zsh_highlight()
 
     # yank / paste (zsh-5.1.1 and newer)
     (( $+YANK_ACTIVE )) && (( YANK_ACTIVE )) && _zsh_highlight_apply_zle_highlight paste standout "$YANK_START" "$YANK_END"
-
-    # isearch
-    (( $+ISEARCHMATCH_ACTIVE )) && (( ISEARCHMATCH_ACTIVE )) && _zsh_highlight_apply_zle_highlight isearch underline "$ISEARCHMATCH_START" "$ISEARCHMATCH_END"
-
-    # suffix
-    (( $+SUFFIX_ACTIVE )) && (( SUFFIX_ACTIVE )) && _zsh_highlight_apply_zle_highlight suffix bold "$SUFFIX_START" "$SUFFIX_END"
 
 
     return $ret
@@ -340,8 +327,8 @@ _zsh_highlight_load_highlighters()
   local highlighter highlighter_dir
   for highlighter_dir ($1/*/); do
     highlighter="${highlighter_dir:t}"
-    [[ -f "$highlighter_dir${highlighter}-highlighter.zsh" ]] &&
-      . "$highlighter_dir${highlighter}-highlighter.zsh"
+    [[ -f "$highlighter_dir/${highlighter}-highlighter.zsh" ]] &&
+      . "$highlighter_dir/${highlighter}-highlighter.zsh"
     if type "_zsh_highlight_highlighter_${highlighter}_paint" &> /dev/null &&
        type "_zsh_highlight_highlighter_${highlighter}_predicate" &> /dev/null;
     then
@@ -358,7 +345,7 @@ _zsh_highlight_load_highlighters()
         eval "_zsh_highlight_highlighter_${(q)highlighter}_paint() { _zsh_highlight_${(q)highlighter}_highlighter \"\$@\" }"
         eval "_zsh_highlight_highlighter_${(q)highlighter}_predicate() { _zsh_highlight_${(q)highlighter}_highlighter_predicate \"\$@\" }"
     else
-        print -r -- >&2 "zsh-syntax-highlighting: ${(qq)highlighter} highlighter should define both required functions '_zsh_highlight_highlighter_${highlighter}_paint' and '_zsh_highlight_highlighter_${highlighter}_predicate' in ${(qq):-"$highlighter_dir${highlighter}-highlighter.zsh"}."
+        print -r -- >&2 "zsh-syntax-highlighting: ${(qq)highlighter} highlighter should define both required functions '_zsh_highlight_highlighter_${highlighter}_paint' and '_zsh_highlight_highlighter_${highlighter}_predicate' in ${(qq):-"$highlighter_dir/${highlighter}-highlighter.zsh"}."
     fi
   done
 }
@@ -397,11 +384,4 @@ zmodload zsh/parameter 2>/dev/null || true
 autoload -U is-at-least
 
 # Initialize the array of active highlighters if needed.
-[[ $#ZSH_HIGHLIGHT_HIGHLIGHTERS -eq 0 ]] && ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
-
-# Restore the aliases we unned
-eval "$zsh_highlight__aliases"
-builtin unset zsh_highlight__aliases
-
-# Set $?.
-true
+[[ $#ZSH_HIGHLIGHT_HIGHLIGHTERS -eq 0 ]] && ZSH_HIGHLIGHT_HIGHLIGHTERS=(main) || true
