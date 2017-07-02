@@ -53,6 +53,8 @@ if ( isinpath vagrant ); then
 	alias vrld="vagrant reload"
 	alias vssh="vagrant ssh"
 	alias vstat="vagrant status"
+  alias vkill="vagrant destroy"
+  alias vprov="vagrant provision"
 fi
 
 # git aliases
