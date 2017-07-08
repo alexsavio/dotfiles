@@ -120,6 +120,10 @@ then
         export SPM_ARCH=glnx64
     fi
     addlibpath ${MCR_DIR}/runtime/$SPM_ARCH
+
+    # for openssl version reasons,
+    # this is fucking my DYLD_LIBRARY_PATH
+    # enable this only where you need it:
+    #addlibpath ${MCR_DIR}/sys/os/$SPM_ARCH
     #addlibpath ${MCR_DIR}/bin/$SPM_ARCH
-    addlibpath ${MCR_DIR}/sys/os/$SPM_ARCH
 fi

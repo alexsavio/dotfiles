@@ -28,3 +28,5 @@ test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_in
 
 export CFLAGS="-I$(brew --prefix openssl)/include"
 export LDFLAGS="-L$(brew --prefix openssl)/lib"
+
+export CXX=g++-4.9
