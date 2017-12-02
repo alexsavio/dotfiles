@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
 Este script sirve para leer la hoja Excel de transacciones
-de diferentes bancos e imprimir los gastos relativos a un mes
-especifico.
+del BBVA e imprimir los gastos relativos a un mes especifico.
 El formato en que se imprimen son especificos para la columna
 de gastos de Miren en la hoja comun en Google Drive de Alex y Miren.
 
@@ -11,7 +10,7 @@ y un modulo para leer archivos Excel.
 
 Para instalar estas dependencias ejecuta:
 
-    pip install pandas xlrd lxml BeautifulSoup4
+    pip install pandas xlrd
 
 Lo que imprime este script puede ser directamente
 copiado a la hoja en Google Drive.
@@ -25,7 +24,7 @@ import argparse
 import pandas as pd
 
 
-RENAME_COLS = {'bbva': {'date': 'Fecha',
+rename_cols = {'bbva': {'date': 'Fecha',
                         'description': 'Observaciones',
                         'amount': 'Importe',
                         },
@@ -33,11 +32,15 @@ RENAME_COLS = {'bbva': {'date': 'Fecha',
                         'description': 'Booking text',
                         'amount': 'Amount',
                        },
-                'ing': {'date': 'F. VALOR',
+                'comm_de': {'date': 'Buchungstag',
+                            'description': 'Buchungstext',
+                            'amount': 'Betrag',
+                           },
+                'ing': {'date': 'FECHA VALOR',
                         'description': 'DESCRIPCIÓN',
                         'amount': 'IMPORTE (€)',
                        },
-                'lab': {'date': 'F.Valor',
+                'lab': {'date': 'Fecha',
                         'description': 'Concepto',
                         'amount': 'Importe',
                        }
@@ -48,14 +51,13 @@ user_colidx = {'miren': 2,
                'alex': 1,
               }
 
-
 def _clean_unnamed_cols(df):
     unnamed_cols = [col for col in df.columns if 'Unnamed' in col]
     return df.drop(unnamed_cols, axis=1)
 
 
 def _rename_cols(df, bank):
-    cols = {v:k for k,v in RENAME_COLS[bank].items()}
+    cols = {v:k for k,v in rename_cols[bank].items()}
     df.rename(columns=cols, inplace=True)
 
 
@@ -74,98 +76,65 @@ def _clean_ing_obs(obs):
     return obs.strip()
 
 
+def _clean_lab_obs(obs):
+    return " ".join(obs.split())
+
+
+def _clean_commerzbank_obs(obs):
+    return " ".join(obs.split()[:4])
+
+
 def read_bbva_excel(file_name):
-    """Process the Excel file from BBVA."
-
-    Return
-    ------
-    df: pandas.DataFrame
-    """
-
     df = pd.read_excel(file_name, skiprows=4)
-    # remove unknown columns
     df = _clean_unnamed_cols(df)
-    # rename cols
     _rename_cols(df, 'bbva')
-
     df['description'] = df['description'].apply(_clean_bbva_obs)
-
     return df
 
 
-def read_comm_csv(file_name):
-    """Process the CSV file from Commerzbank."
-
-    Return
-    ------
-    df: pandas.DataFrame
-    """
-
+def read_commerzbank_csv(file_name):
     df = pd.read_csv(file_name,
                      index_col=False,
                      sep=',',
                      infer_datetime_format=True)
-    # remove unknown columns
-    # df = _clean_unnamed_cols(df)
-    # rename cols
     _rename_cols(df, 'comm')
+    parse_date = lambda x: pd.to_datetime(x, format='%d.%m.%Y')
+    df['date'] = df['date'].apply(parse_date)
+    df['description'] = df['description'].apply(_clean_commerzbank_obs)
+    return df
 
-    df['date'] = df['date'].apply(lambda x: pd.to_datetime(x,
-                                                           format='%d.%m.%Y'))
 
+def read_commerzbank_de_csv(file_name):
+    df = pd.read_csv(file_name,
+                     index_col=False,
+                     sep=',',
+                     infer_datetime_format=True)
+    _rename_cols(df, 'comm_de')
+    parse_date = lambda x: pd.to_datetime(x, format='%d.%m.%Y')
+    df['date'] = df['date'].apply(parse_date)
+    df['description'] = df['description'].apply(_clean_commerzbank_obs)
     return df
 
 
 def read_ing_excel(file_name):
-    """Process the Excel file from ING Direct Espana.
-
-    Return
-    ------
-    df: pandas.DataFrame
-    """
-
-    df = pd.read_html(file_name, skiprows=3)
-
-    # rename cols
+    df = pd.read_excel(file_name, skiprows=3)
     _rename_cols(df, 'ing')
-    #datetime.fromtimestamp(int("1284101485")).strftime('%d/%m/%Y'))
-    # make the date colume a timestamp
     parse_date = lambda x: pd.to_datetime(x, format='%d/%m/%Y')
-
     df['date'] = df['date'].apply(parse_date)
-
     df['description'] = df['description'].apply(_clean_ing_obs)
-
     return df
 
 
-def read_lab_excel(file_name):
-    """Process the Excel file from Laboral Kutxa.
-
-    Return
-    ------
-    df: pandas.DataFrame
-    """
-    df = pd.read_html(file_name)[1]
-    df.columns = df.ix[0, :]
-    df = df.ix[1:,:]
-
-    # rename cols
+def read_laboral_csv(file_name):
+    df = pd.read_csv(file_name, 
+                     index_col=False,
+                     sep=';',
+                     decimal=",",
+                     infer_datetime_format=True)
     _rename_cols(df, 'lab')
-
-    # fix the parsing of the numbers:
-    def str2float(x):
-        num, den = x.replace('=', '').split('/');
-        return int(num)/int(den)
-
-    df['amount'] = df['amount'].apply(str2float)
-    # df['Saldo']  = df['Saldo'].apply(str2float)
-
-    #datetime.fromtimestamp(int("1284101485")).strftime('%d/%m/%Y'))
-    # make the date colume a timestamp
-    parse_date = lambda x: pd.to_datetime(x, format='%d-%m-%Y.')
-
+    parse_date = lambda x: pd.to_datetime(x, format='%d/%m/%Y')
     df['date'] = df['date'].apply(parse_date)
+    df['description'] = df['description'].apply(_clean_lab_obs)
 
     return df
 
@@ -189,7 +158,7 @@ def set_parser():
     parser.add_argument('-i', '--in', dest='file_name', action='store',
                         help='The path to the spreadsheet.')
     parser.add_argument('-b', '--bank', dest='bank', action='store',
-                        choices=['bbva', 'comm', 'ing', 'lab'], default='lab',
+                        choices=['bbva', 'comm', 'comm_de', 'ing', 'lab'], default='lab',
                         help='The bank from where the table data comes.')
     parser.add_argument('-u', '--user', dest='user', action='store',
                         choices=['miren', 'alex'], default='miren',
@@ -218,11 +187,12 @@ def main(argv=None):
     colidx = user_colidx[user]
 
     bank_readers = {'bbva': read_bbva_excel,
-                    'comm': read_comm_csv,
-                    'ing':  read_ing_excel,
-                    'lab':  read_lab_excel}
+                    'comm': read_commerzbank_csv,
+                    'comm_de': read_commerzbank_de_csv,
+                    'lab' : read_laboral_csv,
+                    'ing' : read_ing_excel}
 
-    reader = bank_readers.get(bank, read_comm_csv)
+    reader = bank_readers.get(bank, read_laboral_csv)
 
     df = reader(file_name)
 
