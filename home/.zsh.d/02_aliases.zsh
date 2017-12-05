@@ -124,6 +124,8 @@ if ( isinpath docker ); then
     alias dki="docker run -i -t -P"
     # Execute interactive container, e.g., $dex base /bin/bash
     alias dex="docker exec -i -t"
+    # Execute /bin/bash in interactive container
+    dssh() { docker exec -i -t $1 /bin/bash; }
     # Stop all containers
     dstop() { docker stop $(docker ps -a -q); }
     # Remove all containers
