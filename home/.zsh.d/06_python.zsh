@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Pipenv
-if ( isinpath pipenv );
+if ( isinpath pipenv ); then
   eval "$(pipenv --completion)"
 fi
 
