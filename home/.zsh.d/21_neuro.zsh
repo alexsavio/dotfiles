@@ -45,29 +45,6 @@ then
     export DYLD_FALLBACK_LIBRARY_PATH=$AFNI_PATH
 fi
 
-#CVIP
-if [ -d ${SOFT_PATH}/cvip ];
-then
-    export CVIPHOME=${SOFT_PATH}/cvip
-    export CVIP_IMGPATH=./
-    export CVIP_DISPLAY=picture
-    export TCL_LIBRARY=${CVIPHOME}/CVIPTCL/lib/tcl8.0
-    export TK_LIBRARY=${CVIPHOME}/cvip/CVIPTCL/lib/tk8.0
-    export XF_LOAD_PATH=${CVIPHOME}/CVIPTCL/GUI_SCRIPTS
-
-    addlibpath ${CVIPHOME}/lib
-    addlibpath ${CVIPHOME}/CVIPTCL/lib
-    addapath ${CVIPHOME}/cvip/CVIPTCL
-    addapath ${CVIPHOME}/cvip/bin
-fi
-
-#MRTRIX3
-if [ -d ${SOFT_PATH}/mrtrix3 ];
-then
-    export MRTRIXPATH=${SOFT_PATH}/mrtrix3/bin
-    addapath $MRTRIXPATH
-fi
-
 #ANTS
 if [ -d ${SOFT_PATH}/ants ];
 then
