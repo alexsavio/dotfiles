@@ -39,3 +39,6 @@ then
     addlibpath /opt/intel/mkl/lib/intel64
     addlibpath /opt/intel/lib/intel64
 fi
+
+export BETTER_EXCEPTIONS=1
+
