@@ -37,6 +37,18 @@ if ( isinpath vagrant ); then
 	alias vburn="vagrant destroy -f"
 fi
 
+#vagrant aliases
+if ( isinpath fasd ); then
+    alias a='fasd -a'        # any
+    alias s='fasd -si'       # show / search / select
+    alias d='fasd -d'        # directory
+    alias f='fasd -f'        # file
+    alias sd='fasd -sid'     # interactive directory selection
+    alias sf='fasd -sif'     # interactive file selection
+    alias z='fasd cd -d'     # cd, same functionality as j in autojump
+    alias zz='fasd cd -d -i' # cd with interactive selection
+fi
+
 # git aliases
 if ( isinpath git ); then
     git config --global alias.co checkout
@@ -53,11 +65,11 @@ alias mydowns='cd ~/Downloads'
 alias mydesk='cd ~/Desktop'
 alias mymusic='cd ~/Music'
 alias mydbox='cd ~/Dropbox'
-alias myprojs='cd ~/Projects'
+alias myprojs='cd ~/projects'
 
 #folders hashes
 hash -d dbox='~/Dropbox'
-hash -d prjs='~/Projects'
+hash -d prjs='~/projects'
 
 alias please='sudo'
 
@@ -70,8 +82,6 @@ alias annex='git annex'
 
 alias jupy="jupyter console"
 alias jupynb="jupyter notebook"
-
-alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 
 #docker aliases
 if ( isinpath docker ); then

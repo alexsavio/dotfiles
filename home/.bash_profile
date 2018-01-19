@@ -5,3 +5,4 @@ if [ -f ~/.bashrc ]; then
 fi
 
 zsh
+export PATH=$PATH:/home/alexandre/abin

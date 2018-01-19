@@ -30,3 +30,8 @@ if [ -d ${SOFT_PATH}/z ];
 then
     . ${SOFT_PATH}/z/z.sh
 fi
+
+# github.com/clvv/fasd
+if ( isinpath fasd ); then
+    eval "$(fasd --init auto)"
+fi

@@ -7,10 +7,9 @@ source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 
 # important paths
-export SOFT_PATH=${HOME}/Software
+export SOFT_PATH=${HOME}/software
 
 addapath ~/bin
-addapath ${SOFT_PATH}/myrepos
 addapath ${HOME}/.local/bin
 
 # Your place for hosting Git repos.
