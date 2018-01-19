@@ -11,6 +11,9 @@ source ~/.zplug/init.zsh
 zplug "zplug/zplug", hook-build: "zplug --self-manage"
 
 zplug "zsh-users/zsh-history-substring-search", from:github
+zplug "zsh-users/zsh-autosuggestions", from:github
+
+zplug "popstas/zsh-command-time", from:github
 zplug "gko/ssh-connect", from:github
 
 zplug "felixr/docker-zsh-completion", from:github
