@@ -10,8 +10,16 @@ source ~/.zplug/init.zsh
 
 zplug "zplug/zplug", hook-build: "zplug --self-manage"
 
-zplug "zsh-users/zsh-history-substring-search", from:github
-zplug "zsh-users/zsh-autosuggestions", from:github
+zplug "zsh-users/zsh-history-substring-search"
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+zplug "jimeh/zsh-peco-history"
+#zplug "zsh-users/zsh-autosuggestions", from:github
+
+# Load completion library for those sweet [tab] squares
+zplug "lib/completion", from:oh-my-zsh
+zplug "lib/history", from:oh-my-zsh
 
 zplug "popstas/zsh-command-time", from:github
 zplug "gko/ssh-connect", from:github
@@ -22,7 +30,7 @@ zplug "peterhurford/git-aliases.zsh", from:github
 
 zplug "wbingli/zsh-wakatime", from:github
 
-zplug "mafredri/zsh-async", from:github
+zplug "mafredri/zsh-async", from:github, defer:0
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 
 # Set the priority when loading
