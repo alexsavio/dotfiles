@@ -11,12 +11,10 @@ if zplug check "b4b4r07/enhancd"; then
     export ENHANCD_DOT_SHOW_FULLPATH=1
 fi
 
-zplug "zsh-users/zsh-completions",              defer:0
-zplug "zsh-users/zsh-autosuggestions",          defer:2, on:"zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting",      defer:3, on:"zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions", defer:0
+zplug "zsh-users/zsh-autosuggestions", defer:2, on:"zsh-users/zsh-completions"
+zplug "zsh-users/zsh-syntax-highlighting", defer:3, on:"zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-history-substring-search", defer:3, on:"zsh-users/zsh-syntax-highlighting"
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
 
 zplug "glidenote/hub-zsh-completion"
 zplug 'Valodim/zsh-curl-completion'

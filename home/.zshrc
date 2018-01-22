@@ -31,10 +31,6 @@ if [[ -f ~/.zshrc.local ]]; then
     source ~/.zshrc.local
 fi
 
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-   source /etc/profile.d/vte.sh
-fi
-
 USERNAME='Alexandre M. S.'
 TODAY=`date +%d/%m/%Y`
 

@@ -73,6 +73,11 @@ setopt EXTENDED_GLOB
 # hows about arrays be awesome? (that is, frew${cool}frew has frew surrounding all the variables, not just first and last
 setopt RC_EXPAND_PARAM
 
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
+
 # DB file path
 export ZSH_HISTORY_FILE="$HOME/.zsh_history.db"
 # CLI selector
