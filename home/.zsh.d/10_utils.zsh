@@ -35,3 +35,8 @@ fi
 if ( isinpath fasd ); then
     eval "$(fasd --init auto)"
 fi
+
+# direnv
+if ( isinpath direnv ); then
+    eval "$(direnv hook zsh)"
+fi
