@@ -1,2 +1,2 @@
 #!/bin/bash
-HOME=$HOME/.dropbox-mte /usr/bin/dropbox start
+HOME=$HOME/.dropbox-alt /usr/bin/dropbox start
