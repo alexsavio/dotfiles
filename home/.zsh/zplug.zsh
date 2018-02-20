@@ -46,6 +46,7 @@ zplug "gko/ssh-connect", from:github
 zplug "felixr/docker-zsh-completion", from:github
 zplug "GuilleDF/zsh-ubuntualiases", from:github
 zplug "peterhurford/git-aliases.zsh", from:github
+zplug "plugins/git", from:oh-my-zsh
 
 zplug "wbingli/zsh-wakatime", from:github
 
