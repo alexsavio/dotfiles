@@ -1,9 +1,14 @@
 #!/usr/bin/env zsh
 
-# Pipenv
-if ( isinpath pipenv ); then
-  eval "$(pipenv --completion)"
+# Python3 version
+if ( isinpath python3 ); then
+    addapath 
 fi
+
+# Pipenv
+#if ( isinpath pipenv ); then
+#  eval "$(pipenv --completion)"
+#fi
 
 # Pip configuration
 if ( isinpath pip );
