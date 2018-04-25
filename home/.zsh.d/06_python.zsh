@@ -6,9 +6,9 @@ if ( isinpath python3 ); then
 fi
 
 # Pipenv
-#if ( isinpath pipenv ); then
-#  eval "$(pipenv --completion)"
-#fi
+if ( isinpath pipenv ); then
+  eval "$(pipenv --completion)"
+fi
 
 # Pip configuration
 if ( isinpath pip );
@@ -47,3 +47,4 @@ fi
 
 export BETTER_EXCEPTIONS=1
 
+. /home/alexandre/anaconda3/etc/profile.d/conda.sh
