@@ -24,19 +24,6 @@ then
    export FSLPARALLEL=condor
 fi
 
-#FREESURFER
-if [ -d /opt/freesurfer ];
-then
-    export FREESURFER_HOME=/opt/freesurfer
-    source $FREESURFER_HOME/SetUpFreeSurfer.sh
-fi
-
-if [ -d /Applications/freesurfer ];
-then
-    export FREESURFER_HOME=/Applications/freesurfer
-    source ${FREESURFER_HOME}/SetUpFreeSurfer.sh
-fi
-
 #AFNI
 if [ -d ~/abin ]
 then
