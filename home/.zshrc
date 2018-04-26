@@ -3,6 +3,9 @@ umask 022
 limit coredumpsize 0
 bindkey -d
 
+export LC_ALL=en_GB.UTF-8
+export LANG=en_GB.UTF-8
+
 # Return if zsh is called from Vim
 if [[ -n $VIMRUNTIME ]]; then
     return 0
