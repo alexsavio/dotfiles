@@ -73,8 +73,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 
-for i in `ls ~/.bash.d/*.bash`; do source $i; done
-
 USERNAME='Alexandre M. S.'
 TODAY=`date +%d/%m/%Y`
 

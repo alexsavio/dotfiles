@@ -3,5 +3,3 @@
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
-
-zsh
