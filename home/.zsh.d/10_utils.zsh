@@ -4,3 +4,7 @@
 export PATH="./node_modules/.bin:$PATH"
 
 addapath ${HOME}/.local/bin
+
+if ( isinpath direnv ); then
+  eval "$(direnv hook zsh)"
+fi

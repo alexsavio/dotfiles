@@ -5,6 +5,11 @@ if ( isinpath pipenv ); then
   eval "$(pipenv --completion)"
 fi
 
+
+if [ -d /usr/local/opt/python/libexec/bin ]; then
+  addapath /usr/local/opt/python/libexec/bin
+fi
+
 # Pip configuration
 if ( isinpath pip );
 then
@@ -41,4 +46,3 @@ then
 fi
 
 export BETTER_EXCEPTIONS=1
-
