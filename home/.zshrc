@@ -54,7 +54,6 @@ export UPDATE_ZSH_DAYS=15
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-
 # User configuration
 # Return if zsh is called from Vim
 if [[ -n $VIMRUNTIME ]]; then
@@ -119,14 +118,3 @@ export LANG=en_GB.UTF-8
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# source $ZSH/plugins/fasd/fasd.plugin.zsh
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
