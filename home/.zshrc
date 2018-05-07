@@ -54,6 +54,25 @@ export UPDATE_ZSH_DAYS=15
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+
+# User configuration
+# Return if zsh is called from Vim
+if [[ -n $VIMRUNTIME ]]; then
+    return 0
+fi
+
+USERNAME='Alexandre M. S.'
+TODAY=`date +%d/%m/%Y`
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if [ -d ~/.zsh.d ]; then
+     for i in `ls ~/.zsh.d/*.zsh`; do source $i; done
+fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -78,27 +97,9 @@ plugins=(
   vagrant
   virtualenv
   virtualenvwrapper
-  z
 )
 
 source $ZSH/oh-my-zsh.sh
-
-# User configuration
-# Return if zsh is called from Vim
-if [[ -n $VIMRUNTIME ]]; then
-    return 0
-fi
-
-USERNAME='Alexandre M. S.'
-TODAY=`date +%d/%m/%Y`
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-if [ -d ~/.zsh.d ]; then
-     for i in `ls ~/.zsh.d/*.zsh`; do source $i; done
-fi
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -118,6 +119,8 @@ export LANG=en_GB.UTF-8
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# source $ZSH/plugins/fasd/fasd.plugin.zsh
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh

@@ -4,7 +4,6 @@
 if ( isinpath brew ); then
     fpath=($(brew --prefix)/Library/Contributions/brew_zsh_completion.zsh $fpath)
 fi
-compinit
 
 # llvm-config
 if [ -d /usr/local/opt/llvm/ ]; then
