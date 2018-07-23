@@ -9,6 +9,7 @@ fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 # important paths
 export SOFT_PATH=${HOME}/software
 
+addapath /usr/local/bin
 addapath ~/bin
 addapath ${SOFT_PATH}/myrepos
 addapath ${HOME}/.local/bin

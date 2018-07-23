@@ -1,13 +1,17 @@
 #!/usr/bin/env zsh
 
-# Pipenv
-if ( isinpath pipenv ); then
-  eval "$(pipenv --completion)"
+# if ( isinpath pyenv ); then
+#   eval "$(pyenv init -)"
+# fi
+
+if ( isinpath pipenv && isinpath pyenv ); then
+   PIPENV_PYTHON=$(pyenv root)/shims/python
 fi
 
-
-if [ -d /usr/local/opt/python/libexec/bin ]; then
-  addapath /usr/local/opt/python/libexec/bin
+if ( isinpath pipenv ); then
+  export LC_ALL=en_US.utf-8
+  export LANG=en_US.utf-8
+  eval "$(pipenv --completion)"
 fi
 
 # Pip configuration
@@ -28,8 +32,6 @@ then
 # pip zsh completion end
 fi
 
-export GIT_PYTHON_TRACE=full
-
 # AnaConda
 if [ -d $HOME/anaconda3 ];
 then
@@ -44,5 +46,3 @@ then
     addlibpath /opt/intel/mkl/lib/intel64
     addlibpath /opt/intel/lib/intel64
 fi
-
-export BETTER_EXCEPTIONS=1
