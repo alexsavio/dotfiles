@@ -118,3 +118,11 @@ export LANG=en_GB.UTF-8
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+isinpath() {
+    (( $+commands[$1] ))
+}
+
+if ( isinpath pyenv ); then
+  eval "$(pyenv init -)"
+fi

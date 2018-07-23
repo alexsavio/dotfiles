@@ -1,9 +1,5 @@
 #!/usr/bin/env zsh
 
-# if ( isinpath pyenv ); then
-#   eval "$(pyenv init -)"
-# fi
-
 if ( isinpath pipenv && isinpath pyenv ); then
    PIPENV_PYTHON=$(pyenv root)/shims/python
 fi
@@ -14,7 +10,7 @@ if ( isinpath pipenv ); then
   eval "$(pipenv --completion)"
 fi
 
-# Pip configuration
+#Pip configuration
 if ( isinpath pip );
 then
   # PIP
