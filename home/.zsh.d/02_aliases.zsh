@@ -8,6 +8,7 @@ alias ll='ls -alhFG'
 alias ls='ls -G'
 alias la='ll -A'
 alias l='ll -CF'
+alias qq='exit'
 
 alias ..='cd ..'
 alias ...='cd ...'
