@@ -76,10 +76,10 @@ fi
 # BEGIN ANSIBLE MANAGED BLOCK
 
 # Git
-source $HOME/.scripts/git-completion.sh
+#source $HOME/.scripts/git-completion.sh
 
 # Z
-source $HOME/.scripts/z.sh
+#source $HOME/.scripts/z.sh
 
 # helper functions
 addpath() {
@@ -95,10 +95,8 @@ addlibpath() {
 }
 
 # other stuff
-for i in `ls ~/.bash.d/*.bash`; do source $i; done
+#for i in `ls ~/.bash.d/*.bash`; do source $i; done
 # END ANSIBLE MANAGED BLOCK
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+#[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# added by Anaconda3 installer
-#export PATH="/home/alexandre/anaconda3/bin:$PATH"

@@ -1,13 +1,24 @@
 #!/usr/bin/env zsh
 
-# Python3 version
-if ( isinpath python3 ); then
-    addapath 
-fi
-
 # Pipenv
 if ( isinpath pipenv ); then
   eval "$(pipenv --completion)"
+fi
+
+# pyenv
+if [ -d $HOME/.pyenv ]; then
+   export PYENV_ROOT="$HOME/.pyenv"
+   addapath $PYENV_ROOT/bin 
+
+   if ( command -v pyenv 1>/dev/null 2>&1 ); then
+       eval "$(pyenv init -)"
+       eval "$(pyenv virtualenv-init -)"
+   fi
+   pyenv global 3.6.6
+fi
+
+if ( isinpath pyenv && isinpath pipenv ); then
+    export PIPENV_PYTHON=$PYENV_ROOT/shims/python
 fi
 
 # Pip configuration
