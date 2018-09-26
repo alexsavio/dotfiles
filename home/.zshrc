@@ -9,6 +9,7 @@
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="refined"
+#ZSH_THEME="re5et"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -63,23 +64,23 @@ export UPDATE_ZSH_DAYS=13
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git,
-  aws,
-  cp,
-  pyenv,
-  python,
-  pip,
-  z,
-  docker,
-  docker-compose,
-  fasd,
-  history-substring-search,
-  httpie,
-  mosh,
-  pep8,
-  rsync,
-  tig,
-  tmux,
+  git
+  aws
+  cp
+  pyenv
+  python
+  pip
+  z
+  docker
+  docker-compose
+  fasd
+  history-substring-search
+  httpie
+  mosh
+  pep8
+  rsync
+  tig
+  tmux
   vagrant
 )
 
