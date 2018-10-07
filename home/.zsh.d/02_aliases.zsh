@@ -33,12 +33,12 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 if [ $UID -ne 0 ]; then
     alias reboot='sudo reboot'
-    alias update='sudo apt-get update'
-    alias agu='sudo apt-get upgrade'
-    alias agi='sudo apt-get install'
-    alias agr='sudo apt-get remove'
-    alias agr='sudo apt-get purge'
-    alias as='apt-cache search'
+    alias update='sudo apt update'
+    alias agu='sudo apt upgrade'
+    alias agi='sudo apt install'
+    alias agr='sudo apt remove'
+    alias agr='sudo apt purge'
+    alias as='apt search'
     alias aw='apt-cache show'
 fi
 
@@ -53,6 +53,19 @@ if ( isinpath vagrant ); then
 	alias vrld="vagrant reload"
 	alias vssh="vagrant ssh"
 	alias vstat="vagrant status"
+	alias vburn="vagrant destroy -f"
+fi
+
+#fasd aliases
+if ( isinpath fasd ); then
+    alias a='fasd -a'        # any
+    alias s='fasd -si'       # show / search / select
+    alias d='fasd -d'        # directory
+    alias f='fasd -f'        # file
+    alias sd='fasd -sid'     # interactive directory selection
+    alias sf='fasd -sif'     # interactive file selection
+    alias z='fasd cd -d'     # cd, same functionality as j in autojump
+    alias zz='fasd cd -d -i' # cd with interactive selection
 fi
 
 # git aliases
@@ -71,11 +84,11 @@ alias mydowns='cd ~/Downloads'
 alias mydesk='cd ~/Desktop'
 alias mymusic='cd ~/Music'
 alias mydbox='cd ~/Dropbox'
-alias myprojs='cd ~/Projects'
+alias myprojs='cd ~/projects'
 
 #folders hashes
 hash -d dbox='~/Dropbox'
-hash -d prjs='~/Projects'
+hash -d prjs='~/projects'
 
 alias lock='gnome-screensaver-command --lock'
 alias skn='sudo killall -9 NetworkManager'
@@ -90,18 +103,6 @@ alias annex='git annex'
 
 alias jupy="jupyter console"
 alias jupynb="jupyter notebook"
-
-alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
-
-#function ipyqt(){
-    #python3 -c 'import IPython; IPython.start_ipython(['"'"'qtconsole'"'"']);'
-#}
-
-#function ipynote(){
-#    python3 -c 'import IPython; IPython.start_ipython(['"'"'notebook'"'"']);'
-#}
-
-#alias pip_Uall="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
 
 #docker aliases
 if ( isinpath docker ); then
@@ -123,6 +124,8 @@ if ( isinpath docker ); then
     alias dki="docker run -i -t -P"
     # Execute interactive container, e.g., $dex base /bin/bash
     alias dex="docker exec -i -t"
+    # Execute /bin/bash in interactive container
+    dsh() { docker exec -i -t $1 /bin/bash; }
     # Stop all containers
     dstop() { docker stop $(docker ps -a -q); }
     # Remove all containers

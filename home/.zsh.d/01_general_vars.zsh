@@ -7,14 +7,13 @@ source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 
 # important paths
-export SOFT_PATH=${HOME}/Software
+export SOFT_PATH=${HOME}/software
 
 addapath ~/bin
 addapath ${SOFT_PATH}/myrepos
 addapath ${HOME}/.local/bin
 
-
-# Your place for hosting Git repos. I use this for private repos.
+# Your place for hosting Git repos.
 export GIT_HOSTING='git@github.alexsavio.com'
 
 # Set my editor and git editor
@@ -90,22 +89,45 @@ setopt EXTENDED_GLOB
 # hows about arrays be awesome? (that is, frew${cool}frew has frew surrounding all the variables, not just first and last
 setopt RC_EXPAND_PARAM
 
-# Who doesn't want home and end to work?
-bindkey '\e[1~' beginning-of-line
-bindkey '\e[4~' end-of-line
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
+bindkey '^[[3~' delete-char
 
-# Incremental search is elite!
-bindkey -M vicmd "/" history-incremental-search-backward
-bindkey -M vicmd "?" history-incremental-search-forward
+# DB file path
+export ZSH_HISTORY_FILE="$HOME/.zsh_history.db"
+# CLI selector
+export ZSH_HISTORY_FILTER="fzy:fzf:peco:percol"
 
-# Search based on what you typed in already
-bindkey -M vicmd "//" history-beginning-search-backward
-bindkey -M vicmd "??" history-beginning-search-forward
+# History per directory
+export ZSH_HISTORY_KEYBIND_GET_BY_DIR="^r"
+# All histories
+export ZSH_HISTORY_KEYBIND_GET_ALL="^r^a"
 
-bindkey "\eOP" run-help
+# Run any SQLs on original selector I/F (with screen)
+export ZSH_HISTORY_KEYBIND_SCREEN="^r^r"
 
-# oh wow! This is killer... try it!
-bindkey -M vicmd "q" push-line
-
-# it's like, space AND completion. Gnarlbot.
-bindkey -M viins ' ' magic-space
+# substring
+export ZSH_HISTORY_KEYBIND_ARROW_UP="^p"
+export ZSH_HISTORY_KEYBIND_ARROW_DOWN="^n"
+#
+# # Who doesn't want home and end to work?
+# bindkey '\e[1~' beginning-of-line
+# bindkey '\e[4~' end-of-line
+#
+# # Incremental search is elite!
+# bindkey -M vicmd "/" history-incremental-search-backward
+# bindkey -M vicmd "?" history-incremental-search-forward
+#
+# # Search based on what you typed in already
+# bindkey -M vicmd "//" history-beginning-search-backward
+# bindkey -M vicmd "??" history-beginning-search-forward
+#
+# bindkey "\eOP" run-help
+#
+# # oh wow! This is killer... try it!
+# bindkey -M vicmd "q" push-line
+#
+# # it's like, space AND completion. Gnarlbot.
+# bindkey -M viins ' ' magic-space

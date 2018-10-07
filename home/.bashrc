@@ -73,13 +73,30 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 
-for i in `ls ~/.bash.d/*.bash`; do source $i; done
+# BEGIN ANSIBLE MANAGED BLOCK
 
-USERNAME='Alexandre M. S.'
-TODAY=`date +%d/%m/%Y`
+# Git
+#source $HOME/.scripts/git-completion.sh
 
-### Added by the Heroku Toolbelt
-#export PATH="/usr/local/heroku/bin:$PATH"
+# Z
+#source $HOME/.scripts/z.sh
 
-# added by Miniconda3 3.7.0 installer
-#export PATH="/home/alexandre/miniconda3/bin:$PATH"
+# helper functions
+addpath() {
+    if [ -e $1 ]; then
+        export PATH=$PATH:$1
+    fi
+}
+
+addlibpath() {
+    if [ -e $1 ]; then
+        export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$1
+    fi
+}
+
+# other stuff
+#for i in `ls ~/.bash.d/*.bash`; do source $i; done
+# END ANSIBLE MANAGED BLOCK
+
+#[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+

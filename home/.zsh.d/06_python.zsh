@@ -1,35 +1,31 @@
 #!/usr/bin/env zsh
 
-#Python
-if [[ "$(uname -s)" == 'Darwin' ]]
-then
-   #export PYTHON2_PATH=/Library/Frameworks/Python.framework/Versions/2.7
-   #export PYTHON3_PATH=/Library/Frameworks/Python.framework/Versions/3.4
-   export PYTHON2_PATH=/usr/local/lib/python2.7
-   export PYTHON3_PATH=/usr/local/lib/python3.5
-else
-   export PYTHON2_PATH=/usr/local/lib/python2.7
-   export PYTHON3_PATH=/usr/local/lib/python3.5
+# Pipenv
+if ( isinpath pipenv ); then
+  eval "$(pipenv --completion)"
 fi
 
+# pyenv
+if [ -d $HOME/.pyenv ]; then
+   export PYENV_ROOT="$HOME/.pyenv"
+   addapath $PYENV_ROOT/bin 
 
-# VIRTUALENVWRAPPER
-if [ -d /usr/share/virtualenvwrapper/ ];
-then
-    export VIRTUALENVWRAPPER_PYTHON=`which python3`
-    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
-    export WORKON_HOME=~/envs
-    export PIP_REQUIRE_VIRTUALENV=false
+   if ( command -v pyenv 1>/dev/null 2>&1 ); then
+       eval "$(pyenv init -)"
+       eval "$(pyenv virtualenv-init -)"
+   fi
+   pyenv global 3.6.6
+
+   pyenv-reboot () {
+       pyenv deactivate; pyenv virtualenv-delete ${1}; pyenv virtualenv ${2} ${1}; pyenv activate ${1}; 
+   }
 fi
 
-if ( isinpath virtualenvwrapper.sh );
-then
-    export VIRTUALENVWRAPPER_PYTHON=`which python3`
-    source virtualenvwrapper.sh
-    export WORKON_HOME=~/envs
-    export PIP_REQUIRE_VIRTUALENV=false
+if ( isinpath pyenv && isinpath pipenv ); then
+    export PIPENV_PYTHON=$PYENV_ROOT/shims/python
 fi
 
+# Pip configuration
 if ( isinpath pip );
 then
   # PIP
@@ -49,15 +45,6 @@ fi
 
 export GIT_PYTHON_TRACE=full
 
-# Load pyenv automatically by adding
-#if [ -d $HOME/.pyenv ];
-#then
-#  export PATH="$HOME/.pyenv/bin:$PATH"
-#  eval "$(pyenv init -)"
-#  eval "$(pyenv virtualenv-init -)"
-#fi
-
-
 # AnaConda
 if [ -d $HOME/anaconda3 ];
 then
@@ -72,3 +59,5 @@ then
     addlibpath /opt/intel/mkl/lib/intel64
     addlibpath /opt/intel/lib/intel64
 fi
+
+export BETTER_EXCEPTIONS=1
