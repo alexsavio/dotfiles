@@ -81,7 +81,6 @@ plugins=(
   osx
   aws
   docker-compose
-  docker-machine
   docker
   fasd
   history-substring-search
@@ -90,12 +89,11 @@ plugins=(
   pep8
   pip
   python
+  pyenv
   rsync
   tig
   tmux
   vagrant
-  virtualenv
-  virtualenvwrapper
 )
 
 source $ZSH/oh-my-zsh.sh
