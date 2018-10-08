@@ -10,7 +10,19 @@ if ( isinpath pipenv ); then
   eval "$(pipenv --completion)"
 fi
 
-#Pip configuration
+# pyenv
+if [ -d $HOME/.pyenv ]; then
+   export PYENV_ROOT="$HOME/.pyenv"
+   addapath $PYENV_ROOT/bin
+
+   pyenv global 3.6.6
+
+   pyenv-reboot () {
+       pyenv deactivate; pyenv virtualenv-delete ${1}; pyenv virtualenv ${2} ${1}; pyenv activate ${1};
+   }
+fi
+
+# Pip configuration
 if ( isinpath pip );
 then
   # PIP
