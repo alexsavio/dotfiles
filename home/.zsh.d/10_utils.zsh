@@ -8,3 +8,7 @@ addapath ${HOME}/.local/bin
 if ( isinpath direnv ); then
   eval "$(direnv hook zsh)"
 fi
+
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+    source /etc/profile.d/vte.sh
+fi

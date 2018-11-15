@@ -1,14 +1,21 @@
 #!/usr/bin/env zsh
 
-alias grep='nocorrect grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+# enable color support of ls and also add handy aliases
+if ( isinpath dircolors ); then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --group-directories-first --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
 
-alias ll='ls -alhFG'
-alias ls='ls -G'
+    alias grep='nocorrect grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# some more ls aliases
+alias ll='ls -alhF'
 alias la='ll -A'
 alias l='ll -CF'
-alias qq='exit'
 
 alias ..='cd ..'
 alias ...='cd ...'
@@ -32,8 +39,6 @@ fi
 
 #vagrant aliases
 if ( isinpath fasd ); then
-    eval "$(fasd --init auto)"
-
     alias a='fasd -a'        # any
     alias s='fasd -si'       # show / search / select
     alias d='fasd -d'        # directory
@@ -54,16 +59,6 @@ if ( isinpath git ); then
     git config --global alias.last 'log -1 HEAD'
 fi
 
-# 例: ls | grep word -> ls G word
-alias -g L='| less'
-alias -g M='| more'
-alias -g H='| head'
-alias -g T='| tail'
-alias -g G='| grep'
-alias -g C='| pbcopy'
-
-alias diff='colordiff -u'
-
 #folders gotos
 alias mydocs='cd ~/Documents'
 alias mydowns='cd ~/Downloads'
@@ -80,9 +75,13 @@ alias please='sudo'
 
 alias annex='git annex'
 
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
 alias jupy="jupyter console"
-alias junb="jupyter notebook"
-alias julab="jupyter lab"
+alias jupynb="jupyter notebook"
 
 #docker aliases
 if ( isinpath docker ); then
