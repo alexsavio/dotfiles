@@ -12,3 +12,6 @@ fi
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
     source /etc/profile.d/vte.sh
 fi
+
+alias grun='/usr/lib/node_modules/git-run/bin/gr'
+. <(grun completion)

@@ -37,7 +37,7 @@ if ( isinpath vagrant ); then
 	alias vburn="vagrant destroy -f"
 fi
 
-#vagrant aliases
+#fasd aliases
 if ( isinpath fasd ); then
     alias a='fasd -a'        # any
     alias s='fasd -si'       # show / search / select
