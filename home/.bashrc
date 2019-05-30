@@ -76,8 +76,5 @@ fi
 USERNAME='Alexandre M. S.'
 TODAY=`date +%d/%m/%Y`
 
-### Added by the Heroku Toolbelt
-#export PATH="/usr/local/heroku/bin:$PATH"
 
-# added by Miniconda3 3.7.0 installer
-#export PATH="/home/alexandre/miniconda3/bin:$PATH"
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

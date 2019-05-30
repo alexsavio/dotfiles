@@ -84,16 +84,16 @@ plugins=(
   docker
   fasd
   history-substring-search
-  httpie
+  #httpie
   mosh
-  pep8
-  pip
+  #pep8
+  #pip
   python
   pyenv
   rsync
   tig
   tmux
-  vagrant
+  #vagrant
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -120,10 +120,6 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 isinpath() {
     (( $+commands[$1] ))
 }
-
-if ( isinpath pyenv ); then
-  eval "$(pyenv init -)"
-fi
 
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 # tabtab source for serverless package
