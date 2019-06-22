@@ -15,7 +15,7 @@ if [ -d $HOME/.pyenv ]; then
    export PYENV_ROOT="$HOME/.pyenv"
    addapath $PYENV_ROOT/bin
 
-   pyenv global 3.7.1
+   #pyenv global 3.7.3
 
    pyenv-reboot () {
        pyenv deactivate; pyenv virtualenv-delete ${1}; pyenv virtualenv ${2} ${1}; pyenv activate ${1};

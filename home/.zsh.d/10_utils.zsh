@@ -1,8 +1,6 @@
 #!/usr/bin/env zsh
 
-# add local node_module bin to path
-export PATH="./node_modules/.bin:$PATH"
-
+addapath ./node_modules/.bin
 addapath ${HOME}/.local/bin
 
 if ( isinpath direnv ); then
@@ -13,5 +11,5 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
     source /etc/profile.d/vte.sh
 fi
 
-alias grun='/usr/lib/node_modules/git-run/bin/gr'
+alias grun='$HOME/.nvm/versions/node/v11.3.0/bin/gr'
 . <(grun completion)

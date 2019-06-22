@@ -23,6 +23,9 @@ alias ...='cd ...'
 alias -g grp='| grep -i'
 alias du='du -kch'
 
+#python aliases
+alias pyzc='pyenv activate'
+
 #vagrant aliases
 if ( isinpath vagrant ); then
 	alias vagrup="FORWARD_DOCKER_PORTS='true' vagrant up"

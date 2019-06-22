@@ -125,3 +125,9 @@ source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /home/alexandre/.nvm/versions/node/v11.3.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /home/alexandre/.nvm/versions/node/v11.3.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+# added by travis gem
+[ -f /home/alexandre/.travis/travis.sh ] && source /home/alexandre/.travis/travis.sh
