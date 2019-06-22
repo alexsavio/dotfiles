@@ -24,7 +24,7 @@ alias -g grp='| grep -i'
 alias du='du -kch'
 
 #python aliases
-alias pyzc='pyenv activate'
+alias pyac='pyenv activate'
 
 #vagrant aliases
 if ( isinpath vagrant ); then
