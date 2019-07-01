@@ -15,6 +15,8 @@ if [ -d $HOME/.pyenv ]; then
    export PYENV_ROOT="$HOME/.pyenv"
    addapath $PYENV_ROOT/bin
 
+   eval "$(pyenv init -)"
+   eval "$(pyenv virtualenv-init -)"
    #pyenv global 3.7.3
 
    pyenv-reboot () {
