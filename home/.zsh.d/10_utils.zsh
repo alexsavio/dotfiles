@@ -14,3 +14,4 @@ if [ -d ${SOFT_PATH}/flutter/ ]; then
     addapath ${FLUTTER_DIR}/bin
 fi
 
+addapath $HOME/.tfenv/bin

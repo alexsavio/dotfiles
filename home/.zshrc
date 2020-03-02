@@ -79,21 +79,15 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 plugins=(
   git
   osx
-  aws
   docker-compose
   docker
   fasd
   history-substring-search
-  #httpie
   mosh
-  #pep8
-  #pip
   python
   pyenv
-  rsync
   tig
   tmux
-  #vagrant
 )
 
 source $ZSH/oh-my-zsh.sh

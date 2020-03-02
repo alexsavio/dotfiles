@@ -4,8 +4,8 @@ alias grep='nocorrect grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias ll='ls -alhFG'
-alias ls='ls -G'
+# some more ls aliases
+alias ll='ls -alhF'
 alias la='ll -A'
 alias l='ll -CF'
 alias qq='exit'
@@ -15,6 +15,9 @@ alias ...='cd ...'
 
 alias -g grp='| grep -i'
 alias du='du -kch'
+
+#python aliases
+alias pyac='pyenv activate'
 
 #vagrant aliases
 if ( isinpath vagrant ); then
@@ -81,8 +84,7 @@ alias please='sudo'
 alias annex='git annex'
 
 alias jupy="jupyter console"
-alias junb="jupyter notebook"
-alias julab="jupyter lab"
+alias jupynb="jupyter notebook"
 
 #docker aliases
 if ( isinpath docker ); then
