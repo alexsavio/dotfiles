@@ -13,9 +13,6 @@ fi
 # pyenv
 if [ -d $HOME/.pyenv ]; then
    eval "$(pyenv init -)"
-   eval "$(pyenv virtualenv-init -)"
-   #pyenv global 3.7.3
-
    pyenv-reboot () {
        pyenv deactivate; pyenv virtualenv-delete ${1}; pyenv virtualenv ${2} ${1}; pyenv activate ${1};
    }
