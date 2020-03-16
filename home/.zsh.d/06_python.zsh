@@ -12,9 +12,6 @@ fi
 
 # pyenv
 if [ -d $HOME/.pyenv ]; then
-   export PYENV_ROOT="$HOME/.pyenv"
-   addapath $PYENV_ROOT/shims
-
    eval "$(pyenv init -)"
    eval "$(pyenv virtualenv-init -)"
    #pyenv global 3.7.3
