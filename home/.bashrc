@@ -99,3 +99,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # added by travis gem
 [ -f /home/alexandre/.travis/travis.sh ] && source /home/alexandre/.travis/travis.sh
+
+# add Pulumi to the PATH
+export PATH=$PATH:$HOME/.pulumi/bin

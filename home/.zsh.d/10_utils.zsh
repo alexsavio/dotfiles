@@ -10,3 +10,4 @@ fi
 
 addapath $HOME/.pulumi/bin
 addapath $HOME/.tfenv/bin
+

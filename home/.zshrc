@@ -87,6 +87,7 @@ plugins=(
   python
   pyenv
   tig
+  zsh-aws-vault
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -131,3 +132,5 @@ source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 [[ -f /home/alexandre/.nvm/versions/node/v11.3.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /home/alexandre/.nvm/versions/node/v11.3.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
 # added by travis gem
 [ -f /home/alexandre/.travis/travis.sh ] && source /home/alexandre/.travis/travis.sh
+
+[[ -s "/home/alexandre/.gvm/scripts/gvm" ]] && source "/home/alexandre/.gvm/scripts/gvm"
