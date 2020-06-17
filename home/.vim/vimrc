@@ -13,16 +13,29 @@ Plugin 'gmarik/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
+
+Plugin 'davidhalter/jedi-vim'
+Plugin 'lambdalisue/vim-pyenv', {
+        \ 'depends': ['davidhalter/jedi-vim'],
+        \ 'autoload': {
+        \   'filetypes': ['python', 'python3'],
+        \ }}
+
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'nvie/vim-flake8'
+
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+
+Plugin 'jnurmine/Zenburn'
+Plugin 'altercation/vim-colors-solarized'
+
+Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
-" Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-Plugin 'user/L9', {'name': 'newL9'}
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+Plugin 'editorconfig/editorconfig-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -39,12 +52,6 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-Bundle 'gmarik/vundle'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'editorconfig/editorconfig-vim'
-
 filetype plugin indent on
 " set background=dark
 " colorscheme base16-default
@@ -54,6 +61,8 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 if has("gui_running")
+    set background=dark
+    colorscheme solarized
     set lines=45
     set columns=84
     if has("win32")
@@ -61,11 +70,25 @@ if has("gui_running")
     else
         set guifont=Source\ Code\ Pro\ 12
     endif
+else
+  colorscheme zenburn
 endif
 
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+let python_highlight_all=1
+syntax on
+
+set nu
+set encoding=utf-8
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set splitbelow
+set splitright
 set smarttab
 set expandtab
 set shiftround
@@ -85,6 +108,24 @@ set noerrorbells
 set laststatus=2
 set statusline=%n\ %F\ %m%r\%=%c-%l/%L
 
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
+
+
 nnoremap ; :nohlsearch<CR>
 set pastetoggle=<F2>
 
@@ -98,38 +139,10 @@ elseif has("win32")
     set noswapfile
 endif
 
-"NERDTree
-let NERDTreeChDirMode=1
-let NERDTreeIgnore=['\.pyc$', '\.swp$']
-let NERDTreeQuitOnOpen=1
-let NERDTreeMinimalUI=1
-let NERDTreeShowBookmarks=1
-map <C-n> :NERDTreeToggle<CR>
-
-"YouCompleteMe
-let g:ycm_min_num_of_chars_for_completion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-
-autocmd BufWritePost *.py call Flake8()
-"python remove trailing whitespace
-autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
-"python highlighting extras
-let python_highlight_all = 1
-
-"PHP highlighting extras
-let php_sql_query = 1
-let php_htmlInStrings = 1
-let php_baselib = 1
-
-
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
-
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-
 
 set expandtab
 set textwidth=79
