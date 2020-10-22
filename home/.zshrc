@@ -133,4 +133,3 @@ source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 # added by travis gem
 [ -f /home/alexandre/.travis/travis.sh ] && source /home/alexandre/.travis/travis.sh
 
-[[ -s "/home/alexandre/.gvm/scripts/gvm" ]] && source "/home/alexandre/.gvm/scripts/gvm"
