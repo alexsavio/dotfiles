@@ -1,20 +1,11 @@
 #!/usr/bin/env zsh
 
 addapath() {
-  if [ -e $1 ]; then
-    export PATH=$PATH:$1
-  fi
+  [ -e $1 ] && export PATH=$PATH:$1
 }
 
 addlibpath() {
-    if [ -e $1 ]; then
-        if [[ "$(uname -s)" == 'Darwin' ]]
-        then
-            export DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH}:$1
-        else
-            export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$1
-        fi
-    fi
+    [ -e $1 ] && export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$1
 }
 
 isinpath() {
