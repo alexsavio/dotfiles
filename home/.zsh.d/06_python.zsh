@@ -1,8 +1,6 @@
 #!/usr/bin/env zsh
 
-if ( isinpath pipenv && isinpath pyenv ); then
-   PIPENV_PYTHON=$(pyenv root)/shims/python
-fi
+( isinpath pipenv && isinpath pyenv ) && PIPENV_PYTHON=$(pyenv root)/shims/python
 
 if ( isinpath pipenv ); then
   export LC_ALL=en_US.utf-8
