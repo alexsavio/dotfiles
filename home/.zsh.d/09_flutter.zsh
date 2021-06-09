@@ -1,3 +1,3 @@
 #!/usr/bin/env zsh
 
-addapath $HOME/software/flutter/bin
+addpathsuffix $HOME/software/flutter/bin

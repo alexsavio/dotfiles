@@ -135,3 +135,13 @@ source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 [ -f /home/alexandre/.travis/travis.sh ] && source /home/alexandre/.travis/travis.sh
 
 eval "$(starship init zsh)"
+
+# add Pulumi to the PATH
+export PATH=$PATH:$HOME/.pulumi/bin
+
+# opam configuration
+test -r /home/alexandre/.opam/opam-init/init.zsh && . /home/alexandre/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/alexandre/.sdkman"
+[[ -s "/home/alexandre/.sdkman/bin/sdkman-init.sh" ]] && source "/home/alexandre/.sdkman/bin/sdkman-init.sh"

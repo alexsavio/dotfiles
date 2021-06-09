@@ -13,8 +13,9 @@ fi
 # pyenv
 if [ -d $HOME/.pyenv ]; then
    export PYENV_ROOT="$HOME/.pyenv"
-   addapath $PYENV_ROOT/bin
+   addpathsuffix $PYENV_ROOT/bin
 
+   eval "$(pyenv init --path)"
    eval "$(pyenv init -)"
    eval "$(pyenv virtualenv-init -)"
    #pyenv global 3.7.3
@@ -40,19 +41,4 @@ then
   }
   compctl -K _pip_completion pip
 # pip zsh completion end
-fi
-
-# AnaConda
-if [ -d $HOME/anaconda3 ];
-then
-    addapath $HOME/anaconda3/bin
-fi
-
-#Intel C++ Studio
-if [ -d /opt/intel ];
-then
-    export INTEL_HOME=/opt/intel
-    addapath ${INTEL_HOME}/bin
-    addlibpath /opt/intel/mkl/lib/intel64
-    addlibpath /opt/intel/lib/intel64
 fi

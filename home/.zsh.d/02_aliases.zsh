@@ -26,6 +26,8 @@ alias du='du -kch'
 #python aliases
 alias pyac='pyenv activate'
 
+alias yank='yank-cli -- xsel -b'
+
 #vagrant aliases
 if ( isinpath vagrant ); then
 	alias vagrup="FORWARD_DOCKER_PORTS='true' vagrant up"

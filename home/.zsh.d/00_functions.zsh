@@ -1,8 +1,14 @@
 #!/usr/bin/env zsh
 
-addapath() {
+addpathsuffix() {
   if [ -e $1 ]; then
     export PATH=$PATH:$1
+  fi
+}
+
+addpathprefix() {
+  if [ -e $1 ]; then
+      export PATH=$1:$PATH
   fi
 }
 

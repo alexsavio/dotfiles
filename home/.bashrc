@@ -103,3 +103,7 @@ export NVM_DIR="$HOME/.nvm"
 # add Pulumi to the PATH
 export PATH=$PATH:$HOME/.pulumi/bin
 export PATH=$HOME/.tfenv/bin:$PATH
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/alexandre/.sdkman"
+[[ -s "/home/alexandre/.sdkman/bin/sdkman-init.sh" ]] && source "/home/alexandre/.sdkman/bin/sdkman-init.sh"

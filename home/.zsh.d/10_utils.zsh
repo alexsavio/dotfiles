@@ -8,6 +8,6 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
     source /etc/profile.d/vte.sh
 fi
 
-addapath $HOME/.pulumi/bin
-addapath $HOME/.tfenv/bin
+addpathsuffix $HOME/.pulumi/bin
+addpathsuffix $HOME/.tfenv/bin
 
