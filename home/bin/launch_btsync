@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-sed "s/hostname/$(hostname)/g" ~/bin/btsync.conf > ~/bin/mybtsync.conf
-echo ~/bin/btsync --config ~/bin/mybtsync.conf | at now
-
