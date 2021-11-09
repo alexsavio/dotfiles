@@ -82,6 +82,7 @@ plugins=(
   pyenv
   tig
   tmux
+  zsh-aws-vault
 )
 source $ZSH/oh-my-zsh.sh
 
