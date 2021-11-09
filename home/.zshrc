@@ -21,7 +21,7 @@ ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
@@ -29,7 +29,7 @@ ZSH_THEME="robbyrussell"
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -70,8 +70,19 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
+plugins=(
+  git
+  osx
+  docker-compose
+  docker
+  fasd
+  history-substring-search
+  mosh
+  python
+  pyenv
+  tig
+  tmux
+)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -100,13 +111,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-eval "$(starship init zsh)"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if [ -d ~/.zsh.d ]; then
+    for i in `ls ~/.zsh.d/*.zsh`; do source $i; done
+fi
+
 ###-begin-grond-completions-###
 #
 # yargs command completion script
@@ -125,11 +135,3 @@ _grond_yargs_completions()
 }
 compdef _grond_yargs_completions grond
 ###-end-grond-completions-###
-
-
-# Created by `pipx` on 2021-11-09 16:04:08
-export PIPX_DEFAULT_PYTHON=/Library/Frameworks/Python.framework/Versions/Current/bin/python3
-export PATH="$PATH:/Users/alexandre.savio/.local/bin"
-
-source "$HOME/.homesick/repos/homeshick/homeshick.sh"
-fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
