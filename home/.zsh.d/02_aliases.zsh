@@ -13,7 +13,7 @@ if ( isinpath dircolors ); then
 fi
 
 # some more ls aliases
-alias ll='ls -alhF'
+alias ll='exa -alhF'
 alias la='ll -A'
 alias l='ll -CF'
 

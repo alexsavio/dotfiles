@@ -120,6 +120,8 @@ if ( isinpath pyenv ); then
   eval "$(pyenv init -)"
 fi
 
+export VIRTUAL_ENV_DISABLE_PROMPT=true
+
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`

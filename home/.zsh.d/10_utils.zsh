@@ -8,4 +8,4 @@ fi
 
 addpathsuffix $HOME/.pulumi/bin
 addpathsuffix $HOME/.tfenv/bin
-
+addpathsuffix $HOME/software/balena-cli
