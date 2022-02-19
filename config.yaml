@@ -1,0 +1,37 @@
+config:
+  backup: true
+  banner: false
+  create: true
+  dotpath: dotfiles
+  keepdot: false
+  link_dotfile_default: nolink
+  link_on_import: nolink
+  longkey: false
+dotfiles:
+  f_zshrc:
+    src: zshrc
+    dst: ~/.zshrc
+    chmod: '664'
+  d_zsh.d:
+    src: zsh.d
+    dst: ~/.zsh.d
+    chmod: '775'
+  d_vim:
+    src: vim
+    dst: ~/.vim
+    chmod: '775'
+  d_bin:
+    src: bin
+    dst: ~/bin
+    chmod: '775'
+  f_starship.toml:
+    src: config/starship.toml
+    dst: ~/.config/starship.toml
+profiles:
+  xps13:
+    dotfiles:
+    - f_zshrc
+    - d_zsh.d
+    - d_vim
+    - d_bin
+    - f_starship.toml
