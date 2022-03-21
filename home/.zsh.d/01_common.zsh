@@ -14,7 +14,7 @@ export SOFT_PATH=${HOME}/software
 addapath /usr/local/bin
 addapath /usr/local/sbin
 addapath ~/bin
-addapath ${HOME}/.local/bin
+addapath "${HOME}/.local/bin"
 
 # Set my editor and git editor
 export EDITOR=/usr/bin/vim
