@@ -12,6 +12,7 @@ eval "$(starship init zsh)"
 export SOFT_PATH=${HOME}/software
 
 addapath /usr/local/bin
+addapath /usr/local/sbin
 addapath ~/bin
 addapath ${HOME}/.local/bin
 
@@ -114,4 +115,4 @@ export ZSH_HISTORY_KEYBIND_ARROW_DOWN="^n"
 # bindkey -M vicmd "q" push-line
 #
 # # it's like, space AND completion. Gnarlbot.
-# bindkey -M viins ' ' magic-space
+# bindkey -M viins ' ' magic-spaceexport PATH="/usr/local/opt/ssh-copy-id/bin:$PATH"

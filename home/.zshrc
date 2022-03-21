@@ -72,7 +72,7 @@ zstyle ':omz:update' frequency 13
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  osx
+  macos
   docker-compose
   docker
   fasd
@@ -80,9 +80,9 @@ plugins=(
   mosh
   python
   pyenv
+  poetry
   tig
   tmux
-  zsh-aws-vault
 )
 source $ZSH/oh-my-zsh.sh
 
@@ -136,3 +136,4 @@ _grond_yargs_completions()
 }
 compdef _grond_yargs_completions grond
 ###-end-grond-completions-###
+eval "$(pyenv init -)"
