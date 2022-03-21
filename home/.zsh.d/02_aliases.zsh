@@ -1,21 +1,16 @@
 #!/usr/bin/env zsh
 
-# enable color support of ls and also add handy aliases
-if ( isinpath dircolors ); then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --group-directories-first --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-
-    alias grep='nocorrect grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+# some more ls aliases
+if ( isinpath exa ); then
+    alias l='exa'
+    alias la='exa -a'
+    alias ll='exa -lah'
+    alias ls='exa --color=auto'
 fi
 
-# some more ls aliases
-alias ll='ls -alhF'
-alias la='ll -A'
-alias l='ll -CF'
+if ( isinpath bat ); then
+alias cat='bat --style=plain'
+fi
 
 alias ..='cd ..'
 alias ...='cd ...'

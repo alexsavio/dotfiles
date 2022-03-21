@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/alexandre.savio/.oh-my-zsh"
+export ZSH="${HOME}/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -79,8 +79,8 @@ plugins=(
   history-substring-search
   mosh
   python
-  pyenv
   poetry
+  pyenv
   tig
   tmux
 )
@@ -118,22 +118,4 @@ if [ -d ~/.zsh.d ]; then
     for i in `ls ~/.zsh.d/*.zsh`; do source $i; done
 fi
 
-###-begin-grond-completions-###
-#
-# yargs command completion script
-#
-# Installation: grond completion >> ~/.zshrc
-#    or grond completion >> ~/.zsh_profile on OSX.
-#
-_grond_yargs_completions()
-{
-  local reply
-  local si=$IFS
-  IFS=$'
-' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" grond --get-yargs-completions "${words[@]}"))
-  IFS=$si
-  _describe 'values' reply
-}
-compdef _grond_yargs_completions grond
-###-end-grond-completions-###
 eval "$(pyenv init -)"
