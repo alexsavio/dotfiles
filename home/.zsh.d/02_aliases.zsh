@@ -1,19 +1,30 @@
 #!/usr/bin/env zsh
 
 # some more ls aliases
-if ( isinpath exa ); then
-    alias l='exa'
-    alias la='exa -a'
-    alias ll='exa -lah'
-    alias ls='exa --color=auto'
+if hash exa 2>/dev/null; then
+    alias ls='exa'
+    alias l='exa -l --all --group-directories-first --git'
+    alias ll='exa -l --all --all --group-directories-first --git'
+    alias lt='exa -T --git-ignore --level=2 --group-directories-first'
+    alias llt='exa -lT --git-ignore --level=2 --group-directories-first'
+    alias lT='exa -T --git-ignore --level=4 --group-directories-first'
+else
+    alias l='ls -lah'
+    alias ll='ls -alF'
+    alias la='ls -A'
 fi
 
 if ( isinpath bat ); then
-alias cat='bat --style=plain'
+    alias cat='bat --style=plain'
+fi
+
+if ( isinpath xcp ); then
+    alias cp='xcp'
 fi
 
 alias ..='cd ..'
 alias ...='cd ...'
+alias path='echo -e ${PATH//:/\\n}'
 
 alias -g grp='| grep -i'
 alias du='du -kch'
@@ -108,7 +119,7 @@ if ( isinpath docker ); then
     # Stop all containers
     dstop() { docker stop $(docker ps -a -q); }
     # Remove all containers
-    drm() { docker rm $(docker ps -a -q); }
+    dckrm() { docker rm $(docker ps -a -q); }
     # Stop and Remove all containers
     alias drmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
     # Remove all images

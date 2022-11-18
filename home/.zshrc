@@ -118,4 +118,5 @@ if [ -d ~/.zsh.d ]; then
     for i in `ls ~/.zsh.d/*.zsh`; do source $i; done
 fi
 
-eval "$(pyenv init -)"
+source /Users/alexandre/.config/broot/launcher/bash/br
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"

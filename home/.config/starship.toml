@@ -53,9 +53,14 @@ diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
 
 [nodejs]
-format = "via [🤖 $version](bold green) "
+format = "[🤖 $version](bold green) "
 
 [python]
 symbol = "🐍 "
 pyenv_version_name = false
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 style = "bold green"
+
+[pulumi]
+symbol = "📦 "
+format = "[$symbol($username@)$stack]($style) "

@@ -1,10 +1,13 @@
 #!/usr/bin/env zsh
 
+# pyenv (asdf still uses pyenv under the hood)
+export PYTHON_BUILD_ARIA2_OPTS="-x 10 -k 1M" # Use aria2c when downloading
+
 export PYENV_ROOT="$HOME/.pyenv"
 addapath "$PYENV_ROOT/bin"
 eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
-export PIPENV_PYTHON=$(pyenv root)/shims/python
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+# alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
 export PIPX_DEFAULT_PYTHON=$(pyenv root)/shims/python

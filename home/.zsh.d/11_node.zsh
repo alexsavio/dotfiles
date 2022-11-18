@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NODENV_DIR="$HOME/.nodenv"
+export NODE_VERSIONS="$NODENV_DIR/versions/"
+export NODE_VERSION_PREFIX=""
 
 eval "$(nodenv init -)"

@@ -7,6 +7,7 @@ fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 # important paths
 export SOFT_PATH=${HOME}/software
@@ -15,6 +16,10 @@ addapath /usr/local/bin
 addapath /usr/local/sbin
 addapath ~/bin
 addapath "${HOME}/.local/bin"
+addapath "${HOME}/.cargo/bin"
+
+# asdf
+source "/opt/homebrew/opt/asdf/libexec/asdf.sh"
 
 # Set my editor and git editor
 export EDITOR=/usr/bin/vim
