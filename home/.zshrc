@@ -79,8 +79,6 @@ plugins=(
   history-substring-search
   mosh
   python
-  poetry
-  pyenv
   tig
   tmux
 )
