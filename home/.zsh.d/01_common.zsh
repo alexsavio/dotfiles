@@ -16,7 +16,6 @@ addapath /usr/local/bin
 addapath /usr/local/sbin
 addapath ~/bin
 addapath "${HOME}/.local/bin"
-addapath "${HOME}/.cargo/bin"
 
 # asdf
 source "/opt/homebrew/opt/asdf/libexec/asdf.sh"
