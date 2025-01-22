@@ -114,6 +114,3 @@ source $ZSH/oh-my-zsh.sh
 if [ -d ~/.zsh.d ]; then
     for i in `ls ~/.zsh.d/*.zsh`; do source $i; done
 fi
-
-source /Users/alexandre/.config/broot/launcher/bash/br
-source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
