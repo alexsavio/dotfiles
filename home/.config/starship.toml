@@ -1,67 +1,66 @@
-add_newline = true
+# Don't print a new line at the start of the prompt
+add_newline = false
 
-[character]
-success_symbol = '[➜](bold green)'
-error_symbol = '[✗](bold red) '
+# Replace the "❯" symbol in the prompt with "➜"
+[character]                            # The name of the module we are configuring is "character"
+success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+error_symbol = "[✗](bold red) "
 
+# Disable the package module, hiding it from the prompt completely
 [package]
 disabled = true
 
 [aws]
 format = 'on [$symbol$profile(\($region\))]($style) '
-style = 'bold yellow'
-symbol = '☁️ '
-
+style = "bold yellow"
+symbol = "☁️ "
 [aws.region_aliases]
-eu-central-1 = 'fr'
-eu-west-1 = 'eir'
+eu-central-1 = "fr"
+eu-west-1 = "eir"
 
 [battery]
-full_symbol = '🔋'
-charging_symbol = '⚡️'
-discharging_symbol = '💀'
+full_symbol = "🔋"
+charging_symbol = "⚡️"
+discharging_symbol = "💀"
 
 [cmd_duration]
 min_time = 500
-format = 'underwent [$duration](bold yellow)'
+format = "underwent [$duration](bold yellow)"
 show_notifications = true
 
 [gcloud]
-symbol = '️☁️  '
-format = 'on [$symbol$account(@$domain)(\($project\))]($style) '
-disabled = true
+symbol = "️☁️  "
 
 [gcloud.region_aliases]
-eu-west1 = 'ew1'
-us-central1 = 'uc1'
-asia-northeast1 = 'an1'
+us-central1 = "uc1"
+asia-northeast1 = "an1"
 
 [git_branch]
-symbol = '🌱 '
-truncation_symbol = ''
-disabled = false
+symbol = "🌱 "
+truncation_symbol = ""
 
 [git_commit]
 commit_hash_length = 4
-tag_symbol = '🔖 '
+tag_symbol = "🔖 "
 
 [git_state]
 format = '[\($state( $progress_current of $progress_total)\)]($style) '
-cherry_pick = '[🍒 PICKING](bold red)'
+cherry_pick = "[🍒 PICKING](bold red)"
 
 [git_status]
-ahead = '⇡${count}'
-diverged = '⇕⇡${ahead_count}⇣${behind_count}'
-behind = '⇣${count}'
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
 
 [nodejs]
-format = 'via [🤖 $version](bold green) '
+format = "[🤖 $version](bold green) "
 
 [python]
-symbol = '🐍 '
+symbol = "🐍 "
 pyenv_version_name = false
-style = 'bold green'
-disabled = false
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+style = "bold green"
 
-[terraform]
-format = '[💠 $version$workspace]($style) '
+[pulumi]
+symbol = "📦 "
+format = "[$symbol($username@)$stack]($style) "

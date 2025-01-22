@@ -1,24 +1,30 @@
 #!/usr/bin/env zsh
 
-# enable color support of ls and also add handy aliases
-if ( isinpath dircolors ); then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --group-directories-first --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-
-    alias grep='nocorrect grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+# some more ls aliases
+if hash exa 2>/dev/null; then
+    alias ls='exa'
+    alias l='exa -l --all --group-directories-first --git'
+    alias ll='exa -l --all --all --group-directories-first --git'
+    alias lt='exa -T --git-ignore --level=2 --group-directories-first'
+    alias llt='exa -lT --git-ignore --level=2 --group-directories-first'
+    alias lT='exa -T --git-ignore --level=4 --group-directories-first'
+else
+    alias l='ls -lah'
+    alias ll='ls -alF'
+    alias la='ls -A'
 fi
 
-# some more ls aliases
-alias ll='exa -alhF'
-alias la='ll -A'
-alias l='ll -CF'
+if ( isinpath bat ); then
+    alias cat='bat --style=plain'
+fi
+
+if ( isinpath xcp ); then
+    alias cp='xcp'
+fi
 
 alias ..='cd ..'
 alias ...='cd ...'
+alias path='echo -e ${PATH//:/\\n}'
 
 alias -g grp='| grep -i'
 alias du='du -kch'
@@ -28,20 +34,6 @@ alias pyac='pyenv activate'
 
 alias yank='yank-cli -- xsel -b'
 
-#vagrant aliases
-if ( isinpath vagrant ); then
-	alias vagrup="FORWARD_DOCKER_PORTS='true' vagrant up"
-	alias vagrhalt='vagrant halt'
-	alias vup="vagrant up"
-	alias vh="vagrant halt"
-	alias vs="vagrant suspend"
-	alias vr="vagrant resume"
-	alias vrld="vagrant reload"
-	alias vssh="vagrant ssh"
-	alias vstat="vagrant status"
-	alias vburn="vagrant destroy -f"
-fi
-
 #fasd aliases
 if ( isinpath fasd ); then
     alias a='fasd -a'        # any
@@ -50,8 +42,8 @@ if ( isinpath fasd ); then
     alias f='fasd -f'        # file
     alias sd='fasd -sid'     # interactive directory selection
     alias sf='fasd -sif'     # interactive file selection
-    alias z='fasd cd -d'     # cd, same functionality as j in autojump
-    alias zz='fasd cd -d -i' # cd with interactive selection
+    alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+    alias zz='fasd_cd -d -i' # cd with interactive selection
 fi
 
 # git aliases
@@ -113,7 +105,7 @@ if ( isinpath docker ); then
     # Stop all containers
     dstop() { docker stop $(docker ps -a -q); }
     # Remove all containers
-    drm() { docker rm $(docker ps -a -q); }
+    dckrm() { docker rm $(docker ps -a -q); }
     # Stop and Remove all containers
     alias drmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
     # Remove all images
