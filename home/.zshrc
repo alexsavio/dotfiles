@@ -118,3 +118,5 @@ fi
 
 source /Users/alexandre/.config/broot/launcher/bash/br
 source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+
+. "$HOME/.cargo/env"

@@ -5,3 +5,5 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 . "$HOME/.cargo/env"
 
+
+export PATH="/Users/alexandre/.local/share/solana/install/active_release/bin:$PATH"

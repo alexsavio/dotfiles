@@ -11,3 +11,5 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
 export PIPX_DEFAULT_PYTHON=${HOME}/.pyenv/shims/python
+
+export UV_PYENV_ROOT=$PYENV_ROOT/versions
