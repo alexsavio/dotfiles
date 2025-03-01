@@ -16,7 +16,7 @@ addpathsuffix ${HOME}/.local/bin
 # Your place for hosting Git repos.
 export GIT_HOSTING='git@github.alexsavio.com'
 
-# Set my editor and git editor
+# Set my editor and git editorF
 export EDITOR=/usr/bin/vim
 export GIT_EDITOR=/usr/bin/vim
 export MP_EDITOR=/usr/bin/edit

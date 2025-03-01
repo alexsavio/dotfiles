@@ -29,9 +29,7 @@ alias path='echo -e ${PATH//:/\\n}'
 alias -g grp='| grep -i'
 alias du='du -kch'
 
-#python aliases
-alias pyac='pyenv activate'
-
+alias lg='lazygit'
 alias yank='yank-cli -- xsel -b'
 
 #fasd aliases
