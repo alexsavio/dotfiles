@@ -120,3 +120,35 @@ source /Users/alexandre/.config/broot/launcher/bash/br
 source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 
 . "$HOME/.cargo/env"
+
+# Added by Windsurf
+export PATH="/Users/alexandre/.codeium/windsurf/bin:$PATH"
+
+# bun completions
+[ -s "/Users/alexandre/.bun/_bun" ] && source "/Users/alexandre/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/alexandre/.lmstudio/bin"
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/alexandre/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/alexandre/.antigravity/antigravity/bin:$PATH"
+
+# opencode
+export PATH=/Users/alexandre/.opencode/bin:$PATH

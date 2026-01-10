@@ -93,6 +93,7 @@ alias annex='git annex'
 
 alias jupy="jupyter console"
 alias jupynb="jupyter notebook"
+alias oc="opencode"
 
 #docker aliases
 if ( isinpath docker ); then

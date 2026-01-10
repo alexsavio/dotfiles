@@ -1,43 +1,128 @@
-# Don't print a new line at the start of the prompt
-add_newline = false
+"$schema" = 'https://starship.rs/config-schema.json'
 
-# Replace the "❯" symbol in the prompt with "➜"
-[character]                            # The name of the module we are configuring is "character"
-success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
-error_symbol = "[✗](bold red) "
+format = """
+[](first_chunk)\
+$os\
+$username\
+[](bg:second_chunk fg:first_chunk)\
+$directory\
+[](fg:second_chunk bg:third_chunk)\
+$git_branch\
+$git_status\
+[](fg:third_chunk bg:fourth_chunk)\
+$c\
+$cpp\
+$rust\
+$nodejs\
+$python\
+$elixir\
+$aws\
+[](fg:fourth_chunk bg:color_bg3)\
+$battery\
+[](fg:color_bg3 bg:color_bg1)\
+$direnv\
+[ ](fg:color_bg1)\
+$cmd_duration\
+$line_break\
+$character"""
 
-# Disable the package module, hiding it from the prompt completely
-[package]
-disabled = true
+palette = 'nordic'
+
+[palettes.gruvbox_dark]
+color_fg0 = '#fbf1c7'
+color_bg1 = '#3c3836'
+color_bg3 = '#665c54'
+first_chunk = '#d65d0e'
+second_chunk = '#d79921'
+third_chunk = '#689d6a'
+fourth_chunk = '#458588'
+
+[palettes.nordic]
+color_fg0 = '#fbf1c7'
+color_bg1 = '#6272a4'
+color_bg3 = '#665c54'
+first_chunk = '#2e3440'
+second_chunk = '#3b4252'
+third_chunk = '#434c5e'
+fourth_chunk = '#4c566a'
+
+[palettes.dark_forest]
+color_fg0    = '#fbf1c7'
+color_bg1    = '#2f3e2e'  # muted forest green
+color_bg3    = '#3b4f3a'  # darker forest green
+first_chunk  = '#1b2b1b'  # very dark green, for deep forest
+second_chunk = '#2a3b2a'  # slightly lighter than first_chunk
+third_chunk  = '#3a4f3a'  # matches bg3 range
+fourth_chunk = '#4f6b4f'  # highlight chunk, olive tone
+
+[os]
+disabled = false
+style = "bg:first_chunk fg:color_fg0"
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+EndeavourOS = ""
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+Pop = ""
+
+[username]
+show_always = true
+style_user = "bg:first_chunk fg:color_fg0"
+style_root = "bg:first_chunk fg:color_fg0"
+format = '[ $user ]($style)'
+
+[directory]
+style = "fg:color_fg0 bg:second_chunk"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
+[aws.region_aliases]
+eu-central-1 = "frk"
+eu-west-1 = "dblin"
+us-east-1 = "ohio"
+ap-northeast-1 = "tokyo"
 
 [aws]
-format = 'on [$symbol$profile(\($region\))]($style) '
-style = "bold yellow"
-symbol = "☁️ "
-[aws.region_aliases]
-eu-central-1 = "fr"
-eu-west-1 = "eir"
+style = "bg:third_chunk"
+format = '[[ $symbol( $profile( $region) )](fg:color_fg0 bg:third_chunk)]($style)'
+symbol = "󰸏 "
 
-[battery]
-full_symbol = "🔋"
-charging_symbol = "⚡️"
-discharging_symbol = "💀"
-
-[cmd_duration]
-min_time = 500
-format = "underwent [$duration](bold yellow)"
-show_notifications = true
-
-[gcloud]
-symbol = "️☁️  "
-
-[gcloud.region_aliases]
-us-central1 = "uc1"
-asia-northeast1 = "an1"
+[git_status]
+style = "bg:third_chunk"
+format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:third_chunk)]($style)'
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
 
 [git_branch]
-symbol = "🌱 "
-truncation_symbol = ""
+symbol = ""
+style = "bg:third_chunk"
+format = '[[ $symbol $branch ](fg:color_fg0 bg:third_chunk)]($style)'
 
 [git_commit]
 commit_hash_length = 4

@@ -17,9 +17,6 @@ addapath /usr/local/sbin
 addapath ~/bin
 addapath "${HOME}/.local/bin"
 
-# asdf
-source "/opt/homebrew/opt/asdf/libexec/asdf.sh"
-
 # Set my editor and git editor
 export EDITOR=/usr/bin/vim
 export GIT_EDITOR=/usr/bin/vim
