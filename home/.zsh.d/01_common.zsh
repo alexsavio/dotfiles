@@ -9,6 +9,12 @@ eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
+# broot
+[[ -f ~/.config/broot/launcher/bash/br ]] && source ~/.config/broot/launcher/bash/br
+
+# asdf-direnv
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+
 # important paths
 export SOFT_PATH=${HOME}/software
 
@@ -117,3 +123,4 @@ export ZSH_HISTORY_KEYBIND_ARROW_DOWN="^n"
 #
 # # it's like, space AND completion. Gnarlbot.
 # bindkey -M viins ' ' magic-spaceexport PATH="/usr/local/opt/ssh-copy-id/bin:$PATH"
+eval "$(/Users/alexandre/.local/bin/mise activate zsh)"

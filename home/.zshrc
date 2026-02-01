@@ -84,71 +84,8 @@ plugins=(
 )
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [ -d ~/.zsh.d ]; then
     for i in `ls ~/.zsh.d/*.zsh`; do source $i; done
 fi
-
-source /Users/alexandre/.config/broot/launcher/bash/br
-source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
-
-. "$HOME/.cargo/env"
-
-# Added by Windsurf
-export PATH="/Users/alexandre/.codeium/windsurf/bin:$PATH"
-
-# bun completions
-[ -s "/Users/alexandre/.bun/_bun" ] && source "/Users/alexandre/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/alexandre/.lmstudio/bin"
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/alexandre/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
-export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
-export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
-export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
-
-# Added by Antigravity
-export PATH="/Users/alexandre/.antigravity/antigravity/bin:$PATH"
-
-# opencode
-export PATH=/Users/alexandre/.opencode/bin:$PATH
