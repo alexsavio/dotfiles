@@ -70,6 +70,10 @@ zstyle ':omz:update' frequency 13
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+# tmux plugin config
+ZSH_TMUX_CONFIG="$HOME/.tmux.conf"
+ZSH_TMUX_AUTOSTART=false
+
 plugins=(
   git
   macos
@@ -89,3 +93,8 @@ source $ZSH/oh-my-zsh.sh
 if [ -d ~/.zsh.d ]; then
     for i in `ls ~/.zsh.d/*.zsh`; do source $i; done
 fi
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/alexandre/.lmstudio/bin"
+# End of LM Studio CLI section
+
