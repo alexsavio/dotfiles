@@ -1,16 +1,19 @@
-layout_uv() {
-    [[ $# -gt 0 ]] && shift
-    if [[ -d ".venv" ]]; then
-        VIRTUAL_ENV=$UV_PROJECT_ENVIRONMENT
-    fi
+VENVS_DIR="$HOME/.virtualenvs"
 
-    if [[ -z $VIRTUAL_ENV || ! -d $VIRTUAL_ENV ]]; then
-        log_status "No virtual environment exists. Executing \`uv venv\` to create one."
-        uv venv --allow-existing
-        VIRTUAL_ENV=$UV_PROJECT_ENVIRONMENT
+layout_uv() {
+    # Derive a unique venv name from the project path
+    # e.g., /Users/alexandre/projects/foo/bar → projects-foo-bar
+    local venv_name
+    venv_name=$(pwd | sed "s|$HOME/||; s|/|-|g")
+    VIRTUAL_ENV="${UV_PROJECT_ENVIRONMENT:-$VENVS_DIR/$venv_name}"
+
+    if [[ ! -d "$VIRTUAL_ENV" ]]; then
+        log_status "No virtual environment exists. Creating $VIRTUAL_ENV"
+        mkdir -p "$VENVS_DIR"
+        uv venv "$VIRTUAL_ENV"
     fi
 
     PATH_add "$VIRTUAL_ENV/bin"
-    export UV_ACTIVE=1  # or VENV_ACTIVE=1
+    export UV_ACTIVE=1
     export VIRTUAL_ENV
 }

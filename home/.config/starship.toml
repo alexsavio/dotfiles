@@ -17,6 +17,8 @@ $nodejs\
 $python\
 $elixir\
 $aws\
+$docker_context\
+${custom.compose}\
 [](fg:fourth_chunk bg:color_bg3)\
 $battery\
 [](fg:color_bg3 bg:color_bg1)\
@@ -101,20 +103,40 @@ truncation_symbol = "…/"
 "Pictures" = " "
 "Developer" = "󰲋 "
 
-[aws.region_aliases]
-eu-central-1 = "frk"
-eu-west-1 = "dblin"
-us-east-1 = "ohio"
-ap-northeast-1 = "tokyo"
-
 [aws]
 style = "bg:third_chunk"
 format = '[[ $symbol( $profile( $region) )](fg:color_fg0 bg:third_chunk)]($style)'
 symbol = "󰸏 "
 
+[aws.region_aliases]
+us-east-1 = "nva"
+us-east-2 = "ohio"
+us-west-1 = "nca"
+us-west-2 = "ore"
+eu-west-1 = "dub"
+eu-west-2 = "lon"
+eu-west-3 = "par"
+eu-central-1 = "frk"
+eu-central-2 = "zur"
+eu-north-1 = "sto"
+eu-south-1 = "mil"
+ap-northeast-1 = "tokyo"
+ap-northeast-2 = "seoul"
+ap-southeast-1 = "sgp"
+ap-southeast-2 = "syd"
+ap-south-1 = "mum"
+ca-central-1 = "mtl"
+sa-east-1 = "sao"
+
 [git_status]
 style = "bg:third_chunk"
 format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:third_chunk)]($style)'
+staged = "+${count}"
+modified = "~${count}"
+untracked = "?${count}"
+deleted = "-${count}"
+conflicted = "!${count}"
+stashed = ""
 ahead = "⇡${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
@@ -126,11 +148,11 @@ format = '[[ $symbol $branch ](fg:color_fg0 bg:third_chunk)]($style)'
 
 [git_commit]
 commit_hash_length = 4
-tag_symbol = "🔖 "
+tag_symbol = "󰓹 "
 
 [git_state]
 format = '[\($state( $progress_current of $progress_total)\)]($style) '
-cherry_pick = "[🍒 PICKING](bold red)"
+cherry_pick = "[ PICKING](bold red)"
 
 
 [nodejs]
@@ -153,35 +175,11 @@ symbol = ""
 style = "bg:fourth_chunk"
 format = '[[ $symbol( $version) ](fg:color_fg0 bg:fourth_chunk)]($style)'
 
-[golang]
-symbol = ""
-style = "bg:fourth_chunk"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:fourth_chunk)]($style)'
-
-[php]
-symbol = ""
-style = "bg:fourth_chunk"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:fourth_chunk)]($style)'
-
-[java]
-symbol = ""
-style = "bg:fourth_chunk"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:fourth_chunk)]($style)'
-
-[kotlin]
-symbol = ""
-style = "bg:fourth_chunk"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:fourth_chunk)]($style)'
-
-[haskell]
-symbol = ""
-style = "bg:fourth_chunk"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:fourth_chunk)]($style)'
 
 [python]
 symbol = ""
 style = "bg:fourth_chunk"
-format = '[[ $symbol( $version) \($virtualenv\) ](fg:color_fg0 bg:fourth_chunk)]($style)'
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:fourth_chunk)]($style)'
 
 [elixir]
 symbol = ""
@@ -192,26 +190,9 @@ format = '[[ $symbol( $version) ](fg:color_fg0 bg:fourth_chunk)]($style)'
 disabled = false
 symbol = ""
 style = "bg:color_fg0"
-format = '[[ $symbol( $environment) ](fg:color_fg0 bg:color_bg1)]($style)'
-
-[docker_context]
-symbol = ""
-style = "bg:color_fg0"
-format = '[[ $symbol( $context) ](fg:#83a598 bg:color_fg0)]($style)'
-
-[conda]
-style = "bg:color_fg0"
-format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_fg0)]($style)'
-
-[pixi]
-style = "bg:color_fg0"
-format = '[[ $symbol( $version)( $environment) ](fg:color_fg0 bg:color_fg0)]($style)'
-
-[time]
-disabled = false
-time_format = "%R"
-style = "bg:color_bg1"
-format = '[[  $time ](fg:color_fg0 bg:color_bg1)]($style)'
+format = '[[ $symbol$loaded ](fg:color_fg0 bg:color_bg1)]($style)'
+loaded_msg = " direnv"
+unloaded_msg = ""
 
 [line_break]
 disabled = false
@@ -225,15 +206,35 @@ error_symbol = "[✗](bold red) "
 disabled = true
 
 [battery]
-full_symbol = "🔋"
-charging_symbol = "⚡️"
-discharging_symbol = "💀"
+full_symbol = "󰁹 "
+charging_symbol = "󰂄 "
+discharging_symbol = "󰂃 "
+
+[[battery.display]]
+threshold = 20
+style = "bold red"
+
+[[battery.display]]
+threshold = 50
+style = "bold yellow"
+
+[docker_context]
+symbol = "󰡨 "
+style = "bg:fourth_chunk"
+format = '[[ $symbol$context ](fg:color_fg0 bg:fourth_chunk)]($style)'
+only_with_files = true
+
+[custom.compose]
+command = """docker compose ps --status running --format json 2>/dev/null | jq -s 'length'"""
+when = "docker compose ps --status running --format json 2>/dev/null | jq -s 'if length > 0 then true else false end' -e"
+symbol = "󰡨 "
+style = "bg:fourth_chunk"
+format = '[[ $symbol$output↑ ](fg:color_fg0 bg:fourth_chunk)]($style)'
+detect_files = ["docker-compose.yml", "docker-compose.yaml", "compose.yml", "compose.yaml"]
 
 [cmd_duration]
 min_time = 500
 show_milliseconds = true
-format = " in $duration "
-style = "bg:lavender"
+format = " in [$duration]($style) "
+style = "bold yellow"
 disabled = false
-show_notifications = true
-min_time_to_notify = 45000
