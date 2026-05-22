@@ -17,8 +17,6 @@ $nodejs\
 $python\
 $elixir\
 $aws\
-$docker_context\
-${custom.compose}\
 [](fg:fourth_chunk bg:color_bg3)\
 $battery\
 [](fg:color_bg3 bg:color_bg1)\
@@ -219,18 +217,10 @@ threshold = 50
 style = "bold yellow"
 
 [docker_context]
-symbol = "󰡨 "
-style = "bg:fourth_chunk"
-format = '[[ $symbol$context ](fg:color_fg0 bg:fourth_chunk)]($style)'
-only_with_files = true
+disabled = true
 
 [custom.compose]
-command = """docker compose ps --status running --format json 2>/dev/null | jq -s 'length'"""
-when = "docker compose ps --status running --format json 2>/dev/null | jq -s 'if length > 0 then true else false end' -e"
-symbol = "󰡨 "
-style = "bg:fourth_chunk"
-format = '[[ $symbol$output↑ ](fg:color_fg0 bg:fourth_chunk)]($style)'
-detect_files = ["docker-compose.yml", "docker-compose.yaml", "compose.yml", "compose.yaml"]
+disabled = true
 
 [cmd_duration]
 min_time = 500
