@@ -35,3 +35,6 @@ export GIT_EDITOR=$EDITOR
 
 # Software
 export SOFT_PATH="$HOME/software"
+
+# Obsidian vault (read by Claude Code skills)
+export OBSIDIAN_VAULT_ROOT="$HOME/Library/CloudStorage/Dropbox/Apps/obsidian-claude/claude"
