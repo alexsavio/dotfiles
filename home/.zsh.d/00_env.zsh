@@ -30,8 +30,8 @@ export BUN_INSTALL="$HOME/.bun"
 [[ -d "$BUN_INSTALL/bin" ]] && path=($BUN_INSTALL/bin $path)
 
 # Editors
-export EDITOR=vim
-export GIT_EDITOR=vim
+if (( $+commands[nvim] )); then export EDITOR=nvim; else export EDITOR=vim; fi
+export GIT_EDITOR=$EDITOR
 
 # Software
 export SOFT_PATH="$HOME/software"
