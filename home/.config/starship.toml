@@ -49,7 +49,7 @@ tail_fg = '#a0a9cb'
 show_always = false
 style_user = "bg:dir_bg fg:dir_fg"
 style_root = "bg:os_bg fg:red bold"
-format = '[$user ]($style)'
+format = '[ $user]($style)'
 
 [jobs]
 style = "bg:dir_bg fg:dir_fg"
