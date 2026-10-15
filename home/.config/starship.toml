@@ -1,12 +1,11 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 # Tokyo Night preset (https://starship.rs/presets/tokyo-night), extended with
-# username, aws, c/cpp/python/elixir, battery, direnv and cmd_duration.
+# username (SSH/root only), jobs, aws, c/cpp/python/elixir, battery, direnv and cmd_duration.
 format = """
-[░▒▓](os_bg)\
-$os\
+[](fg:dir_bg)\
 $username\
-[](bg:dir_bg fg:os_bg)\
+$jobs\
 $directory\
 [](fg:dir_bg bg:git_bg)\
 $git_branch\
@@ -45,41 +44,17 @@ lang_fg = '#769ff0'
 tail_bg = '#1d2230'
 tail_fg = '#a0a9cb'
 
-[os]
-disabled = false
-style = "bg:os_bg fg:os_fg"
-format = "[ $symbol ]($style)"
-
-[os.symbols]
-Windows = "󰍲"
-Ubuntu = "󰕈"
-SUSE = ""
-Raspbian = "󰐿"
-Mint = "󰣭"
-Macos = "󰀵"
-Manjaro = ""
-Linux = "󰌽"
-Gentoo = "󰣨"
-Fedora = "󰣛"
-Alpine = ""
-Amazon = ""
-Android = ""
-AOSC = ""
-Arch = "󰣇"
-Artix = "󰣇"
-EndeavourOS = ""
-CentOS = ""
-Debian = "󰣚"
-Redhat = "󱄛"
-RedHatEnterprise = "󱄛"
-Pop = ""
-
 [username]
 # Hidden for the local login user; shown over SSH, as root, or as another user.
 show_always = false
-style_user = "bg:os_bg fg:os_fg"
+style_user = "bg:dir_bg fg:dir_fg"
 style_root = "bg:os_bg fg:red bold"
 format = '[$user ]($style)'
+
+[jobs]
+style = "bg:dir_bg fg:dir_fg"
+format = "[ $symbol$number]($style)"
+number_threshold = 1
 
 [directory]
 style = "fg:dir_fg bg:dir_bg"
