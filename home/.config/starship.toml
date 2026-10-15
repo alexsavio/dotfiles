@@ -3,7 +3,7 @@
 # Tokyo Night preset (https://starship.rs/presets/tokyo-night), extended with
 # username (SSH/root only), jobs, aws, c/cpp/python/elixir, battery, direnv and cmd_duration.
 format = """
-[░▒](fg:dir_bg)\
+[](fg:dir_bg)\
 $username\
 $jobs\
 $directory\
