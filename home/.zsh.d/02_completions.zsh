@@ -3,9 +3,6 @@
 # Docker CLI completions
 [[ -d "$HOME/.docker/completions" ]] && fpath=($HOME/.docker/completions $fpath)
 
-# Bun completions
-[[ -s "$HOME/.bun/_bun" ]] && source "$HOME/.bun/_bun"
-
 # Carapace (handles just, mise, and many more)
 if (( $+commands[carapace] )); then
   export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'

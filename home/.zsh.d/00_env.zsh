@@ -12,7 +12,6 @@ path=(
   $HOME/.cargo/bin
   $HOME/.avm/bin
   $HOME/.local/share/solana/install/active_release/bin
-  $HOME/.bun/global/node_modules/.bin
   $HOME/.codeium/windsurf/bin
   $HOME/.lmstudio/bin
   $HOME/.antigravity/antigravity/bin
@@ -24,10 +23,6 @@ path=(
 
 # Cargo env (sets CARGO_HOME etc. without duplicating PATH)
 [[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
-
-# Bun
-export BUN_INSTALL="$HOME/.bun"
-[[ -d "$BUN_INSTALL/bin" ]] && path=($BUN_INSTALL/bin $path)
 
 # Editors
 if (( $+commands[nvim] )); then export EDITOR=nvim; else export EDITOR=vim; fi
