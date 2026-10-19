@@ -25,7 +25,11 @@ _cached_eval() {
 (( $+commands[zoxide] )) && _cached_eval zoxide zoxide init zsh
 
 # Mise (replaces nodenv, nvm, asdf)
-(( $+commands[mise] )) && _cached_eval mise mise activate zsh
+# Clear the session vars: in a nested shell, `mise activate` prints the
+# parent's full PATH, and the cache would freeze it for every later shell.
+(( $+commands[mise] )) && _cached_eval mise \
+  env -u __MISE_ORIG_PATH -u __MISE_DIFF -u __MISE_SESSION -u MISE_SHELL -u __MISE_ZSH_PRECMD_RUN \
+  mise activate zsh
 
 # Direnv
 (( $+commands[direnv] )) && _cached_eval direnv direnv hook zsh
